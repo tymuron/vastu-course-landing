@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#422326">
+<link rel="preload" as="image" href="assets/media/hero-poster.webp" fetchpriority="high">
+<script>document.documentElement.className+=" js"</script>
+<title>Васту-дизайн — флагманский курс Анны Ромео</title>
+<meta name="description" content="Флагманский курс «Васту-дизайн» Анны Ромео. Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие. 2,5 месяца, ранняя стоимость от 55 000 ₽.">
+<meta property="og:title" content="Васту-дизайн — флагманский курс Анны Ромео">
+<meta property="og:description" content="Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/media/og-cover.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23422326'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23CABC90'>A</text></svg>">
+
+<!-- ============================================================
+     ШРИФТЫ — self-hosted (без Google CDN: работает в РФ без VPN)
+     Cormorant — заголовки.  Vela Sans — текст.
+     Файлы Vela Sans (.woff2) кладутся в assets/fonts/ — см. README.
+     Пока их нет, подхватывается Manrope: Vela Sans сделан на его основе,
+     метрики и рисунок практически совпадают → подмена незаметна.
+     ============================================================ -->
+<style>
+/* ---- Vela Sans ----------------------------------------------------
+   ВКЛЮЧИТЬ ТАК: положить 5 файлов VelaSans-*.woff2 в assets/fonts/
+   и снять комментарий с блока ниже (убрать эту строку и строку перед
+   Manrope). Пока блок закомментирован — браузер не делает лишних
+   запросов, текст рисуется шрифтом Manrope (см. README §2).
+@font-face{font-family:'Vela Sans';src:url('assets/fonts/VelaSans-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Vela Sans';src:url('assets/fonts/VelaSans-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vela Sans';src:url('assets/fonts/VelaSans-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vela Sans';src:url('assets/fonts/VelaSans-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vela Sans';src:url('assets/fonts/VelaSans-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+*/
+
+/* ---- Manrope — метрически близкий фолбэк Vela Sans ---- */
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+
+/* ---- Cormorant — дисплейный ---- */
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+</style>
+
+<style>
+/* ============================================================
+   ТОКЕНЫ
+   ============================================================ */
+:root{
+  --burgundy:#422326;
+  --burgundy-deep:#2E1619;
+  --burgundy-mid:#4E2B2E;
+  --burgundy-line:#5E3A3D;
+  --gold:#CABC90;
+  --gold-deep:#A08D5C;
+  --gold-ink:#8A7645;
+  --cream:#F4F2ED;
+  --cream-2:#EBE7DE;
+  --cream-3:#E1DBCF;
+  --ink:#33201F;
+  --ink-soft:#6E5A54;
+  --on-dark:#F0EBE2;
+  --on-dark-soft:rgba(240,235,226,.68);
+  --on-dark-faint:rgba(240,235,226,.42);
+
+  /* Шкала. Потолок 176px: у Cormorant прописная на 11 % ниже, чем у шрифта
+     референса, поэтому 176 даёт 94 % его оптического присутствия при 168. */
+  --h1:min(clamp(60px,20vw,176px),18vh);
+  --title:clamp(38px,6.7vw,96px);
+  --title-col:clamp(34px,5.3vw,76px);   /* заголовок внутри колонки .split */
+  --h3:clamp(21px,2.1vw,30px);
+  --lead:clamp(18px,1.7vw,23px);
+  --body:clamp(16.5px,1.25vw,18px);
+  --small:clamp(13.5px,1.02vw,15px);
+  --eyebrow:clamp(11px,.85vw,13px);
+  --t-price:clamp(46px,5.6vw,80px);
+
+  --serif:'Cormorant',Georgia,'Times New Roman',serif;
+  --sans:'Vela Sans','Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+
+  --pad:clamp(20px,5vw,64px);
+  --maxw:1320px;
+  /* Шаги 1–4 — типографские связи, они не масштабируются: 12px между
+     надзаголовком и заголовком означают одно и то же на любом экране.
+     Шаги 5–10 — архитектурные, они сжимаются к мобильному. */
+  --sp-1:8px; --sp-2:12px; --sp-3:16px; --sp-4:24px;
+  --sp-5:clamp(32px,calc(29.03px + .762vw),40px);
+  --sp-6:clamp(48px,calc(42.06px + 1.524vw),64px);
+  --sp-7:clamp(64px,calc(52.11px + 3.048vw),96px);
+  --sp-8:clamp(88px,calc(67.2px + 5.333vw),144px);
+  --sp-9:clamp(120px,calc(84.34px + 9.143vw),216px);
+  --sp-10:clamp(160px,calc(100.57px + 15.238vw),320px);
+  --r:3px;
+  --r-lg:0px;
+
+  /* Кривые. Одна кривая и на ховер, и на появление — главный признак шаблона.
+     (.19,1,.22,1) снята с сайта-референса. In-out на появлении — никогда. */
+  --e-out-expo:cubic-bezier(.19,1,.22,1);    /* текст и линии */
+  --e-out-quart:cubic-bezier(.165,.84,.44,1);/* медиа */
+  --e-ui:cubic-bezier(.4,0,.2,1);            /* ховер, цвет, аккордеон */
+  --ease:var(--e-ui);
+
+  --scrim-ink:30,12,14;
+  --nav-h:83px;
+}
+@media(max-width:1000px){:root{--nav-h:75px}}
+
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-size:var(--body);line-height:1.55;font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+::selection{background:var(--gold);color:var(--burgundy)}
+
+/* ============================================================
+   КАРКАС
+   ============================================================ */
+/* Пространство над заголовком принадлежит заголовку, под ним — следующему.
+   Симметричные 140/140 как раз и превращают каждую секцию в закрытую коробку. */
+.sec{position:relative;overflow:hidden;
+  padding-block:var(--sec-pt,var(--sp-8)) var(--sec-pb,var(--sp-7));
+  padding-inline:var(--pad)}
+.sec--tight{--sec-pt:var(--sp-7);--sec-pb:var(--sp-6)}
+.sec--open {--sec-pt:var(--sp-9);--sec-pb:var(--sp-8)}
+.sec--void {--sec-pt:var(--sp-10);--sec-pb:var(--sp-8)}
+.sec--sink {--sec-pt:var(--sp-10);--sec-pb:var(--sp-8)}
+.sec--under{--sec-pt:var(--sp-9)}
+/* порядок важен: --bridged и --under идут ПОСЛЕ --tight/--open/--void */
+.sec--bridged{--sec-pb:var(--sp-8);overflow-x:clip;overflow-y:visible}
+/* Две сливочные секции подряд стыкуются без всякой границы. Смена фона здесь
+   невозможна (иначе рушится ритм), поэтому шов держит волосяная линия —
+   тот же язык чертежа, что у швов мозаики и строк FAQ. */
+.sec:not(.sec--dark):not(.sec--deep) + .sec:not(.sec--dark):not(.sec--deep){
+  border-top:1px solid var(--burgundy)}
+.sec--dark{background:var(--burgundy);color:var(--on-dark)}
+.sec--deep{background:var(--burgundy-deep);color:var(--on-dark)}
+.sec--cream2{background:var(--cream-2)}
+.wrap{max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+.wrap--narrow{max-width:940px}
+.wrap--mid{max-width:1120px}
+
+/* Пунктирные вертикали — архитектурная сетка (фирменная деталь) */
+.guides{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.5}
+.guides i{position:absolute;top:0;bottom:0;width:1px;
+  background-image:linear-gradient(to bottom,currentColor 0 5px,transparent 5px 12px);
+  background-size:1px 12px;color:var(--gold-ink);opacity:.85}
+.sec--dark .guides i,.sec--deep .guides i{color:var(--gold);opacity:.35}
+.guides i:nth-child(1){left:37%}
+.guides i:nth-child(2){left:39.2%}
+.guides i:nth-child(3){left:75%;opacity:.18}
+@media(max-width:860px){.guides{display:none}}
+
+/* Призрачное слово-водяной знак за заголовком */
+/* ============================================================
+   ТИПОГРАФИКА
+   ============================================================ */
+.eyebrow{
+  font-family:var(--sans);font-size:var(--eyebrow);font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);
+  margin:0 0 var(--sp-4);display:flex;align-items:center;gap:14px;
+}
+.eyebrow::after{content:'';flex:0 0 46px;height:1px;background:currentColor;opacity:.45}
+.eyebrow--c{justify-content:center}
+.eyebrow--c::before{content:'';flex:0 0 46px;height:1px;background:currentColor;opacity:.45}
+.sec--dark .eyebrow,.sec--deep .eyebrow{color:var(--gold)}
+
+.display{
+  font-family:var(--serif);font-weight:500;text-transform:uppercase;
+  letter-spacing:.018em;line-height:1.06;
+  font-size:var(--title);margin:0 0 6px;color:var(--burgundy);
+}
+.sec--dark .display,.sec--deep .display{color:var(--gold)}
+
+/* 96px во всю ширину, 76px внутри колонки: 96px в 620-пиксельной половине
+   разбивает русский заголовок на обрывки по 6 знаков. max-width:11em держит меру. */
+/* Выброс за шкалу. Только для коротких заголовков во всю ширину:
+   эмфаза — это отношение, поэтому расти может не всё. */
+h2.title.title--xl{font-size:clamp(64px,13vw,200px);max-width:none;letter-spacing:.01em;
+  text-transform:uppercase;line-height:1;margin-bottom:clamp(24px,3vw,44px)}
+h2.title{
+  font-family:var(--serif);font-weight:500;line-height:1.08;
+  font-size:var(--title);max-width:11em;margin:0 0 var(--sp-4);
+  color:var(--burgundy);letter-spacing:-.018em;
+}
+.split h2.title,.split--60 h2.title,.split--40 h2.title{font-size:var(--title-col)}
+.head--c h2.title{margin-inline:auto}
+.sec--dark h2.title,.sec--deep h2.title{color:var(--cream)}
+h2.title em{font-style:italic;color:var(--gold-ink)}
+.sec--dark h2.title em,.sec--deep h2.title em{color:var(--gold)}
+
+h3{font-family:var(--serif);font-weight:500;font-size:var(--h3);
+  line-height:1.16;margin:0 0 14px;color:var(--burgundy)}
+.sec--dark h3,.sec--deep h3{color:var(--cream)}
+
+p{margin:0 0 1.05em}
+p:last-child{margin-bottom:0}
+.lead{font-size:var(--lead);line-height:1.5;letter-spacing:-.014em;max-width:58ch}
+.muted{color:var(--ink-soft)}
+.sec--dark .muted,.sec--deep .muted{color:var(--on-dark-soft)}
+.small{font-size:var(--small);line-height:1.6}
+.tiny{font-size:12.5px;line-height:1.55;letter-spacing:.01em}
+.hair{height:1px;background:var(--burgundy);border:0;margin:0}
+.sec--dark .hair,.sec--deep .hair{background:var(--gold)}
+
+.head{position:relative;margin-bottom:var(--sp-6)}
+.head--c{text-align:center}
+.head--c .eyebrow{justify-content:center}
+.head--c .eyebrow::before{content:'';flex:0 0 46px;height:1px;background:currentColor;opacity:.45}
+.head__sub{max-width:58ch;font-size:var(--lead);line-height:1.55;color:var(--ink-soft);margin-top:var(--sp-3)}
+.head--c .head__sub{margin-left:auto;margin-right:auto}
+.sec--dark .head__sub,.sec--deep .head__sub{color:var(--on-dark-soft)}
+
+/* ============================================================
+   КНОПКИ
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--sans);font-size:12.5px;font-weight:600;
+  letter-spacing:.17em;text-transform:uppercase;text-decoration:none;
+  padding:19px 36px;border:1px solid transparent;border-radius:0;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .25s var(--ease);
+  white-space:nowrap;text-align:center;
+}
+.btn:active{transform:translateY(1px);filter:brightness(.94)}
+
+/* Декоративные ховеры — только для настоящего курсора.
+   iOS применяет :hover по тапу и держит его после ухода пальца. */
+@media (hover:hover) and (pointer:fine){
+.btn--gold:hover{background:#DBCEA6;border-color:#DBCEA6}
+.btn--ghost-d:hover{background:var(--gold);color:var(--burgundy);border-color:var(--gold)}
+.btn--ghost-l:hover{background:var(--burgundy);color:var(--cream);border-color:var(--burgundy)}
+.btn--dark:hover{background:var(--burgundy-deep);border-color:var(--burgundy-deep)}
+.card:hover{box-shadow:inset 0 0 0 2px var(--gold)}
+.sec--dark .card:hover,.sec--deep .card:hover{box-shadow:inset 0 0 0 2px var(--burgundy)}
+.tariff:hover{box-shadow:inset 0 0 0 1px var(--gold)}
+.faq__q:hover{color:var(--gold-ink)}
+.layers__tab:hover{color:var(--on-dark)}
+.nav__links a:hover{color:var(--gold)}
+.foot a:hover{color:var(--gold)}
+.modal__x:hover{color:var(--burgundy)}
+.media-tag:hover::after,.media-tag:focus-visible::after{opacity:1;transform:none}
+}
+.btn--gold{background:var(--gold);color:var(--burgundy);border-color:var(--gold)}
+.btn--ghost-d{background:transparent;color:var(--gold);border-color:rgba(202,188,144,.55)}
+.btn--ghost-l{background:transparent;color:var(--burgundy);border-color:rgba(66,35,38,.35)}
+.btn--dark{background:var(--burgundy);color:var(--cream);border-color:var(--burgundy)}
+.btn--sm{padding:14px 24px;font-size:11.5px;letter-spacing:.15em}
+@media(max-width:560px){
+  .btn{white-space:normal;line-height:1.35;padding:17px 22px;font-size:11.5px;letter-spacing:.13em}
+  .btn-row{gap:11px}
+  .btn-row .btn{width:100%}
+}
+.btn--wide{width:100%}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:var(--sp-5)}
+.btn-row--c{justify-content:center}
+
+/* ============================================================
+   ПЛЕЙСХОЛДЕРЫ МЕДИА
+   ============================================================ */
+/* Плейсхолдеры — крупнейший рычаг плотности до того, как появятся фотографии.
+   Правило одно: тон, противоположный поверхности, на которой лежит слот. */
+.ph{
+  position:relative;width:100%;background:var(--burgundy);color:var(--gold);
+  border:0;border-radius:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:26px;gap:7px;overflow:hidden;
+}
+.sec--dark .ph,.sec--deep .ph,.card .ph{background:var(--cell-ph,var(--cream))}
+.sec--dark .ph .ph__ico,.sec--deep .ph .ph__ico,.card .ph .ph__ico,
+.sec--dark .ph .ph__label,.sec--deep .ph .ph__label,.card .ph .ph__label{color:var(--burgundy)}
+.sec--dark .ph .ph__spec,.sec--deep .ph .ph__spec,.card .ph .ph__spec{color:rgba(66,35,38,.6)}
+.ph__ico{position:relative;font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold)}
+.sec--dark .ph__ico,.sec--deep .ph__ico,.ph--dark .ph__ico{color:var(--gold)}
+.ph__label{position:relative;font-size:11px;font-weight:600;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--gold);max-width:90%}
+.sec--dark .ph__label,.sec--deep .ph__label,.ph--dark .ph__label{color:var(--gold)}
+.ph__spec{position:relative;font-size:11px;letter-spacing:.08em;color:rgba(202,188,144,.62)}
+.sec--dark .ph__spec,.sec--deep .ph__spec,.ph--dark .ph__spec{color:var(--on-dark-faint)}
+.ph--16x9{aspect-ratio:16/9}
+.ph--4x3{aspect-ratio:4/3}
+.ph--1x1{aspect-ratio:1/1}
+.ph--3x4{aspect-ratio:3/4}
+.ph--2x3{aspect-ratio:2/3}
+.ph--wide{aspect-ratio:21/9}
+@media(max-width:700px){
+  .ph--3x4,.ph--2x3,.ph--1x1{aspect-ratio:auto;height:clamp(240px,46svh,380px)}
+}
+@media(max-width:620px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ============================================================
+   ШАПКА / ЯКОРНАЯ НАВИГАЦИЯ
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  display:flex;align-items:center;gap:22px;
+  padding:16px var(--pad);
+  transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.is-solid{
+  background:rgba(66,35,38,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding-top:11px;padding-bottom:11px;border-bottom-color:rgba(202,188,144,.16);
+}
+.nav__brand{
+  font-family:var(--serif);font-size:17px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);text-decoration:none;white-space:nowrap;flex:0 0 auto;font-weight:400;
+}
+.nav__brand b{font-weight:400;color:var(--gold)}
+.nav__links{display:flex;align-items:center;gap:clamp(14px,2vw,30px);margin-left:auto;list-style:none;padding:0;margin-block:0}
+.nav__links a{
+  font-size:11px;font-weight:500;letter-spacing:.19em;text-transform:uppercase;
+  color:rgba(240,235,226,.72);text-decoration:none;position:relative;padding:4px 0;
+  transition:color .3s var(--ease);white-space:nowrap;
+}
+.nav__links a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;
+  background:var(--gold);transition:right .35s var(--ease)}
+.nav__links a.btn--gold{color:var(--burgundy)}
+.nav__links a.btn::after{display:none}
+.nav__links a.is-active{color:var(--gold)}
+.nav__links a:hover::after,.nav__links a.is-active::after{right:0}
+.nav__cta{flex:0 0 auto}
+.nav__links .m-cta{display:none}
+.nav::after{content:'';position:fixed;inset:0;background:rgba(30,12,14,.6);opacity:0;
+  pointer-events:none;transition:opacity .35s var(--e-ui);z-index:-1}
+.nav.is-open::after{opacity:1;pointer-events:auto}
+.nav__burger{display:none;flex:0 0 auto;margin-left:auto;background:none;border:0;padding:8px;width:44px;height:44px}
+.nav__burger span{display:block;height:1.5px;background:var(--cream);margin:5px 0;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.nav.is-open .nav__burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav.is-open .nav__burger span:nth-child(2){opacity:0}
+.nav.is-open .nav__burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:1000px){
+  .nav__burger{display:block}
+  .nav__cta{display:none}
+  .nav__links{
+    position:fixed;inset:var(--nav-h) 0 auto;flex-direction:column;align-items:flex-start;gap:0;
+    background:rgba(46,22,25,.985);backdrop-filter:blur(16px);visibility:hidden;
+    padding:10px var(--pad) 26px;transform:translateY(-118%);
+    transition:transform .45s var(--ease),visibility .45s;
+    border-bottom:1px solid rgba(202,188,144,.18);max-height:calc(100svh - var(--nav-h));overflow:auto;
+  }
+  .nav.is-open .nav__links{transform:translateY(0);visibility:visible}
+  .nav.is-open ~ .sticky{transform:translateY(105%)}
+  .nav__links li{width:100%;border-top:1px solid rgba(202,188,144,.12)}
+  .nav__links a{display:block;padding:16px 0;font-size:12px;letter-spacing:.2em}
+  .nav__links .m-cta{display:block;padding-top:20px;border:0}
+}
+
+/* ============================================================
+   ГЕРОЙ
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;
+  padding:clamp(88px,12vh,168px) var(--pad) var(--sp-6);background:var(--burgundy-deep);overflow:hidden}
+/* слои героя: медиа 0 · скрим 1 · плашка 2 · текст 3 */
+.hero__media{position:absolute;inset:0;z-index:0}
+.hero__media video,.hero__media img{position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;object-position:var(--media-focal,50% 50%)}
+
+/* ДЕСКТОП: видео — вертикальная карточка рядом с текстом, а не подложка под ним.
+   Кадр снят в 9:16, и в горизонтальном полноэкранном герое от него оставалось 32 %,
+   причём обрезка приходилась ровно по лицу. Как карточка он виден целиком, текст
+   лежит на сплошном бордо (12,5:1), и затемнение над текстом больше не нужно. */
+@media(min-width:901px){
+  .hero{align-items:center}
+  .hero__media{
+    position:absolute;inset:auto;z-index:2;
+    right:var(--pad);top:50%;transform:translateY(-50%);
+    width:clamp(280px,24vw,400px);aspect-ratio:9/16;height:auto;
+    max-height:min(78svh,720px);
+    border:1px solid rgba(202,188,144,.28);
+  }
+  .hero__scrim{display:none}
+  .hero__inner{padding-right:clamp(320px,27vw,460px)}
+  .hero__sub{max-width:44ch}
+}
+/* Видео проявляется поверх постера, когда действительно может играть —
+   пустого тёмного прямоугольника на первом экране не бывает. */
+.hero__video{opacity:0;transition:opacity 600ms var(--e-ui)}
+.hero__video.is-playing{opacity:1}
+@media(prefers-reduced-motion:reduce){.hero__video{display:none}}
+/* фон-«пол»: он же состояние ожидания, он же экран загрузки, он же фолбэк постера */
+.hero__media,.hero__media.is-awaiting{background:
+  radial-gradient(120% 80% at 50% 8%,rgba(84,49,47,.85) 0%,rgba(46,22,25,0) 62%),
+  linear-gradient(150deg,#2E1619 0%,#54312F 48%,#2E1619 100%)}
+.hero__media.is-awaiting::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(115% 90% at 50% 45%,rgba(0,0,0,0) 42%,rgba(0,0,0,.42) 100%)}
+@media(max-width:700px){.hero{padding-top:96px}}
+@media(max-width:700px) and (max-height:700px){.hero{padding-top:80px}}
+
+/* скримы: рассчитаны под реальные границы текста, стопы не округлять */
+/* Затемнение направленное: держим текст читаемым, но кадр остаётся видно.
+   Плотное только там, где реально лежит текст — слева внизу. */
+/* Затемнение нужно только там, где текст лежит ПОВЕРХ кадра — то есть до 900px.
+   Стопы посчитаны по реальным границам текста, округлять их нельзя. */
+.hero__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(to bottom,
+    rgba(var(--scrim-ink),.52) 0%,
+    rgba(var(--scrim-ink),.34) 8%,
+    rgba(var(--scrim-ink),.54) 20%,
+    rgba(var(--scrim-ink),.72) 40%,
+    rgba(var(--scrim-ink),.82) 58%,
+    rgba(var(--scrim-ink),.86) 100%)}
+.hero__scrim--end{background:
+  linear-gradient(180deg,rgba(var(--scrim-ink),.30) 0%,rgba(var(--scrim-ink),.20) 22%,rgba(var(--scrim-ink),.20) 78%,rgba(var(--scrim-ink),.44) 100%),
+  radial-gradient(78% 62% at 50% 46%,rgba(var(--scrim-ink),.74) 0%,rgba(var(--scrim-ink),.52) 55%,rgba(var(--scrim-ink),.10) 100%)}
+
+/* плашка «здесь будет видео» — вне текстовой зоны, спецификация в подсказке */
+.media-tag{position:absolute;z-index:2;top:calc(var(--nav-h) + 6px);right:var(--pad);
+  display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 10px;
+  font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;line-height:1;color:var(--gold);white-space:nowrap;
+  background:rgba(30,12,14,.55);border:1px solid rgba(202,188,144,.28);border-radius:2px;
+  backdrop-filter:blur(6px)}
+.media-tag--hero{top:auto;bottom:calc(var(--sp-6) + 6px)}
+.media-tag--hero::after{top:auto;bottom:calc(100% + 6px)}
+.media-tag--end{top:auto;bottom:18px}
+.media-tag__dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:0 0 auto;
+  box-shadow:0 0 0 3px rgba(202,188,144,.16)}
+.media-tag::after{content:attr(data-spec);position:absolute;top:calc(100% + 6px);right:0;
+  width:max-content;max-width:min(330px,62vw);padding:7px 10px;text-align:right;
+  white-space:normal;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:none;
+  line-height:1.5;color:rgba(240,235,226,.74);background:rgba(30,12,14,.78);
+  border:1px solid rgba(202,188,144,.18);opacity:0;transform:translateY(-3px);
+  pointer-events:none;transition:opacity .3s var(--e-ui),transform .3s var(--e-ui)}
+.media-tag--end::after{top:auto;bottom:calc(100% + 6px)}
+@media(max-width:700px){
+  .media-tag{font-size:9px;letter-spacing:.13em;padding:6px 10px 6px 8px;gap:6px}
+  /* на телефоне плашка сжимается до точки-маркера: подпись всё равно скрыта,
+     а Анна смотрит макет на десктопе, где она разворачивается полностью */
+  .media-tag--hero{top:calc(var(--nav-h) + 6px);bottom:auto;
+    font-size:0;letter-spacing:0;padding:7px;gap:0}
+  .hero__name{max-width:72%}
+  .media-tag::after{display:none}
+}
+.hero__inner{position:relative;z-index:3;width:100%;max-width:var(--maxw);margin:0 auto;color:var(--on-dark)}
+.hero__name{
+  font-family:var(--serif);font-weight:300;letter-spacing:.14em;text-transform:uppercase;
+  /* Не золото: мелкий текст золотом поверх видео даёт 2,6–3,1:1 и не проходит
+     по контрасту. Золото остаётся на крупной курсивной строке и на кнопке. */
+  font-size:clamp(13px,1.5vw,18px);color:var(--cream);margin:0 0 var(--sp-3);
+}
+.hero__h1{
+  font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.018em;
+  font-size:var(--h1);line-height:1.02;margin:0 0 var(--sp-4);color:var(--cream);
+}
+.hero__h1 em{display:block;font-style:italic;text-transform:none;letter-spacing:0;color:var(--gold);
+  font-size:.36em;line-height:1.1;margin-top:.2em;font-weight:400}
+.hero__sub{max-width:52ch;font-size:var(--lead);line-height:1.45;color:rgba(240,235,226,.9);margin:0 0 var(--sp-4)}
+.hero__facts{display:flex;flex-wrap:wrap;gap:0;margin:0 0 var(--sp-4);
+  border-top:1px solid rgba(202,188,144,.26);border-bottom:1px solid rgba(202,188,144,.26)}
+.hero__fact{flex:1 1 190px;padding:var(--sp-3) 26px var(--sp-3) 0;position:relative}
+.hero__fact + .hero__fact{padding-left:26px;border-left:1px solid rgba(202,188,144,.2)}
+.hero__fact dt{font-size:10.5px;font-weight:600;letter-spacing:.21em;text-transform:uppercase;
+  color:rgba(202,188,144,.85);margin:0 0 7px}
+.hero__fact dd{margin:0;font-family:var(--serif);font-size:clamp(20px,2.6vw,32px);line-height:1.15;color:var(--cream)}
+.hero__fact dd s{color:rgba(240,235,226,.42);font-size:.66em;margin-left:9px;text-decoration-thickness:1px}
+@media(max-width:640px){
+  /* Три факта в строку — иначе цена и кнопка уезжают за первый экран телефона */
+  .hero__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .hero__fact{flex:none;padding:12px 8px 12px 0}
+  .hero__fact + .hero__fact{border-left:1px solid rgba(202,188,144,.2);border-top:0;padding-left:10px}
+  .hero__fact dt{font-size:9px;letter-spacing:.14em;margin-bottom:5px}
+  .hero__fact dd{font-size:18px}
+  .hero__fact dd s{display:inline;font-size:.6em;margin-left:6px}
+}
+.hero__ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+@media(max-width:560px){.hero__ctas .btn{width:100%}.hero__note{font-size:12px}}
+.hero__note{font-size:12.5px;color:rgba(240,235,226,.6);letter-spacing:.02em}
+@media(max-width:700px){.hero{min-height:92svh}}
+
+/* ============================================================
+   ТАЙМЕР
+   ============================================================ */
+.timer{display:inline-flex;align-items:center;gap:clamp(10px,2vw,20px);flex-wrap:wrap}
+.timer__lbl{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.timer__grid{display:flex;gap:clamp(8px,1.4vw,16px)}
+.timer__u{text-align:center;min-width:52px}
+.timer__n{font-family:var(--serif);font-size:clamp(26px,3.4vw,40px);line-height:1;color:var(--cream);
+  font-variant-numeric:tabular-nums;display:block}
+.timer__c{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,235,226,.55);margin-top:6px;display:block}
+.timer--light .timer__n{color:var(--burgundy)}
+.timer--light .timer__c{color:var(--ink-soft)}
+.timer--light .timer__lbl{color:var(--gold-ink)}
+.timer--sm .timer__n{font-size:20px}
+.timer--sm .timer__u{min-width:38px}
+.timer--sm .timer__c{font-size:8.5px;margin-top:3px}
+
+/* ============================================================
+   ЛИПКАЯ CTA-ПАНЕЛЬ (моб.)
+   ============================================================ */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:115;display:none;
+  align-items:center;gap:14px;padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(46,22,25,.975);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(202,188,144,.28);
+  transform:translateY(105%);transition:transform .45s var(--ease);
+}
+.sticky.is-on{transform:translateY(0)}
+.sticky__price{flex:1 1 auto;min-width:0}
+.sticky__p1{font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--gold);white-space:nowrap}
+.sticky__p1 s{color:rgba(240,235,226,.4);font-size:.62em;margin-left:7px;text-decoration-thickness:1px}
+.sticky__p2{font-size:10.5px;letter-spacing:.09em;color:rgba(240,235,226,.62)}
+.sticky .btn{flex:0 0 auto;padding:15px 20px;font-size:11px;letter-spacing:.13em}
+@media(max-width:1000px){.sticky{display:flex}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}}
+.sticky::before{content:'';position:absolute;left:0;right:0;bottom:100%;height:28px;
+  background:linear-gradient(to top,rgba(46,22,25,.9),transparent);pointer-events:none}
+
+/* ============================================================
+   СЕТКИ И КАРТОЧКИ
+   ============================================================ */
+.grid{display:grid;gap:var(--sp-5) var(--sp-4)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.span-all{grid-column:1/-1}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.split--60{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.split--40{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.split--top{align-items:start}
+@media(max-width:980px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.split,.split--60,.split--40{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:620px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+
+/* МОЗАИКА. Одна из двух заливок ВСЕГДА равна фону секции — это структурно
+   исключает соседство золота и сливочного (1,69:1, тот самый «беж на беже»).
+   Швы 1px бордо, зазора нет: блок читается одним полотном, а не россыпью
+   плиток. Порядок задаётся только переменными. */
+.mosaic{display:grid;gap:0;border:1px solid var(--burgundy);margin-top:var(--sp-5)}
+.mosaic > .card{
+  --cell-bg:var(--cream); --cell-ink:var(--ink);
+  --cell-h:var(--burgundy); --cell-soft:var(--ink-soft); --cell-ph:var(--burgundy);
+  background:var(--cell-bg);color:var(--cell-ink);
+  border:0;border-right:1px solid var(--burgundy);border-bottom:1px solid var(--burgundy);
+  border-radius:0;margin:0;padding:clamp(28px,3vw,46px);
+  min-height:clamp(210px,22vw,290px);display:flex;flex-direction:column}
+.mosaic > .card h3,.mosaic > .card .card__n{color:var(--cell-h)}
+.mosaic > .card .muted{color:var(--cell-soft)}
+.mosaic > .card .ph{background:var(--cell-ph)}
+.mosaic > .card:hover{box-shadow:none}
+/* единственные правила чётности — они только переставляют переменные */
+.mosaic--4 > .card:nth-child(1),.mosaic--4 > .card:nth-child(4),
+.mosaic--2 > .card:nth-child(1),
+.mosaic--3 > .card:nth-child(odd){
+  --cell-bg:var(--burgundy); --cell-ink:var(--on-dark);
+  --cell-h:var(--gold); --cell-soft:rgba(240,235,226,.74); --cell-ph:var(--cream)}
+.mosaic--2,.mosaic--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mosaic--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:980px){.mosaic--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+  .mosaic{grid-template-columns:minmax(0,1fr)}
+  .mosaic > .card{min-height:0;padding:var(--sp-5)}
+  .mosaic > .card:nth-child(odd){--cell-bg:var(--burgundy);--cell-ink:var(--on-dark);
+    --cell-h:var(--gold);--cell-soft:rgba(240,235,226,.74);--cell-ph:var(--cream)}
+  .mosaic > .card:nth-child(even){--cell-bg:var(--cream);--cell-ink:var(--ink);
+    --cell-h:var(--burgundy);--cell-soft:var(--ink-soft);--cell-ph:var(--burgundy)}
+}
+.mosaic--media > .card{padding:0}
+.mosaic--media > .card > .ph{aspect-ratio:16/9}
+.mosaic--media > .card > .card__body{padding:clamp(28px,3vw,46px)}
+
+.card{
+  background:var(--burgundy);color:var(--on-dark);border:0;border-radius:0;
+  padding:var(--sp-5);position:relative;transition:box-shadow .4s var(--e-ui);
+}
+.card h3,.card .card__n{color:var(--gold)}
+.card .muted{color:rgba(240,235,226,.74)}
+.sec--dark .card,.sec--deep .card{background:var(--cream);color:var(--ink)}
+.sec--dark .card h3,.sec--deep .card h3,
+.sec--dark .card .card__n,.sec--deep .card .card__n{color:var(--burgundy)}
+.sec--dark .card .muted,.sec--deep .card .muted{color:var(--ink-soft)}
+/* строчки-карточки: там, где элемент — одно предложение, коробка не нужна */
+.card--rule{background:transparent!important;color:inherit!important;border:0;
+  border-top:2px solid var(--burgundy);padding:var(--sp-4) var(--sp-4) 0 0;min-height:0}
+.sec--dark .card--rule,.sec--deep .card--rule{border-top-color:var(--gold);background:transparent!important}
+.card--rule p{font-size:var(--lead);color:inherit!important}
+.sec--dark .card,.sec--deep .card,.card--dark{
+  background:rgba(240,235,226,.035);border-color:rgba(202,188,144,.24);
+}
+.card__n{
+  font-family:var(--serif);font-size:13px;letter-spacing:.16em;color:var(--gold-ink);
+  display:block;margin-bottom:16px;
+}
+.sec--dark .card__n,.sec--deep .card__n{color:var(--gold)}
+
+/* нумерованный список-«путь» */
+.steps{counter-reset:s;display:grid;gap:1px;background:var(--burgundy);border-block:1px solid var(--burgundy)}
+.sec--dark .steps,.sec--deep .steps{background:var(--gold);border-color:var(--gold)}
+.step{counter-increment:s;background:var(--cream);padding:clamp(24px,3vw,38px) clamp(20px,3vw,44px);
+  display:grid;grid-template-columns:clamp(56px,7vw,110px) 1fr;gap:clamp(14px,2.4vw,34px);align-items:start;
+  transition:background .4s var(--ease)}
+.sec--dark .step,.sec--deep .step{background:var(--burgundy)}
+.step::before{content:'0' counter(s);font-family:var(--serif);font-size:clamp(26px,3.6vw,46px);
+  line-height:.9;color:var(--gold-ink);opacity:1}
+.sec--dark .step::before,.sec--deep .step::before{color:var(--gold);opacity:1}
+.step h3{margin-bottom:var(--sp-2)}
+.step p{max-width:33em}
+@media(max-width:700px){.grid{gap:var(--sp-4)}.step{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* маркированные списки */
+.list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.list li{position:relative;padding-left:26px;line-height:1.62}
+.list li::before{content:'';position:absolute;left:0;top:.72em;width:12px;height:1px;background:var(--gold-ink)}
+.sec--dark .list li::before,.sec--deep .list li::before{background:var(--gold)}
+.list--check li::before{content:'';top:.55em;width:7px;height:7px;border-radius:50%;
+  border:1px solid var(--gold-ink);background:transparent}
+.sec--dark .list--check li::before,.sec--deep .list--check li::before{border-color:var(--gold)}
+
+/* ============================================================
+   МЕТОД В ДЕЙСТВИИ — слои
+   ============================================================ */
+.layers__tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid rgba(202,188,144,.28);margin-bottom:clamp(26px,3vw,42px)}
+@media(max-width:760px){
+  .layers__tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
+  .layers__tabs::-webkit-scrollbar{display:none}
+  .layers__tab{flex:0 0 auto;padding-inline:16px;font-size:11px}
+  .layers__tab:first-child{padding-left:0}
+  .layers__tab:last-child{padding-right:40px}
+  .layers__tabs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+}
+.layers__tab{
+  background:none;border:0;padding:16px clamp(14px,2vw,26px);position:relative;
+  font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(240,235,226,.55);transition:color .3s var(--ease);
+}
+.layers__tab::after{content:'';position:absolute;left:0;right:100%;bottom:-1px;height:2px;background:var(--gold);transition:right .4s var(--ease)}
+.layers__tab[aria-selected="true"]{color:var(--gold)}
+.layers__tab[aria-selected="true"]::after{right:0}
+.layers__tab i{font-style:normal;font-family:var(--serif);opacity:.5;margin-right:9px;font-size:13px}
+.layers__panel{display:none;animation:fadeOnly .3s var(--e-ui)}
+.layers__panel.is-on{display:block}
+@keyframes fadeOnly{from{opacity:0}to{opacity:1}}
+.layers__body{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(24px,3.4vw,52px);align-items:start}
+@media(max-width:980px){.layers__body{grid-template-columns:1fr}}
+.layers__cap h3{margin-bottom:12px}
+.layers__meta{margin-top:22px;padding-top:20px;border-top:1px solid rgba(202,188,144,.24);
+  display:grid;gap:10px}
+.layers__meta div{display:flex;justify-content:space-between;gap:16px;font-size:13.5px}
+.layers__meta dt{color:rgba(240,235,226,.55)}
+.layers__meta dd{margin:0;color:var(--gold);text-align:right}
+
+/* ============================================================
+   ТАРИФЫ
+   ============================================================ */
+.tariffs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,2.4vw,30px);align-items:stretch}
+/* Единственное место на странице, где золото работает большой заливкой —
+   и это ровно то, что мы хотим продать. Отступ не меньше самого крупного
+   кегля внутри: раньше 43px вокруг 52-пиксельной цены. */
+.tariff{
+  display:flex;flex-direction:column;border-radius:0;padding:max(var(--sp-6),var(--t-price,64px));
+  border:1px solid var(--gold);background:transparent;position:relative;
+  transition:box-shadow .4s var(--e-ui);
+}
+/* Разницу держат подложка, золотая рамка и бейдж — не отступ:
+   при разном padding цены в двух карточках перестают стоять на одной линии. */
+.tariff--pro{background:var(--gold);color:var(--burgundy);border-color:var(--gold)}
+.tariff--pro .tariff__name,.tariff--pro .tariff__tag,.tariff--pro .tariff__lede,
+.tariff--pro .tariff__now,.tariff--pro .tariff__feats li,
+.tariff--pro .tariff__feats li b{color:var(--burgundy)}
+.tariff--pro .tariff__desc{color:rgba(66,35,38,.78)}
+.tariff--pro .tariff__feats,.tariff--pro .tariff__price{border-top-color:rgba(66,35,38,.35)}
+.tariff--pro .tariff__feats li::before{border-color:var(--burgundy)}
+.tariff--pro .tariff__feats li.is-plus::before{background:var(--burgundy)}
+.tariff--pro .tariff__flag{background:var(--burgundy);color:var(--gold)}
+.tariff--pro .tariff__now s{color:rgba(66,35,38,.5)}
+.tariff--pro .tiny{color:rgba(66,35,38,.7)!important}
+.tariff__flag{
+  position:absolute;top:0;right:clamp(20px,3vw,40px);transform:translateY(-50%);
+  background:var(--gold);color:var(--burgundy);font-size:10px;font-weight:700;
+  letter-spacing:.17em;text-transform:uppercase;padding:8px 16px;white-space:nowrap;
+}
+.tariff__name{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.tariff__note{font-size:13px;line-height:1.5;color:var(--on-dark-soft);margin:-6px 0 14px}
+.tariff__tag{font-family:var(--serif);font-size:clamp(26px,2.6vw,38px);line-height:1.18;
+  color:var(--cream);margin:0 0 18px;font-weight:400}
+.tariff__lede{font-family:var(--serif);font-size:clamp(19px,1.9vw,23px);line-height:1.3;
+  color:var(--gold);margin:0 0 12px}
+.tariff__desc{font-size:15.5px;line-height:1.6;color:var(--on-dark-soft);margin:0 0 26px}
+.tariff__feats{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:12px;
+  border-top:1px solid rgba(202,188,144,.2);padding-top:24px}
+.tariff__feats li{position:relative;padding-left:26px;font-size:15px;line-height:1.55;color:var(--on-dark)}
+.tariff__feats li::before{content:'';position:absolute;left:2px;top:.52em;width:8px;height:8px;
+  border:1px solid var(--gold);border-radius:50%}
+.tariff__feats li.is-plus::before{background:var(--gold)}
+.tariff__feats li b{font-weight:600;color:var(--gold)}
+.tariff__price{margin-top:auto;padding-top:24px;border-top:1px solid rgba(202,188,144,.2)}
+.tariff__now{font-family:var(--serif);font-size:var(--t-price);line-height:1;color:var(--gold);
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.tariff__now s{font-size:.44em;color:rgba(240,235,226,.4);text-decoration-thickness:1px}
+.price-inline{font-family:var(--serif);font-size:1.55em;font-weight:500;line-height:1;white-space:nowrap}
+.tariff__inst{font-size:13.5px;color:var(--on-dark-soft);margin:12px 0 0}
+.tariff__inst b{color:var(--cream);font-weight:600}
+.tariff__seats{display:flex;align-items:center;gap:10px;margin:16px 0 0;font-size:12.5px;color:var(--gold)}
+.tariff__bar{flex:1;height:2px;background:rgba(202,188,144,.22);position:relative;overflow:hidden}
+.tariff__bar i{position:absolute;inset:0 auto 0 0;background:var(--gold);display:block}
+.tariff .btn{margin-top:24px}
+@media(max-width:900px){
+  .tariffs{grid-template-columns:minmax(0,1fr)}
+  .tariff{padding-top:44px}
+  .tariff__flag{top:0;right:auto;left:clamp(20px,3vw,40px);transform:none}
+}
+
+/* сравнение тарифов */
+.cmp{width:100%;border-collapse:collapse;margin-top:clamp(34px,4vw,60px);font-size:15px}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid rgba(202,188,144,.18);vertical-align:top}
+.cmp thead th{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--gold);border-bottom-color:rgba(202,188,144,.4);padding-bottom:14px}
+.cmp tbody th{font-weight:400;color:var(--on-dark-soft);width:44%}
+.cmp td{text-align:center;width:28%;color:var(--on-dark)}
+.cmp .yes{color:var(--gold);font-size:17px;line-height:1}
+.cmp .no{color:rgba(240,235,226,.45);font-size:17px;line-height:1}
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:720px){
+  /* На телефоне таблица прятала всю колонку «Практик» без единого намёка на прокрутку */
+  .cmp,.cmp thead,.cmp tbody,.cmp tr,.cmp th,.cmp td{display:block;width:auto}
+  .cmp{min-width:0;font-size:16px}
+  .cmp thead{display:none}
+  .cmp tbody tr{padding:14px 0;border-bottom:1px solid rgba(202,188,144,.18)}
+  .cmp tbody th{width:auto;padding:0 0 8px;color:var(--cream);border:0}
+  .cmp td{display:flex;justify-content:space-between;gap:16px;text-align:left;padding:4px 0;width:auto;border:0}
+  .cmp td::before{content:attr(data-col);color:rgba(240,235,226,.55);
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{border-top:1px solid var(--burgundy)}
+.faq__i{border-bottom:1px solid var(--burgundy)}
+.faq__q{
+  width:100%;background:none;border:0;text-align:left;padding:24px 44px 24px 0;position:relative;
+  font-family:var(--serif);font-size:clamp(20px,2.1vw,28px);line-height:1.28;color:var(--burgundy);
+  transition:color .3s var(--ease);
+}
+.faq__q::after,.faq__q::before{content:'';position:absolute;right:8px;top:50%;background:var(--burgundy);transition:transform .35s var(--ease),opacity .35s var(--ease)}
+.faq__q::before{width:15px;height:1px;transform:translateY(-50%)}
+.faq__q::after{width:1px;height:15px;right:15px;transform:translateY(-50%)}
+.faq__i.is-open .faq__q::after{transform:translateY(-50%) rotate(90deg);opacity:0}
+.faq__a{max-height:0;overflow:hidden;opacity:0;
+  transition:max-height 300ms var(--e-ui),opacity 300ms var(--e-ui)}
+.faq__i.is-open .faq__a{opacity:1}
+.faq__a > div{padding:0 clamp(20px,5vw,80px) 28px 0;color:var(--ink-soft);font-size:var(--body);line-height:1.62;max-width:33em}
+.faq__a b{color:var(--ink);font-weight:600}
+
+/* ============================================================
+   ОТЗЫВЫ / КЕЙСЫ
+   ============================================================ */
+.rail{display:flex;gap:clamp(16px,2vw,26px);overflow-x:auto;padding-bottom:22px;
+  scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);-webkit-overflow-scrolling:touch;
+  margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
+
+/* КЕЙСЫ. Три истории одна под другой; у каждой — своя лента кадров.
+   Раньше три кейса стояли в ряд и на каждый приходился один снимок — историю
+   так не рассказать. Кадры дают «до / что нашли / после». */
+.cases{display:grid;gap:var(--sp-7)}
+.case{display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+  background:var(--cream);color:var(--ink);border:0;border-radius:0;
+  overflow:visible;position:relative}
+/* Зазор красим фоном карточки, а не бордо: иначе три бордовых кадра
+   сливаются в одно пятно — то же «бордо на бордо», только внутри кейса. */
+/* Кадры — бордовые, карточка — сливочная, секция — бордовая. Без сливочной
+   рамки вокруг кадров они сливаются с фоном секции: «бордо на бордо». */
+.case__shots{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1vw,14px);
+  background:var(--cream);align-content:start;
+  padding:clamp(18px,1.8vw,28px) 0 clamp(18px,1.8vw,28px) clamp(18px,1.8vw,28px)}
+.case__shots .ph{aspect-ratio:1/1;padding:14px;gap:4px}
+.case__shots .ph:first-child{grid-column:span 2;aspect-ratio:16/9}
+.case__shots .ph__label{font-size:9.5px;letter-spacing:.14em}
+.case__shots .ph__spec{font-size:9px}
+.case__body{padding:clamp(28px,3vw,52px);display:grid;gap:var(--sp-4);align-content:center}
+.case__body h3{margin:0;color:var(--burgundy)}
+.sec--dark .case h3,.sec--deep .case h3{color:var(--burgundy)}
+.case__row{display:grid;gap:5px}
+.case__k{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--burgundy)}
+.case__v{font-size:var(--small);line-height:1.6;color:var(--ink-soft)}
+@media(max-width:900px){
+  .case{grid-template-columns:minmax(0,1fr)}
+  /* на телефоне кадры листаются вбок — это и есть карусель */
+  .case__shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    gap:10px;padding:14px 0 14px 14px;-webkit-overflow-scrolling:touch}
+  .case__shots .ph,.case__shots .ph:first-child{flex:0 0 76%;scroll-snap-align:start;aspect-ratio:4/3}
+}
+.rail::-webkit-scrollbar{height:2px}
+.rail::-webkit-scrollbar-track{background:rgba(66,35,38,.1)}
+.rail::-webkit-scrollbar-thumb{background:var(--gold-deep)}
+.rail > *{flex:0 0 min(80vw,400px);scroll-snap-align:start}
+@media(max-width:760px){.rail{align-items:flex-start}.rail > *{flex:0 0 min(86vw,420px)}}
+.quote{background:var(--cream);border-radius:var(--r-lg);padding:clamp(26px,2.6vw,36px);
+  border:1px solid var(--cream-3);display:flex;flex-direction:column;gap:16px}
+.quote::before{content:'“';font-family:var(--serif);font-size:78px;line-height:.5;color:var(--gold-deep);opacity:.42;height:34px}
+.quote__who{font-weight:600;font-size:15px;color:var(--burgundy)}
+.quote__t{font-size:15.5px;line-height:1.65;color:var(--ink-soft);flex:1}
+.case .ph{background:var(--burgundy)}
+.case .ph .ph__ico,.case .ph .ph__label{color:var(--gold)}
+.case .ph .ph__spec{color:rgba(202,188,144,.62)}
+.draft{position:absolute;top:14px;left:14px;z-index:4;background:rgba(202,188,144,.92);color:var(--burgundy);
+  font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:2px}
+/* внутри текста — не плашка, а подчёркнутое место, которое ещё согласуется */
+.draft--inline{position:static;display:inline;background:none;color:var(--gold-ink);
+  font-size:inherit;font-weight:600;letter-spacing:0;text-transform:none;padding:0;border-radius:0;
+  border-bottom:1px dashed var(--gold-deep)}
+
+/* ============================================================
+   ФОРМА / МОДАЛКА
+   ============================================================ */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.is-on{display:flex}
+.modal__bg{position:absolute;inset:0;background:rgba(30,12,14,.82);backdrop-filter:blur(6px);animation:fade .3s var(--ease)}
+.modal__box{position:relative;background:var(--cream);border-radius:var(--r-lg);width:min(560px,100%);
+  max-height:92svh;overflow:auto;padding:clamp(28px,4vw,48px) clamp(28px,4vw,48px) 0;
+  display:flex;flex-direction:column;animation:pop .4s var(--ease)}
+#bookForm{display:flex;flex-direction:column;min-height:0}
+/* Кнопка отправки была на 375 px ниже собственного сгиба */
+.modal__foot{position:sticky;bottom:0;background:var(--cream);margin-top:auto;
+  padding:16px 0 calc(20px + env(safe-area-inset-bottom));
+  box-shadow:0 -12px 20px -12px rgba(66,35,38,.25)}
+.formfail{display:none;margin:12px 0 0;font-size:13px;line-height:1.5;color:#8E2F2F}
+.formfail.is-on{display:block}
+.formfail a{color:var(--gold-ink);font-weight:600}
+@media(max-width:560px){
+  .modal{padding:0;align-items:flex-end}
+  .modal__box{width:100%;max-height:94svh;border-radius:0}
+}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+.modal__x{position:absolute;top:8px;right:8px;background:none;border:0;font-size:26px;line-height:1;
+  color:var(--ink-soft);width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  transition:color .3s;z-index:2}
+.field{display:grid;gap:7px;margin-bottom:16px}
+.field label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink)}
+.field input,.field textarea,.field select{
+  font:inherit;font-size:16px;padding:14px 16px;border:1px solid var(--cream-3);background:#fff;
+  border-radius:var(--r);color:var(--ink);transition:border-color .3s var(--ease);width:100%
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--gold-deep)}
+.radios{display:grid;gap:10px;margin-bottom:20px}
+.radio{display:flex;gap:12px;align-items:flex-start;padding:var(--sp-3) var(--sp-4);border:1px solid var(--cream-3);
+  border-radius:var(--r);cursor:pointer;background:#fff;transition:border-color .3s var(--ease)}
+.radio:has(input:checked){border-color:var(--gold-deep);background:#FCFBF8}
+.radio input{margin:4px 0 0;accent-color:var(--burgundy);flex:0 0 auto}
+.radio span{font-size:15px;line-height:1.45}
+.radio b{display:block;font-weight:600;color:var(--burgundy)}
+.radio i{font-style:normal;font-size:13px;color:var(--ink-soft)}
+.consent{display:flex;gap:11px;align-items:center;font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-bottom:18px;padding:8px 0}
+.consent input{margin:0;accent-color:var(--burgundy);flex:0 0 auto;width:22px;height:22px}
+.consent a{color:var(--gold-ink)}
+.ok{display:none;text-align:center;padding:14px 0}
+.ok.is-on{display:block}
+.ok__m{font-family:var(--serif);font-size:30px;color:var(--burgundy);margin:0 0 12px}
+
+/* ============================================================
+   ПОДВАЛ
+   ============================================================ */
+.foot{background:var(--burgundy-deep);color:var(--on-dark-soft);padding:clamp(50px,6vw,84px) var(--pad) 40px;font-size:13.5px}
+.foot a{color:var(--on-dark-soft);text-decoration:none;transition:color .3s}
+.foot__top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(26px,4vw,60px);
+  padding-bottom:36px;border-bottom:1px solid rgba(202,188,144,.16)}
+@media(max-width:800px){.foot__top{grid-template-columns:1fr}}
+.foot__brand{font-family:var(--serif);font-size:26px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.foot h4{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+@media(max-width:1000px){
+  .foot ul{gap:4px}
+  .foot ul a{display:block;padding:13px 0}
+  .foot__legal a{display:inline-block;padding:12px 0}
+}
+.foot__legal{padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  font-size:12px;color:rgba(240,235,226,.45);line-height:1.6}
+
+
+/* ============================================================
+   МОСТЫ МЕЖДУ СЕКЦИЯМИ
+   Изометрия (cos30° = 0,8660254), сторона плана 150, высота стенки 88.
+   Шов проходит по y=151,5: 62,9 % объёма над линией, 37,1 % под ней —
+   секции по-прежнему читаются раздельно, но связаны предметом.
+   Предмет — васту-мандала 3×3 с утопленным Брахмастханом. Это сам предмет
+   курса, вычерченный в архитектурной проекции: ни камня, ни сферы,
+   ни фотографии, которой у нас нет.
+   ============================================================ */
+.bridge{
+  --bw:clamp(104px,14.5vw,240px);
+  --bh:calc(var(--bw) * .917);
+  position:absolute;left:var(--bx,75%);
+  width:var(--bw);height:var(--bh);
+  margin-left:calc(var(--bw) / -2);
+  bottom:calc(var(--bh) * -.3714);
+  z-index:3;pointer-events:none;transition:none;
+  /* верхняя грань лежит на СЛИВОЧНОМ */
+  --o-top:#422326; --o-left:#8A7645; --o-right:#A08D5C;
+  --o-line:rgba(202,188,144,.55); --o-edge:#CABC90;
+  --o-shaftA:#422326; --o-shaftB:#2E1619; --o-shaftF:#2E1619;
+}
+.bridge > svg{width:100%;height:100%;display:block}
+/* обязательно: на мобильной ширине масштаб 0,396 — без этого сетка и колодец смываются */
+.bridge svg polygon,.bridge svg line{vector-effect:non-scaling-stroke}
+.bridge--on-dark{   /* верхняя грань лежит на БОРДО */
+  --o-top:#EBE7DE; --o-line:rgba(66,35,38,.34); --o-edge:#422326;
+  --o-shaftA:#4E2B2E; --o-shaftB:#2E1619; --o-shaftF:#2E1619;
+}
+@media(max-width:700px){
+  .bridge{left:var(--bx-m,80%)}
+  .bridge--mobile-off{display:none}
+}
+
+/* ============================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+   ============================================================ */
+/* Появление: 8px, а не 26px — это оседание, а не выезд.
+   Прозрачность заканчивается на ~300 мс раньше движения: элемент читается
+   присутствующим, пока ещё тихо доезжает. In-out на появлении не используется. */
+.rv{opacity:0;transform:translateY(8px);
+    transition:opacity 700ms var(--e-ui),transform 1000ms var(--e-out-expo)}
+.rv.is-in{opacity:1;transform:none}
+.rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}
+
+/* Вход героя — по готовности шрифтов, не по скроллу */
+html.js:not(.ready) .hero__name,html.js:not(.ready) .hero__sub,
+html.js:not(.ready) .hero__facts,html.js:not(.ready) .hero__ctas{opacity:0;transform:translateY(10px);
+  transition:opacity 700ms var(--e-ui),transform 1100ms var(--e-out-expo)}
+html.ready .hero__name{opacity:1;transform:none;transition-delay:0ms}
+html.ready .hero__sub{opacity:1;transform:none;transition-delay:400ms}
+html.ready .hero__facts{opacity:1;transform:none;transition-delay:520ms}
+html.ready .hero__ctas{opacity:1;transform:none;transition-delay:640ms}
+/* Окно обрезки компенсируется в обе стороны: сверху .06em (иначе срезает Й и Ё
+   — а Й стоит в слове ДИЗАЙН), снизу .20em (хвосты Ц/Щ/Д). */
+.hero__h1 .ln{display:block;overflow:hidden;
+  padding:.06em 0 .20em;margin:-.06em 0 -.20em}
+html.js:not(.ready) .hero__h1 .ln>span{transform:translateY(126%)}
+.hero__h1 .ln>span{display:block;
+  transition:transform 1100ms var(--e-out-expo)}
+html.ready .hero__h1 .ln:nth-child(1)>span{transform:none;transition-delay:90ms}
+html.ready .hero__h1 .ln:nth-child(2)>span{transform:none;transition-delay:180ms}
+html.ready .hero__h1 .ln:nth-child(3)>span{transform:none;transition-delay:270ms}
+
+/* Медиа-вытеснение: scaleX псевдоэлемента (остаётся на композиторе),
+   а не анимированный clip-path. 1.06, а не 1.6 — интерьер должен читаться. */
+.media-rv{position:relative;overflow:hidden}
+.media-rv::before{content:'';position:absolute;inset:0;z-index:3;
+  background:var(--cream-2);transform-origin:left;
+  transition:transform 1400ms var(--e-out-quart)}
+.sec--dark .media-rv::before,.sec--deep .media-rv::before{background:var(--burgundy)}
+.media-rv.is-in::before{transform:scaleX(0)}
+.media-rv>img,.media-rv>video{transform:scale(1.06);opacity:0;
+  transition:transform 1400ms var(--e-out-quart),opacity 700ms var(--e-ui)}
+.media-rv.is-in>img,.media-rv.is-in>video{transform:none;opacity:1}
+@media(max-width:700px){.media-rv::before,.media-rv>img,.media-rv>video{transition-duration:1000ms}}
+
+/* Волосяная линия, которая себя прочерчивает — язык архитектурного чертежа */
+.eyebrow::after,.eyebrow--c::before,.head--c .eyebrow::before{
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 900ms var(--e-out-expo) 260ms}
+.rv.is-in .eyebrow::after,.rv.is-in .eyebrow::before{transform:scaleX(1)}
+hr.hair{transform:scaleX(0);transform-origin:left;
+  transition:transform 900ms var(--e-out-expo)}
+hr.hair.is-in{transform:scaleX(1)}
+
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.hero__name,.hero__sub,.hero__facts,.hero__ctas{opacity:1!important;transform:none!important;transition:none!important}
+  .hero__h1 .ln>span{transform:none!important;transition:none!important}
+  .media-rv::before{display:none}
+  .media-rv>img,.media-rv>video{transform:none!important;opacity:1!important;transition:none!important}
+  .eyebrow::after,.eyebrow::before,hr.hair{transform:scaleX(1)!important;transition:none!important}
+  .layers__panel{animation:none}
+  .modal__box,.modal__bg{animation:none}
+  .media-tag__dot{box-shadow:none}
+}
+.nowrap{white-space:nowrap}
+.gold{color:var(--burgundy);font-weight:600}
+.sec--dark .gold,.sec--deep .gold{color:var(--gold)}
+.center{text-align:center}
+.mt-l{margin-top:clamp(30px,4vw,56px)}
+.mt-m{margin-top:clamp(20px,2.6vw,34px)}
+</style>
+</head>
+<body>
+
+<!-- ============================ ШАПКА ============================ -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top">Anna&nbsp;<b>Romeo</b></a>
+  <button class="nav__burger" id="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="#o-kurse">О курсе</a></li>
+    <li><a href="#komu">Для кого</a></li>
+    <li><a href="#metod">Метод</a></li>
+    <li><a href="#programma">Программа</a></li>
+    <li><a href="#anna">Анна</a></li>
+    <li><a href="#tarify">Тарифы</a></li>
+    <li><a href="#faq">Вопросы</a></li>
+    <li class="m-cta"><a class="btn btn--gold btn--sm btn--wide js-book" href="#tarify">Забронировать место</a></li>
+  </ul>
+  <a class="btn btn--gold btn--sm nav__cta js-book" href="#tarify">Забронировать</a>
+</header>
+
+<!-- ==================== ЛИПКАЯ CTA-ПАНЕЛЬ (моб.) ==================== -->
+<div class="sticky" id="sticky">
+  <div class="sticky__price">
+    <div class="sticky__p1">55 000 ₽</div>
+    <div class="sticky__p2">Ранняя цена · <span id="stickyLeft">осталось 27 дней</span></div>
+  </div>
+  <button class="btn btn--gold js-book">Забронировать</button>
+</div>
+
+<!-- ============================ БЛОК 1. ГЕРОЙ ============================ -->
+<section class="hero" id="top">
+  <div class="hero__media">
+    <!-- Постер рисуется первым и держит первый экран, пока идут байты видео.
+         Вертикальный кадр для телефона, горизонтальная вырезка для десктопа. -->
+    <img class="hero__poster" src="assets/media/hero-poster.webp" alt=""
+         fetchpriority="high" decoding="async" width="720" height="1280">
+    <video class="hero__video" muted loop playsinline preload="none" disablepictureinpicture
+           aria-hidden="true" tabindex="-1">
+      <source media="(max-width:900px)" src="assets/media/hero-full.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"'>
+      <source media="(max-width:900px)" src="assets/media/hero-full.mp4" type="video/mp4">
+      <source src="assets/media/hero-card.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"'>
+      <source src="assets/media/hero-card.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <p class="hero__name">Флагманский курс «Васту-дизайн» Анны Ромео</p>
+    <h1 class="hero__h1">
+      <span class="ln"><span>Васту-</span></span>
+      <span class="ln"><span>дизайн</span></span>
+      <em class="ln"><span>Дом, который работает на вас</span></em>
+    </h1>
+    <p class="hero__sub">Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие.</p>
+
+    <dl class="hero__facts">
+      <div class="hero__fact"><dt>Старт потока</dt><dd data-c="startLong">6 октября 2026</dd></div>
+      <div class="hero__fact"><dt>Длительность</dt><dd>2,5 месяца</dd></div>
+      <div class="hero__fact"><dt>Ранняя стоимость</dt><dd>55 000 ₽ <s>75 000 ₽</s></dd></div>
+    </dl>
+
+    <div class="hero__ctas">
+      <button class="btn btn--gold js-book">Забронировать место</button>
+      <a class="btn btn--ghost-d" href="#tarify">Смотреть тарифы</a>
+      <span class="hero__note">Ранняя цена действует до <span data-c="deadlineShort">22 сентября</span> · бронирование ни к чему не обязывает</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ БЛОК 2. ПОЧЕМУ ВОЗНИКАЕТ ЗАСТОЙ ============ -->
+<section class="sec sec--open" id="o-kurse">
+  <div class="wrap">
+    <div class="split split--top">
+      <div>
+        <p class="eyebrow">С чего всё начинается</p>
+        <h2 class="title">Почему возникает <em>застой?</em></h2>
+        <p class="lead">Ты не можешь понять, почему в жизни застой — в деньгах, в отношениях или в здоровье, — потому что ищешь причину только в себе, а не в квартире, в которой живёшь.</p>
+        <p class="muted">Все идут к психологу, финансовому консультанту или врачу по отдельности, но это не работает, потому что на все сферы жизни влияет энергия дома.</p>
+        <p class="muted">Нужно смотреть на дом как на карту. Что происходит в жизни — видно по тому, что происходит в пространстве. Одно точное изменение вроде перестановки мебели или перекраски стены способно улучшить сразу несколько сфер.</p>
+        <p><b>На курсе вы научитесь диагностировать причины жизненных проблем через интерьер и создавать дома, которые работают на вас.</b></p>
+        <div class="btn-row">
+          <button class="btn btn--dark js-book">Забронировать место</button>
+          <a class="btn btn--ghost-l" href="#metod">Как это работает</a>
+        </div>
+      </div>
+      <div>
+        <div class="media-rv ph ph--3x4">
+          <span class="ph__ico">▦</span>
+          <span class="ph__label">Фото · реальная квартира до работы, обычная жизнь</span>
+          <span class="ph__spec">2400×3200, JPG</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 3. АРХИТЕКТУРА СОСТОЯНИЙ ============ -->
+<section class="sec sec--bridged sec--tight">
+  <div class="guides"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="head head--c rv">
+      <h2 class="title">Архитектура состояний</h2>
+      <p class="head__sub">Мы неосознанно создаём пространство вокруг себя в полном соответствии с нашими внутренними установками. Подсознательно мы транслируем их вовне, а затем каждый день живём внутри того, что создали.</p>
+    </div>
+
+    <div class="split split--top" style="margin-bottom:clamp(34px,4vw,60px)">
+      <div>
+        <p class="muted">Свет, цвет, расположение мебели, свободная площадь и абсолютно каждая мелочь становятся частью нашего повседневного состояния.</p>
+        <p class="muted">Это напрямую влияет на всё наше «колесо баланса»: на то, как мы зарабатываем деньги, строим отношения, заботимся о здоровье, отдыхаем, концентрируемся и взаимодействуем с окружающими.</p>
+      </div>
+      <div class="ph ph--4x3 ph--dark">
+        <span class="ph__ico">◈</span>
+        <span class="ph__label">Схема · «колесо баланса» ↔ зоны дома</span>
+        <span class="ph__spec">SVG или 2000×1500 PNG на прозрачном</span>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div><h3>Меняем пространство осознанно</h3><p class="muted small">Не «переставили диван и ждём чуда», а точное изменение в точной зоне — с пониманием, зачем оно здесь.</p></div></div>
+      <div class="step"><div><h3>Повышаются вибрации, меняется внутреннее состояние</h3><p class="muted small">Пространство перестаёт работать против вас.</p></div></div>
+      <div class="step"><div><h3>Из нового состояния меняется мышление</h3></div></div>
+      <div class="step"><div><h3>Вы в новом качестве взаимодействуете с миром</h3></div></div>
+      <div class="step"><div><h3>Получаете другие результаты</h3><p class="muted small">Часто гораздо легче и проще, чем вы привыкли добиваться их раньше.</p></div></div>
+    </div>
+  </div>
+  <div class="bridge" aria-hidden="true">
+    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
+      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
+      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
+      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
+      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
+      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
+      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
+      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
+        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
+        <g stroke="var(--o-line)">
+          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
+          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
+          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
+          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
+        </g>
+        <g stroke="var(--o-edge)" stroke-linejoin="miter">
+          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
+          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
+          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ БЛОК 4. ДОМ — ЭТО СИСТЕМА ============ -->
+<section class="sec sec--dark sec--under">
+  <div class="wrap">
+    <div class="split split--40">
+      <div>
+        <div class="media-rv ph ph--4x3">
+          <span class="ph__ico">▤</span>
+          <span class="ph__label">План квартиры с наложенной Васту-картой</span>
+          <span class="ph__spec">Реальный объект, не идеальный квадрат · 2400×1800</span>
+        </div>
+      </div>
+      <div>
+        <h2 class="title">Дом — это <em>система</em></h2>
+        <p class="lead">Можно знать десятки правил Васту — и при этом не уметь эффективно гармонизировать пространство, чтобы оно наконец начало работать на человека.</p>
+        <p class="muted">Просто прочитать карту и найти причины проблем — это лишь начало. Главное — понимать, как всё это исправить. Нельзя оценить один сектор или отдельный элемент интерьера вне всего пространства.</p>
+        <p class="muted">На курсе мы учимся анализировать пространство целиком и видеть прямую взаимосвязь: как блоки в физическом интерьере отражаются результатами в конкретных сферах вашей жизни. Мы видим ориентацию, геометрию, визуальный вес, каждую деталь наполнения — и учимся это гармонизировать.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 5. ДЛЯ КОГО ============ -->
+<section class="sec sec--open" id="komu">
+  <div class="wrap">
+    <div class="head head--c rv">
+      <h2 class="title">Этот курс для вас, если…</h2>
+      <p class="head__sub">Найдите себя — и вы увидите, каким именно инструментом Васту станет лично для вас.</p>
+    </div>
+
+    <div class="mosaic mosaic--4">
+      <article class="card">
+        <h3>Я хочу разобраться со своим пространством</h3>
+        <p class="muted">Хочу научиться читать его как систему, увидеть причины своих проблем и найти решения, которые будут поддерживать меня и мою семью.</p>
+      </article>
+      <article class="card">
+        <h3>Я дизайнер или архитектор</h3>
+        <p class="muted">Я уже создаю современные пространства и хочу добавить в свою деятельность больше смысла, глубины и ценности.</p>
+      </article>
+      <article class="card">
+        <h3>Я специалист помогающей профессии</h3>
+        <p class="muted">Астролог, психолог, нумеролог. Для вас Васту станет мощным дополнительным инструментом диагностики состояния человека. Чтобы разобраться в проблемах клиента, вы сможете дополнительно анализировать его дом.</p>
+      </article>
+      <article class="card">
+        <h3>Я хочу профессионально освоить Васту</h3>
+        <p class="muted">Хочу научиться работать с пространствами других людей и сделать это новой специализацией.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
+<section class="sec sec--tight sec--bridged">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="title">Что вы <em>реально</em> будете уметь</h2>
+      <p class="head__sub">Диагностировать → корректировать → создавать Васту-дизайн.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card card--rule"><p>Самостоятельно строить Васту-карту.</p></article>
+      <article class="card card--rule"><p>Сопоставлять карту с реальными фотографиями и видео жилья — диагностировать только по «голой» схеме нельзя.</p></article>
+      <article class="card card--rule"><p>Видеть сильные, слабые и конфликтующие зоны, читая взаимосвязь между проблемами в жизни человека и его интерьером.</p></article>
+      <article class="card card--rule"><p>Делать точечные корректировки, если у человека есть острый запрос и что-то «болит» прямо сейчас.</p></article>
+      <article class="card card--rule"><p>Комплексно гармонизировать пространство, чтобы оно повышало общий уровень жизни и улучшало судьбу.</p></article>
+      <article class="card card--rule"><p>Выбирать гармоничную квартиру или дом с нуля.</p></article>
+      <article class="card span-all"><p class="lead">Подбирать современные, эстетичные способы гармонизации и собирать полноценный Васту-дизайн.</p></article>
+    </div>
+  </div>
+<div class="bridge bridge--mobile-off" aria-hidden="true">
+    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
+      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
+      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
+      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
+      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
+      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
+      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
+      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
+        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
+        <g stroke="var(--o-line)">
+          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
+          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
+          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
+          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
+        </g>
+        <g stroke="var(--o-edge)" stroke-linejoin="miter">
+          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
+          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
+          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ БЛОК 7. МЕТОД В ДЕЙСТВИИ ============ -->
+<section class="sec sec--dark sec--open" id="metod">
+  <div class="guides"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Один объект — четыре слоя</p>
+      <h2 class="title">Метод в действии</h2>
+      <p class="head__sub">Разница между сухим взглядом на чертёж и глубоким анализом реальной среды — вот она. Переключайте слои.</p>
+    </div>
+
+    <div>
+      <div class="layers__tabs" role="tablist" aria-label="Слои разбора объекта">
+        <button class="layers__tab" role="tab" aria-selected="true" aria-controls="lay-1" id="tab-1"><i>01</i>План</button>
+        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-2" id="tab-2"><i>02</i>Фото и видео</button>
+        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-3" id="tab-3"><i>03</i>Анализ</button>
+        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-4" id="tab-4"><i>04</i>Дизайн-решение</button>
+      </div>
+
+      <div class="layers__panel is-on" role="tabpanel" id="lay-1" aria-labelledby="tab-1">
+        <div class="layers__body">
+          <div class="ph ph--16x9 ph--dark"><span class="ph__ico">▤</span><span class="ph__label">Обмерный план реального объекта + контур и центр тяжести</span><span class="ph__spec">3200×1800, PNG на прозрачном или JPG</span></div>
+          <div class="layers__cap">
+            <h3>План</h3>
+            <p class="muted">Начинаем с геометрии: реальный контур, ориентация по сторонам света, границы зон. Здесь ещё не видно ничего о жизни человека — только структура.</p>
+            <dl class="layers__meta">
+              <div><dt>Что видно</dt><dd>Геометрия, ориентация</dd></div>
+              <div><dt>Чего не видно</dt><dd>Свет, вес, наполнение</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="layers__panel" role="tabpanel" id="lay-2" aria-labelledby="tab-2" hidden>
+        <div class="layers__body">
+          <div class="ph ph--16x9 ph--dark"><span class="ph__ico">◉</span><span class="ph__label">Фото и видео реального пространства — то, что план не показывает</span><span class="ph__spec">Видео MP4 15–30 сек + 4–6 фото, 2400×1600</span></div>
+          <div class="layers__cap">
+            <h3>Фото и видео</h3>
+            <p class="muted">Тот же объект глазами человека, который в нём живёт. Появляются свет, тени, визуальный вес, реальная мебель, накопленные вещи и настоящие сценарии дня. Диагностировать только по схеме — нельзя.</p>
+            <dl class="layers__meta">
+              <div><dt>Что добавилось</dt><dd>Свет, цвет, вес, быт</dd></div>
+              <div><dt>Что сразу заметно</dt><dd>Перегруз и пустоты</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="layers__panel" role="tabpanel" id="lay-3" aria-labelledby="tab-3" hidden>
+        <div class="layers__body">
+          <div class="ph ph--16x9 ph--dark"><span class="ph__ico">◈</span><span class="ph__label">Карта с разметкой: сильные / слабые / конфликтующие зоны</span><span class="ph__spec">3200×1800, с подписями секторов</span></div>
+          <div class="layers__cap">
+            <h3>Анализ</h3>
+            <p class="muted">Соединяем карту и реальность. Видим, какие зоны работают, какие заблокированы и какие конфликтуют между собой — и как именно это отражается на конкретных сферах жизни человека.</p>
+            <dl class="layers__meta">
+              <div><dt>Читаем</dt><dd>Зона ↔ сфера жизни</dd></div>
+              <div><dt>Находим</dt><dd>Причину, а не симптом</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="layers__panel" role="tabpanel" id="lay-4" aria-labelledby="tab-4" hidden>
+        <div class="layers__body">
+          <div class="ph ph--16x9 ph--dark"><span class="ph__ico">✦</span><span class="ph__label">Итог: цвет, свет, мебель, материалы — собранное дизайн-решение</span><span class="ph__spec">Мудборд или визуализация, 3200×1800</span></div>
+          <div class="layers__cap">
+            <h3>Дизайн-решение</h3>
+            <p class="muted">Ограничения объекта известны, причины найдены — собираем решение интерьерными инструментами: цвет, свет, материалы, форма мебели, живопись, растения. Красиво и обоснованно: у каждого решения есть причина.</p>
+            <dl class="layers__meta">
+              <div><dt>Инструменты</dt><dd>Только интерьерные</dd></div>
+              <div><dt>Результат</dt><dd>Дом, работающий на вас</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 8. ДВЕ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
+<section class="sec">
+  <div class="guides"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="head head--c rv">
+      <h2 class="title">Две реальные ситуации</h2>
+      <p class="head__sub">Курс работает с существующим объектом — от готового интерьера до стадии перепланировки.</p>
+    </div>
+
+    <div class="mosaic mosaic--2 mosaic--media">
+      <article class="card">
+        <div class="ph ph--16x9">
+          <span class="ph__ico">◧</span><span class="ph__label">Готовый дорогой интерьер</span><span class="ph__spec">2400×1350</span>
+        </div>
+        <div class="card__body">
+          <span class="card__n">Сценарий 1</span>
+          <h3>Пространство уже готово</h3>
+          <p class="muted">Хороший, дорогой ремонт существует, и ломать стены никто не будет. Мы учимся гармонизировать дом с помощью мелких и эстетичных методов коррекции: через изменение функции зон, свет, текстиль, зеркала, картины и растения.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph ph--16x9">
+          <span class="ph__ico">◨</span><span class="ph__label">Объект на стадии ремонта / перепланировки</span><span class="ph__spec">2400×1350</span>
+        </div>
+        <div class="card__body">
+          <span class="card__n">Сценарий 2</span>
+          <h3>Ремонт или перепланировка впереди</h3>
+          <p class="muted">Здесь возможностей больше: можно заранее учитывать принципы Васту при распределении функциональных зон, планировочных решениях и в будущем дизайне интерьера.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="small muted center mt-m">Проектирование дома с нуля — это следующая ступень. <a href="#stupen" class="gold">Подробнее ниже →</a></p>
+  </div>
+  </section>
+
+<!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
+<section class="sec sec--void">
+  <div class="wrap">
+    <div class="split split--60">
+      <div>
+        <h2 class="title">Метод <em>Анны Ромео</em></h2>
+        <p class="lead gold">Васту, встроенное в реальное современное пространство.</p>
+        <p class="muted">В основе подхода — классические принципы Васту, соединённые с опытом архитектурной и дизайнерской практики. Васту работает первично через само пространство, поэтому мы не закладываем артефакты в пол и не портим интерьер.</p>
+        <p class="muted">В работе используются исключительно интерьерные инструменты: цвет, свет, материалы, форма мебели, живопись, искусство и растения. Важно понимание, зачем конкретный цвет или предмет нужен именно здесь.</p>
+        <ul class="list list--check mt-m">
+          <li>Никаких артефактов в полу и эзотерического декора</li>
+          <li>Каждое решение объясняется — что, где и зачем</li>
+        </ul>
+      </div>
+      <div>
+        <div class="media-rv ph ph--3x4 ph--dark">
+          <span class="ph__ico">✦</span>
+          <span class="ph__label">Фрагмент интерьера — цвет, материал, свет как инструмент</span>
+          <span class="ph__spec">2400×3200, JPG</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 10. АННА РОМЕО ============ -->
+<section class="sec sec--open" id="anna">
+  <div class="wrap">
+    <div class="split split--40 split--top">
+      <div>
+        <div class="media-rv ph ph--2x3">
+          <span class="ph__ico">◉</span>
+          <span class="ph__label">Портрет Анны — интерьер, естественный свет</span>
+          <span class="ph__spec">2000×3000, JPG · вертикальный, естественный свет</span>
+        </div>
+      </div>
+      <div style="position:relative">
+        <p class="eyebrow">Автор курса</p>
+        <h2 class="title">Анна Ромео</h2>
+        <p class="lead">Архитектор, дизайнер интерьеров, Васту-архитектор.</p>
+        <ul class="list mt-m">
+          <li>Практика в дизайне интерьеров <b>с 2010 года</b>.</li>
+          <li>Более <b>100 реализованных проектов</b> по всему миру: Испания, Великобритания, Швейцария, Италия, ОАЭ — Барселона, Лондон, Цюрих, Флоренция, Дубай.</li>
+          <li>Образование: архитектор, Донецкий национальный университет строительства и архитектуры.</li>
+          <li>Учителя Васту: Наталья Васильева, Валентин Рыбалов, Ольга Мандодари.</li>
+          <li>Работа с интерьерными предметами, мебелью, декором, материалами и предметами collectible design как неразрывной частью Васту-решения.</li>
+        </ul>
+        <div class="btn-row">
+          <button class="btn btn--dark js-book">Учиться у Анны</button>
+          <a class="btn btn--ghost-l" href="https://annaromeo.design" target="_blank" rel="noopener">Портфолио проектов</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g3 mt-l">
+      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Проект · Барселона</span><span class="ph__spec">1600×1600</span></div>
+      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Проект · Лондон</span><span class="ph__spec">1600×1600</span></div>
+      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Проект · Дубай</span><span class="ph__spec">1600×1600</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 11. ВАСТУ В РЕАЛЬНОЙ ЖИЗНИ ============ -->
+<section class="sec sec--dark sec--bridged sec--tight">
+  <div class="guides"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="head head--c rv">
+      <h2 class="title">Васту в реальной жизни</h2>
+      <p class="head__sub">Короткие истории работы с пространством: что было, что показал анализ, какие были ограничения и что изменилось.</p>
+    </div>
+
+    <div class="cases">
+      <article class="case">
+        <span class="draft">Черновик · заменить на реальный кейс</span>
+        <div class="case__shots">
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Исходное состояние</span><span class="ph__spec">2000×1125</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Что показал анализ</span><span class="ph__spec">1500×2000</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">После коррекции</span><span class="ph__spec">1500×2000</span></div>
+        </div>
+        <div class="case__body">
+          <h3>Готовый дорогой интерьер — коррекция без ремонта</h3>
+          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Опишите объект и запрос клиента.</span></div>
+          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Какие зоны оказались перегружены, заблокированы, в конфликте.</span></div>
+          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Ремонт трогать нельзя, мебель на заказ, несущие стены.</span></div>
+          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Функция зон, свет, текстиль, зеркала, картины, растения.</span></div>
+          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">Что изменилось в жизни и восприятии — словами клиента.</span></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="draft">Черновик · заменить на реальный кейс</span>
+        <div class="case__shots">
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Исходное состояние</span><span class="ph__spec">2000×1125</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Что показал анализ</span><span class="ph__spec">1500×2000</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">После коррекции</span><span class="ph__spec">1500×2000</span></div>
+        </div>
+        <div class="case__body">
+          <h3>Квартира на стадии перепланировки</h3>
+          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Опишите объект и запрос клиента.</span></div>
+          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Какие зоны оказались перегружены, заблокированы, в конфликте.</span></div>
+          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Бюджет, сроки, готовый проект от застройщика.</span></div>
+          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Распределение функций, планировка, будущий дизайн.</span></div>
+          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">Что изменилось в жизни и восприятии — словами клиента.</span></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="draft">Черновик · заменить на реальный кейс</span>
+        <div class="case__shots">
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Исходное состояние</span><span class="ph__spec">2000×1125</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Что показал анализ</span><span class="ph__spec">1500×2000</span></div>
+          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">После коррекции</span><span class="ph__spec">1500×2000</span></div>
+        </div>
+        <div class="case__body">
+          <h3>Дом за рубежом — выбор объекта с нуля</h3>
+          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Опишите объект и запрос клиента.</span></div>
+          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Какие зоны оказались перегружены, заблокированы, в конфликте.</span></div>
+          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Что нельзя было изменить в объекте.</span></div>
+          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Ключевые решения по зонам и наполнению.</span></div>
+          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">Что изменилось в жизни и восприятии — словами клиента.</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="bridge bridge--on-dark bridge--mobile-off" aria-hidden="true">
+    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
+      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
+      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
+      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
+      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
+      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
+      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
+      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
+        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
+        <g stroke="var(--o-line)">
+          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
+          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
+          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
+          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
+        </g>
+        <g stroke="var(--o-edge)" stroke-linejoin="miter">
+          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
+          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
+          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
+<section class="sec sec--under" id="programma">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="eyebrow">Программа</p>
+      <h2 class="title">Путь обучения</h2>
+      <p class="head__sub">Шесть шагов — от «почему пространство вообще на меня влияет» до собственного гармонизированного дома.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div><h3>Увидеть</h3><p class="muted">Понять, почему пространство на нас влияет, как работают энергии и почему всё это взаимосвязано в единую систему.</p></div></div>
+      <div class="step"><div><h3>Построить</h3><p class="muted">Технически создать Васту-карту — самостоятельно, для своего реального объекта.</p></div></div>
+      <div class="step"><div><h3>Прочитать</h3><p class="muted">Понять баланс, перекосы и причины жизненных ситуаций.</p></div></div>
+      <div class="step"><div><h3>Скорректировать</h3><p class="muted">Освоить алгоритм и огромный диапазон мелких, доступных методов коррекции.</p></div></div>
+      <div class="step"><div><h3>Создать Васту-дизайн</h3><p class="muted">Это доступно не только профессиональным дизайнерам. Любой человек научится переводить принципы Васту в цвет, формы и композицию.</p></div></div>
+      <div class="step"><div><h3>Применять</h3><p class="muted">Практика на собственной Васту-карте своего пространства.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
+<section class="sec sec--tight">
+  <div class="wrap">
+    <div class="split split--top">
+      <div>
+        <div class="rv"><h2 class="title">Как проходит обучение <em>и практика</em></h2></div>
+        <p class="muted">Мы не делаем сухие «практические работы» — вы выполняете понятные домашние задания и гармонизируете свою собственную квартиру прямо в процессе курса.</p>
+        <ul class="list list--check mt-m">
+          <li><b>Длительность — 2,5 месяца.</b></li>
+          <li><b>Доступ к материалам — от 6 до 12 месяцев.</b></li>
+          <li>Уроки и <b>еженедельные прямые эфиры</b>.</li>
+          <li>Много практики на собственном пространстве.</li>
+          <li><b>Разборы квартир участников</b> — сквозной формат всего курса.</li>
+          <li>Для тарифа «Практик» — параллельная работа над дипломным проектом.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="ph ph--4x3"><span class="ph__ico">▶</span><span class="ph__label">Скриншот платформы / кадр с прямого эфира</span><span class="ph__spec">2400×1800</span></div>
+        <div class="grid g2 mt-m">
+          <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Урок</span><span class="ph__spec">1200×1200</span></div>
+          <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Разбор квартиры</span><span class="ph__spec">1200×1200</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--c rv">
+      <h2 class="title">С чем вы выйдете</h2>
+      <p class="head__sub">Не только знания — конкретный результат работы.</p>
+    </div>
+
+    <div class="mosaic mosaic--3">
+      <article class="card"><h3>Своя Васту-карта</h3><p class="muted">Собственная построенная и продиагностированная карта вашего пространства.</p></article>
+      <article class="card"><h3>Навык анализа</h3><p class="muted">Практический навык анализа любого помещения — своего и чужого.</p></article>
+      <article class="card"><h3>Гармонизированный дом</h3><p class="muted">Собранное дизайн-решение и гармонизированное собственное пространство уже в процессе обучения.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 15. ТАРИФЫ ============ -->
+<section class="sec sec--dark sec--sink" id="tarify">
+  <div class="wrap">
+    <div class="head head--c rv">
+      <p class="eyebrow eyebrow--c">Участие</p>
+      <h2 class="title title--xl">Тарифы</h2>
+      <p class="head__sub">Оба тарифа дают полную систему. Разница — в том, останется Васту вашим личным инструментом или станет профессией.</p>
+    </div>
+
+    <div class="center" style="margin-bottom:clamp(30px,3.6vw,50px)">
+      <div class="timer" id="timerTariffs">
+        <span class="timer__lbl">До конца ранней цены</span>
+        <span class="timer__grid">
+          <span class="timer__u"><b class="timer__n" data-t="d">00</b><span class="timer__c" data-t="dl">дней</span></span>
+          <span class="timer__u"><b class="timer__n" data-t="h">00</b><span class="timer__c" data-t="hl">часов</span></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="tariffs">
+      <article class="tariff">
+        <p class="tariff__name">Основной</p>
+        <h3 class="tariff__tag">Освоить Васту-дизайн</h3>
+        <p class="tariff__desc">Идеален для себя и для внедрения в текущую профессию. Вы опробуете всю систему на себе и гармонизируете свой дом.</p>
+        <ul class="tariff__feats">
+          <li>Все материалы курса</li>
+          <li>Еженедельные прямые эфиры</li>
+          <li>Проверка домашних заданий</li>
+          <li>Чат группы</li>
+          <li>Разборы квартир участников</li>
+          <li>Доступ к материалам — <b>от 6 до 12 месяцев</b></li>
+        </ul>
+        <div class="tariff__price">
+          <div class="tariff__now">55 000 ₽ <s>75 000 ₽</s></div>
+        </div>
+        <button class="btn btn--ghost-d btn--wide js-book" data-tariff="base">Забронировать место</button>
+          <p class="tiny muted" style="margin-top:12px">Бронирование ни к чему не обязывает.</p>
+      </article>
+
+      <article class="tariff tariff--pro">
+        <span class="tariff__flag">Только 15 мест</span>
+        <p class="tariff__name">Практик</p>
+        <h3 class="tariff__tag">Превратить навык в профессиональную практику</h3>
+        <p class="tariff__lede">Личный разбор вашего проекта с Анной.</p>
+        <p class="tariff__desc">Всё из основного тарифа плюс профессиональный контур: бизнес-блок и дипломная работа с защитой.</p>
+        <ul class="tariff__feats">
+          <li>Всё из тарифа «Основной»</li>
+          <li class="is-plus"><b>Бизнес-блок:</b> работа с заказчиком, ценообразование, замеры</li>
+                    <li class="is-plus">Параллельная работа над <b>дипломным проектом</b> и защита</li>
+        </ul>
+        <div class="tariff__price">
+          <div class="tariff__now">155 000 ₽ <s>175 000 ₽</s></div>
+        </div>
+        <button class="btn btn--dark btn--wide js-book" data-tariff="pro">Забронировать одно из 15 мест</button>
+          <p class="tiny muted" style="margin-top:12px">Бронирование ни к чему не обязывает.</p>
+      </article>
+    </div>
+
+    <div class="cmp-scroll">
+      <table class="cmp">
+        <thead><tr><th>Что входит</th><th style="text-align:center">Основной</th><th style="text-align:center">Практик</th></tr></thead>
+        <tbody>
+          <tr><th>Все уроки курса</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Еженедельные прямые эфиры</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Проверка домашних заданий</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Чат группы</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Разборы квартир участников</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Практика на собственном пространстве</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Бизнес-блок: заказчик, цены, замеры</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Личный разбор проекта с Анной</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Дипломный проект и защита</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
+          <tr><th>Доступ к материалам</th><td data-col="Основной">от 6 до 12 месяцев</td><td data-col="Практик">от 6 до 12 месяцев</td></tr>
+          <tr><th>Количество мест</th><td data-col="Основной">не ограничено</td><td data-col="Практик">15</td></tr>
+          <tr><th>Ранняя стоимость</th><td data-col="Основной"><b class="gold price-inline">55 000 ₽</b></td><td data-col="Практик"><b class="gold price-inline">155 000 ₽</b></td></tr>
+          <tr><th>Стоимость после <span data-c="deadlineShort">22 сентября</span></th><td data-col="Основной">75 000 ₽</td><td data-col="Практик">175 000 ₽</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
+<section class="sec" id="stupen">
+  <div class="wrap wrap--mid">
+    <div class="split split--60">
+      <div>
+        <h2 class="title">Следующая <em>ступень</em></h2>
+        <p class="lead">Курс «Васту-дизайн» — первая ступень целостной системы обучения.</p>
+        <p class="muted">Он работает с существующим пространством: от готового интерьера до стадии перепланировки. После того как вы научитесь диагностировать и гармонизировать то, что уже построено, можно продолжить обучение на углублённой ступени — проектирование дома и участка с нуля, расширенная диагностика, сакральная геометрия и другие профессиональные уровни.</p>
+              </div>
+      <div>
+        <div class="media-rv ph ph--4x3"><span class="ph__ico">△</span><span class="ph__label">Дом и участок — проектирование с нуля</span><span class="ph__spec">2400×1800</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БЛОК 17. РАННЯЯ ЗАПИСЬ ============ -->
+<section class="sec sec--dark sec--bridged">
+  <div class="guides"><i></i><i></i><i></i></div>
+  <div class="wrap wrap--narrow center">
+    <div class="rv"><h2 class="title">Ранняя цена — для тех, кто приходит<br>до начала основной кампании</h2></div>
+    <p class="head__sub" style="margin-inline:auto">До <b class="gold" data-c="deadlineLong">22 сентября 2026</b> участие доступно по цене <b class="gold price-inline">55 000 ₽</b> на основном тарифе и <b class="gold price-inline">155 000 ₽</b> на тарифе «Практик». После этой даты стоимость составит 75 000 ₽ и 175 000 ₽ соответственно.</p>
+
+
+    <div class="btn-row btn-row--c">
+      <button class="btn btn--gold js-book">Забронировать место по ранней цене</button>
+    </div>
+    <p class="tiny muted" style="margin-top:20px">Бронирование ни к чему не обязывает: мы свяжемся с вами, ответим на вопросы и поможем выбрать тариф.</p>
+  </div>
+  <div class="bridge bridge--on-dark" aria-hidden="true">
+    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
+      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
+      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
+      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
+      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
+      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
+      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
+      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
+        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
+        <g stroke="var(--o-line)">
+          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
+          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
+          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
+          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
+        </g>
+        <g stroke="var(--o-edge)" stroke-linejoin="miter">
+          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
+          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
+          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ БЛОК 18. FAQ ============ -->
+<section class="sec sec--open" id="faq">
+  <div class="wrap wrap--mid">
+    <div class="head rv">
+      <p class="eyebrow">Вопросы</p>
+      <h2 class="title">Перед тем как присоединиться</h2>
+    </div>
+
+    <div class="faq" id="faqRoot">
+      <div class="faq__i"><button class="faq__q">Я ничего не знаю о Васту. Подойдёт ли мне курс?</button><div class="faq__a"><div>Да. Курс построен с нуля: первый блок объясняет, почему пространство влияет на человека и как это устроено. Предварительных знаний не требуется. Нужно другое — <b>пространство, на котором вы будете практиковаться:</b> своё, съёмное или дом близких.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Я не дизайнер и не архитектор. Смогу ли я разобраться?</button><div class="faq__a"><div>Да. Васту-карта строится по понятному алгоритму, а перевод принципов в цвет, форму и композицию разбирается пошагово. <b>Дизайнерское образование не нужно</b> — блок «Создать Васту-дизайн» сделан именно для тех, у кого его нет.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Мне нужен Васту только для своего дома. Не слишком ли это глубоко?</button><div class="faq__a"><div>Нет, основной тариф ровно для этого и сделан: вы проходите систему на себе и гармонизируете свой дом прямо в процессе обучения. Профессиональная часть — работа с заказчиком, ценообразование, диплом — вынесена в отдельный тариф «Практик», и вы её просто не берёте.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">У меня уже сделан хороший дорогой ремонт. Мне придётся всё переделывать?</button><div class="faq__a"><div>Нет. Это Сценарий 1, он разбирается на курсе отдельно. Работаем мелкими эстетичными коррекциями: изменение функции зон, свет, текстиль, зеркала, картины, растения. <b>Ломать ничего не нужно.</b></div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Я только планирую ремонт или перепланировку. Подойдёт ли мне курс?</button><div class="faq__a"><div>Да, и у вас возможностей больше. Вы заранее заложите принципы Васту в распределение функциональных зон, планировочные решения и будущий дизайн — это проще, чем корректировать уже готовое.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Я уже изучала Васту. Что нового даст программа?</button><div class="faq__a"><div>Акцент на гармонизации, а не на правилах. Многие знают десятки правил, но не умеют собрать из них работающее решение. Здесь вы получаете <b>алгоритм коррекции</b>, работу с реальным объектом (план + фото + видео, а не идеальная квадратная схема) и перевод Васту в современный интерьер — без артефактов в полу и эзотерического декора.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Смогу ли я после курса работать с клиентами?</button><div class="faq__a"><div>Да — но с разной глубиной. На основном тарифе вы отрабатываете навык на своём пространстве. Чтобы выйти к чужим объектам, нужен тариф <b>«Практик»</b>: бизнес-блок (работа с заказчиком, ценообразование, замеры), личный разбор проекта с Анной и дипломная работа с защитой.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Что даёт тариф «Практик» и кому он нужен?</button><div class="faq__a"><div>Тем, кто хочет сделать Васту профессией или добавить его в текущую практику — дизайнера, архитектора, астролога, психолога. Сверх основного тарифа: бизнес-блок, личный разбор проекта с Анной, дипломный проект и защита.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Какой сертификат или диплом я получу?</button><div class="faq__a"><div><span class="draft draft--inline">Формат документа сейчас согласуется</span> — напишем точно до старта потока.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Сколько времени нужно выделять в неделю?</button><div class="faq__a"><div>Каждую неделю — урок, домашнее задание по своему пространству и прямой эфир. <span class="draft draft--inline">Точная недельная нагрузка сейчас согласуется</span>.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Что будет, если я пропущу эфир?</button><div class="faq__a"><div><span class="draft draft--inline">Формат записи эфиров сейчас согласуется</span> — напишем точно до старта потока.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Сколько сохраняется доступ к материалам?</button><div class="faq__a"><div>От <b>6 до 12 месяцев</b>. <span class="draft draft--inline">Точный срок по каждому тарифу сейчас согласуется</span>.</div></div></div>
+
+      <div class="faq__i"><button class="faq__q">Есть ли рассрочка и оплата из-за рубежа?</button><div class="faq__a"><div><span class="draft draft--inline">Способы оплаты, в том числе из-за рубежа, сейчас согласуются</span> — напишите нам, подберём удобный вариант.</div></div></div>
+    </div>
+
+    <p class="center mt-l"><a class="btn btn--ghost-l" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Остался вопрос? Напишите нам</a></p>
+  </div>
+</section>
+
+<!-- ============ БЛОК 19. ФИНАЛЬНЫЙ ЭКРАН ============ -->
+<section class="sec sec--deep" style="padding:0 var(--pad) clamp(46px,6vw,64px);position:relative;min-height:clamp(520px,72vh,760px);display:flex;align-items:center;isolation:isolate">
+  <div class="hero__media is-awaiting" aria-hidden="true"></div>
+  <div class="hero__scrim hero__scrim--end" aria-hidden="true"></div>
+  <span class="media-tag media-tag--end" tabindex="0"
+        data-spec="MP4 1920×1080 в петле · или JPG 3200×1800">
+    <i class="media-tag__dot" aria-hidden="true"></i>Здесь будет видео или фото</span>
+  <div class="wrap wrap--narrow center" style="padding:clamp(56px,7vw,100px) 0">
+    <h2 class="title" style="color:var(--cream)">Дом — это не просто место,<br>в котором проходит жизнь.</h2>
+    <p class="lead" style="color:rgba(240,235,226,.85);max-width:640px;margin:0 auto 8px">Это пространство, которое можно научиться видеть, понимать и создавать осознанно.</p>
+
+
+    <p class="small mt-m" style="color:rgba(240,235,226,.7)">
+      Флагманский курс «Васту-дизайн» Анны Ромео · старт <span data-c="startShort">6 октября</span> · 2,5 месяца · ранняя стоимость от 55 000 ₽
+    </p>
+    <div class="btn-row btn-row--c">
+      <button class="btn btn--gold js-book">Забронировать место</button>
+    </div>
+    <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.55)">Бронирование ни к чему не обязывает.</p>
+  </div>
+</section>
+
+<!-- ============================ ПОДВАЛ ============================ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <p class="foot__brand">Anna Romeo</p>
+        <p style="max-width:340px">Архитектор, дизайнер интерьеров и Васту-архитектор. Проекты в Испании, Великобритании, Швейцарии, Италии и ОАЭ.</p>
+      </div>
+      <div>
+        <h4>Курс</h4>
+        <ul>
+          <li><a href="#o-kurse">О курсе</a></li>
+          <li><a href="#komu">Для кого</a></li>
+          <li><a href="#programma">Программа</a></li>
+          <li><a href="#tarify">Тарифы</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="https://annaromeo.design" target="_blank" rel="noopener">annaromeo.design</a></li>
+          <li><a href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="#" data-todo="instagram">Instagram</a></li>
+          <li><a href="mailto:hello@annaromeo.design">hello@annaromeo.design</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>ИП Фамилия Имя Отчество · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span>
+        <a href="#" data-todo="oferta">Договор оферты</a> ·
+        <a href="#" data-todo="privacy">Политика обработки данных</a> ·
+        <a href="#" data-todo="terms">Пользовательское соглашение</a>
+      </span>
+      <span>© <span id="year">2026</span> Anna Romeo</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ МОДАЛКА ============================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__bg" data-close></div>
+  <div class="modal__box">
+    <button class="modal__x" data-close aria-label="Закрыть">×</button>
+
+    <form id="bookForm" novalidate>
+      <p class="eyebrow" style="margin-bottom:14px">Бронирование места</p>
+      <h3 id="modalTitle" style="font-size:clamp(24px,3vw,32px);margin-bottom:10px">Ранняя цена до <span data-c="deadlineShort">22 сентября</span></h3>
+      <p class="small muted" style="margin-bottom:26px">Оставьте контакты — мы свяжемся, ответим на вопросы и поможем выбрать тариф. Бронь ни к чему не обязывает.</p>
+
+      <div class="radios">
+        <label class="radio">
+          <input type="radio" name="tariff" value="Основной — 55 000 ₽" checked>
+          <span><b>Основной — 55 000 ₽</b><i>вместо 75 000 ₽</i></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="tariff" value="Практик — 155 000 ₽">
+          <span><b>Практик — 155 000 ₽</b><i>вместо 175 000 ₽ · только 15 мест</i></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="tariff" value="Помогите выбрать">
+          <span><b>Пока не выбрала</b><i>нужна консультация по тарифам</i></span>
+        </label>
+      </div>
+
+      <div class="field"><label for="fName">Имя</label><input id="fName" name="name" type="text" required autocomplete="name" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="fContact">Telegram или телефон</label><input id="fContact" name="contact" type="text" required autocomplete="tel" placeholder="@nickname или +7 900 000-00-00"></div>
+      <div class="field"><label for="fMail">Почта</label><input id="fMail" name="email" type="email" required autocomplete="email" placeholder="pochta@example.ru"></div>
+      <div class="field"><label for="fNote">Вопрос или комментарий <span style="text-transform:none;letter-spacing:0;font-weight:400">(необязательно)</span></label><textarea id="fNote" name="note" rows="3" placeholder="Например: у меня готовый ремонт, подойдёт ли курс?"></textarea></div>
+
+      <div class="modal__foot">
+        <label class="consent">
+          <input type="checkbox" required id="fConsent">
+          <span>Я согласна с <a href="#" data-todo="privacy">политикой обработки персональных данных</a> и <a href="#" data-todo="oferta">договором оферты</a>.</span>
+        </label>
+        <button class="btn btn--dark btn--wide" type="submit">Забронировать место</button>
+        <p class="tiny muted center" style="margin-top:12px">Мы не рассылаем спам и не передаём контакты третьим лицам.</p>
+        <p class="formfail" id="formFail">Не удалось отправить заявку.
+          <a href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Напишите нам в Telegram</a> — оформим вручную.</p>
+      </div>
+    </form>
+
+    <div class="ok" id="okState">
+      <p class="ok__m">Заявка отправлена</p>
+      <p class="muted small">Спасибо! Мы свяжемся с вами в ближайшее время и пришлём детали по оплате и старту потока.</p>
+      <button class="btn btn--ghost-l mt-m" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   КОНФИГУРАЦИЯ — единственное место, где меняются даты и цены
+   ============================================================ */
+const CFG = {
+  // В ТЗ обе даты стоят как «[дата]». Пока здесь null, страница честно пишет
+  // «дата уточняется» и НЕ показывает обратный отсчёт. Впишите реальные значения —
+  // даты и таймер включатся сами, больше ничего править не нужно.
+  startDate:      null,                          // напр. '2026-10-06'
+  earlyDeadline:  null,                          // напр. '2026-09-22T23:59:59+03:00'
+  formEndpoint:   '',                            // URL приёма заявок (см. README §4)
+};
+
+/* ---------- Даты в человеческом виде ---------- */
+const MONTHS_GEN = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const fmt = (d, withYear) => `${d.getDate()}\u00A0${MONTHS_GEN[d.getMonth()]}${withYear ? ' ' + d.getFullYear() : ''}`;
+const TBD = 'дата уточняется';
+const dStart = CFG.startDate     ? new Date(CFG.startDate + 'T00:00:00') : null;
+const dEnd   = CFG.earlyDeadline ? new Date(CFG.earlyDeadline)           : null;
+const TEXTS = {
+  startShort:    dStart ? fmt(dStart, false) : TBD,
+  startLong:     dStart ? fmt(dStart, true)  : TBD,
+  deadlineShort: dEnd   ? fmt(dEnd, false)   : TBD,
+  deadlineLong:  dEnd   ? fmt(dEnd, true)    : TBD,
+};
+document.querySelectorAll('[data-c]').forEach(el => {
+  const v = TEXTS[el.dataset.c];
+  if (v) {
+    el.textContent = v;
+    if (v === TBD) el.classList.add('draft', 'draft--inline');
+  }
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Таймеры обратного отсчёта ---------- */
+(() => {
+  const timers = [...document.querySelectorAll('#timerTariffs')];
+  const stickyLeft = document.getElementById('stickyLeft');
+  if (!dEnd) {                       // дедлайна нет — обратного отсчёта нет
+    timers.forEach(t => t.remove());
+    if (stickyLeft) stickyLeft.textContent = 'до объявления даты старта';
+    return;
+  }
+  const plural = (n, forms) => {
+    const n10 = n % 10, n100 = n % 100;
+    if (n10 === 1 && n100 !== 11) return forms[0];
+    if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return forms[1];
+    return forms[2];
+  };
+  const pad = n => String(n).padStart(2, '0');
+
+  function tick() {
+    const diff = dEnd - new Date();
+    if (diff <= 0) {
+      timers.forEach(t => { t.innerHTML = '<span class="timer__lbl">Ранняя цена завершена — действует основная стоимость</span>'; });
+      if (stickyLeft) stickyLeft.textContent = 'основная стоимость';
+      clearInterval(iv);
+      return;
+    }
+    const d = Math.floor(diff / 864e5);
+    const h = Math.floor(diff / 36e5) % 24;
+    const m = Math.floor(diff / 6e4) % 60;
+    const s = Math.floor(diff / 1e3) % 60;
+    timers.forEach(t => {
+      const set = (k, v) => { const e = t.querySelector(`[data-t="${k}"]`); if (e) e.textContent = v; };
+      set('d', d); set('h', h);
+      set('dl', plural(d, ['день','дня','дней']));
+      set('hl', plural(h, ['час','часа','часов']));
+    });
+    if (stickyLeft) stickyLeft.textContent = `осталось ${d} ${plural(d, ['день','дня','дней'])}`;
+  }
+  tick();
+  const iv = setInterval(tick, 1000);
+})();
+
+/* ---------- Шапка: фон при скролле + мобильное меню ---------- */
+(() => {
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+  const onScroll = () => nav.classList.toggle('is-solid', window.scrollY > 60);
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  links.addEventListener('click', e => {
+    if (e.target.closest('a')) { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+  });
+})();
+
+/* ---------- Подсветка активного пункта навигации ---------- */
+(() => {
+  const map = new Map();
+  document.querySelectorAll('.nav__links a[href^="#"]').forEach(a => {
+    const sec = document.querySelector(a.getAttribute('href'));
+    if (sec) map.set(sec, a);
+  });
+  if (!map.size) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        map.forEach(a => a.classList.remove('is-active'));
+        map.get(en.target)?.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  map.forEach((_, sec) => io.observe(sec));
+})();
+
+/* ---------- Липкая CTA-панель ---------- */
+(() => {
+  const bar = document.getElementById('sticky');
+  const hero = document.querySelector('.hero');
+  const foot = document.querySelector('.foot');
+  const upd = () => {
+    const passedHero = window.scrollY > 40;
+    const atFoot = foot.getBoundingClientRect().top < innerHeight;
+    bar.classList.toggle('is-on', passedHero && !atFoot);
+  };
+  upd();
+  addEventListener('scroll', upd, { passive: true });
+  addEventListener('resize', upd);
+})();
+
+/* ---------- Слои «Метод в действии» ---------- */
+(() => {
+  const tabs = [...document.querySelectorAll('.layers__tab')];
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tab.scrollIntoView({ inline: 'center', block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      const p = document.getElementById(t.getAttribute('aria-controls'));
+      p.classList.toggle('is-on', on);
+      p.hidden = !on;
+    });
+  }));
+})();
+
+/* ---------- FAQ-аккордеон ---------- */
+(() => {
+  document.querySelectorAll('.faq__q').forEach((q, i) => {
+    q.setAttribute('aria-expanded', 'false');
+    const a = q.nextElementSibling;
+    a.id = a.id || ('faq-a-' + i);
+    q.setAttribute('aria-controls', a.id);
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const body = q.nextElementSibling;
+      const open = item.classList.contains('is-open');
+      document.querySelectorAll('.faq__i.is-open').forEach(o => {
+        o.classList.remove('is-open');
+        o.querySelector('.faq__a').style.maxHeight = null;
+        o.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+      });
+      if (!open) {
+        item.classList.add('is-open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        q.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  addEventListener('resize', () => {
+    const o = document.querySelector('.faq__i.is-open .faq__a');
+    if (o) o.style.maxHeight = o.scrollHeight + 'px';
+  });
+})();
+
+/* ============================================================
+   ДВИЖЕНИЕ. Бюджет: ~40 элементов из ~660 ≈ 6 %.
+   В секции движутся максимум три вещи: заголовок, его линия и одна картинка.
+   Всё остальное появляется уже собранным.
+   ============================================================ */
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Фоновое видео героя. Грузим только если сеть это оправдывает: постер уже
+   нарисован, поэтому отказ от видео ничего не ломает. */
+(() => {
+  const v = document.querySelector('.hero__video');
+  if (!v || RM) return;
+  const c = navigator.connection || {};
+  const slow = c.saveData
+    || (c.effectiveType && /(^|-)2g$|3g/.test(c.effectiveType))
+    || (c.downlink && c.downlink < 1.5);
+  if (slow) return;                       // остаётся постер — это осознанный кадр, а не пустота
+
+  // Проявление вешаем на несколько сигналов сразу: событие может успеть пройти
+  // до подписки, и тогда видео навсегда осталось бы прозрачным.
+  const reveal = () => v.classList.add('is-playing');
+  ['loadeddata', 'canplay', 'playing', 'timeupdate'].forEach(e =>
+    v.addEventListener(e, reveal, { once: true }));
+
+  const start = () => v.play().catch(() => {});   // iOS Low Power Mode — молча остаёмся на постере
+  ['loadedmetadata', 'canplay', 'canplaythrough'].forEach(e =>
+    v.addEventListener(e, start, { once: true }));
+
+  v.preload = 'auto';
+  v.load();
+  if (v.readyState >= 2) { reveal(); start(); }
+  setTimeout(() => { if (v.readyState >= 2) { reveal(); start(); } }, 2500);
+})();
+
+/* Вход героя — по готовности шрифтов. 1800 мс — жёсткий предохранитель:
+   таймаут шрифта не должен оставить первый экран пустым. */
+(() => {
+  const go = () => document.documentElement.classList.add('ready');
+  if (RM) { go(); return; }
+  requestAnimationFrame(() => requestAnimationFrame(go));
+  setTimeout(go, 900);              // предохранитель: первый экран не должен остаться пустым
+})();
+
+/* Появление заголовков, медиа-вытеснение и прочерчивание линий */
+(() => {
+  const els = document.querySelectorAll('.rv, .media-rv, hr.hair');
+  if (RM || !('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('is-in'));
+    return;
+  }
+  const io = new IntersectionObserver((ents, obs) => {
+    ents.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); obs.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  els.forEach(e => io.observe(e));
+})();
+
+
+/* ---------- Модалка бронирования ---------- */
+(() => {
+  const modal = document.getElementById('modal');
+  const form  = document.getElementById('bookForm');
+  const ok    = document.getElementById('okState');
+  const fail  = document.getElementById('formFail');
+  let lastFocus = null;
+
+  const open = (tariff) => {
+    lastFocus = document.activeElement;
+    if (tariff) {
+      const i = tariff === 'pro' ? 1 : 0;
+      form.querySelectorAll('input[name="tariff"]')[i].checked = true;
+    }
+    modal.classList.add('is-on');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('fName').focus(), 60);
+  };
+  const close = () => {
+    modal.classList.remove('is-on');
+    document.body.style.overflow = '';
+    form.style.display = '';
+    ok.classList.remove('is-on');
+    lastFocus?.focus();
+  };
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.js-book');
+    if (btn) { e.preventDefault(); open(btn.dataset.tariff); return; }
+    if (e.target.closest('[data-close]')) { e.preventDefault(); close(); }
+  });
+  addEventListener('keydown', e => {
+    if (!modal.classList.contains('is-on')) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    const f = [...modal.querySelectorAll('a[href],button,input,textarea,select')]
+      .filter(el => !el.disabled && el.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(form));
+    data.page = location.href;
+    const btn = form.querySelector('[type="submit"]');
+    fail.classList.remove('is-on');
+    btn.disabled = true; btn.textContent = 'Отправляем…';
+    try {
+      // Экран успеха показываем ТОЛЬКО после реального ответа сервера.
+      if (!CFG.formEndpoint) throw new Error('formEndpoint не задан');
+      const res = await fetch(CFG.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      form.style.display = 'none';
+      ok.classList.add('is-on');
+    } catch (err) {
+      console.error('Заявка не отправлена:', err, data);
+      btn.disabled = false; btn.textContent = 'Забронировать место';
+      fail.classList.add('is-on');
+    }
+  });
+})();
+</script>
+</body>
+</html>
