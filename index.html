@@ -1996,7 +1996,7 @@ hr.hair.is-in{transform:scaleX(1)}
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Слайд разбора">
   <button class="lb__x" type="button" data-lb-close aria-label="Закрыть">✕</button>
   <button class="lb__nav lb__nav--p" type="button" data-lb-prev aria-label="Предыдущий слайд">←</button>
-  <img alt="">
+  <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
   <button class="lb__nav lb__nav--n" type="button" data-lb-next aria-label="Следующий слайд">→</button>
 </div>
 
@@ -2336,6 +2336,7 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
   const lb = document.getElementById('lb');
   if (!lb) return;
   const img  = lb.querySelector('img');
+  const BLANK = img.getAttribute('src');
   const prev = lb.querySelector('[data-lb-prev]');
   const next = lb.querySelector('[data-lb-next]');
   let group = [], idx = 0, opener = null;
@@ -2357,7 +2358,7 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
   const close = () => {
     lb.classList.remove('is-on');
     document.body.style.overflow = '';
-    img.removeAttribute('src');
+    img.src = BLANK;
     opener && opener.focus();
   };
 
