@@ -875,7 +875,7 @@ p:last-child{margin-bottom:0}
 .crsl__track::-webkit-scrollbar{display:none}
 
 .crsl__slide{
-  flex:0 0 92%;scroll-snap-align:center;
+  flex:0 0 92%;scroll-snap-align:start;
   position:relative;overflow:hidden;border-radius:var(--r-lg);
   aspect-ratio:4/5;background:var(--burgundy-deep);color:var(--on-dark);
   /* Кегль внутри слайда считается от ширины самого слайда, а не экрана:
@@ -966,6 +966,10 @@ p:last-child{margin-bottom:0}
   background:var(--gold);opacity:.3;transition:opacity .3s var(--e),width .3s var(--e)}
 .crsl__dot.is-on{opacity:1;width:18px}
 .sec--dark .crsl__dot,.sec--deep .crsl__dot{background:var(--gold)}
+/* Больше двенадцати кадров — точки превращаются в рябь, вместо них счётчик. */
+.crsl__count{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gold);
+  font-variant-numeric:tabular-nums}
+.crsl__count b{font-weight:600;color:var(--on-dark)}
 .crsl__arrows{display:none;gap:8px}
 .crsl__ar{width:40px;height:40px;border-radius:999px;cursor:pointer;
   background:transparent;border:1px solid currentColor;color:var(--gold);
@@ -1710,6 +1714,15 @@ hr.hair.is-in{transform:scaleX(1)}
           <img src="assets/portfolio/sea-corridor.jpg" alt="Проект студии — мраморный коридор" loading="lazy" decoding="async">
         </article>
         <article class="crsl__slide crsl__slide--shot">
+          <img src="assets/portfolio/modern-living3.jpg" alt="Проект студии — гостиная и обеденная зона под люстрой-паутиной" loading="lazy" decoding="async">
+        </article>
+        <article class="crsl__slide crsl__slide--shot">
+          <img src="assets/portfolio/modern-corridor2.jpg" alt="Проект студии — коридор с янтарными бра и мраморным полом" loading="lazy" decoding="async">
+        </article>
+        <article class="crsl__slide crsl__slide--shot">
+          <img src="assets/portfolio/modern-kitchen2.jpg" alt="Проект студии — кухня с островом из брекчии и бронзовыми табуретами" loading="lazy" decoding="async">
+        </article>
+        <article class="crsl__slide crsl__slide--shot">
           <img src="assets/portfolio/sea-dining.jpg" alt="Проект студии — обеденная зона с видом на море" loading="lazy" decoding="async">
         </article>
         <article class="crsl__slide crsl__slide--shot">
@@ -2313,7 +2326,17 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
   const next   = root.querySelector('[data-crsl-next]');
   if (!track || slides.length < 2) return;
 
-  const dots = slides.map((_, i) => {
+  // Точки читаются, пока их немного. На длинной ленте они превращаются в
+  // рябь, по которой нельзя понять ни позицию, ни длину — там честнее счётчик.
+  const MANY = slides.length > 12;
+  let counter = null;
+  if (MANY && dotBox) {
+    counter = document.createElement('p');
+    counter.className = 'crsl__count';
+    dotBox.appendChild(counter);
+  }
+
+  const dots = MANY ? [] : slides.map((_, i) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'crsl__dot';
@@ -2323,14 +2346,14 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
     return b;
   });
 
-  // Активным считаем слайд, чей центр ближе всего к центру окна просмотра:
-  // при снапе по центру индекс по scrollLeft врёт на дробных ширинах.
+  // Активный слайд — первый видимый слева, а не ближайший к центру. На широком
+  // экране в кадр попадает три-четыре карточки, и «центральный» давал счётчик
+  // 3 / 26 на первом же слайде.
   const current = () => {
-    const mid = track.scrollLeft + track.clientWidth / 2;
+    const left = track.scrollLeft + 1;
     let best = 0, bestD = Infinity;
     slides.forEach((sl, i) => {
-      const c = sl.offsetLeft + sl.offsetWidth / 2;
-      const d = Math.abs(c - mid);
+      const d = Math.abs(sl.offsetLeft - left);
       if (d < bestD) { bestD = d; best = i; }
     });
     return best;
@@ -2338,12 +2361,13 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
 
   const go = i => {
     const sl = slides[Math.max(0, Math.min(slides.length - 1, i))];
-    track.scrollTo({ left: sl.offsetLeft - (track.clientWidth - sl.offsetWidth) / 2, behavior: 'smooth' });
+    track.scrollTo({ left: sl.offsetLeft, behavior: 'smooth' });
   };
 
   const sync = () => {
     const i = current();
     dots.forEach((d, k) => d.classList.toggle('is-on', k === i));
+    if (counter) counter.innerHTML = '<b>' + (i + 1) + '</b> / ' + slides.length;
     if (prev) prev.disabled = track.scrollLeft < 8;
     if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
   };
