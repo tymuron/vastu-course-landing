@@ -1174,6 +1174,10 @@ html.ready .hero__h1 .ln:nth-child(3)>span{transform:none;transition-delay:270ms
 /* Медиа-вытеснение: scaleX псевдоэлемента (остаётся на композиторе),
    а не анимированный clip-path. 1.06, а не 1.6 — интерьер должен читаться. */
 .media-rv{position:relative;overflow:hidden}
+/* Настоящий кадр в слоте: заполняет отведённую пропорцию так же, как это
+   делала заглушка. */
+.media-rv>img,.media-rv>video,.shot>img{width:100%;height:100%;object-fit:cover;display:block}
+.shot{position:relative;overflow:hidden;border-radius:var(--r-lg)}
 .media-rv::before{content:'';position:absolute;inset:0;z-index:3;
   background:var(--cream-2);transform-origin:left;
   transition:transform 1400ms var(--e-out-quart)}
@@ -1568,8 +1572,8 @@ hr.hair.is-in{transform:scaleX(1)}
 
     <div class="mosaic mosaic--2 mosaic--media">
       <article class="card">
-        <div class="ph ph--16x9">
-          <span class="ph__ico">◧</span><span class="ph__label">Готовый дорогой интерьер</span><span class="ph__spec">2400×1350</span>
+        <div class="ph--16x9 shot">
+          <img src="assets/site/ready-interior.jpg" alt="Готовый дорогой интерьер: историческая столовая с лепным потолком, азулежу и цементной плиткой" loading="lazy" decoding="async">
         </div>
         <div class="card__body">
           <span class="card__n">Сценарий 1</span>
@@ -1608,10 +1612,8 @@ hr.hair.is-in{transform:scaleX(1)}
         </ul>
       </div>
       <div>
-        <div class="media-rv ph ph--3x4 ph--dark">
-          <span class="ph__ico">✦</span>
-          <span class="ph__label">Фрагмент интерьера — цвет, материал, свет как инструмент</span>
-          <span class="ph__spec">2400×3200, JPG</span>
+        <div class="media-rv ph--3x4 shot">
+          <img src="assets/site/detail-material.jpg" alt="Фрагмент интерьера: столешница из зелёного мрамора, латунь и тёплый свет — цвет и материал как инструмент" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1623,10 +1625,8 @@ hr.hair.is-in{transform:scaleX(1)}
   <div class="wrap">
     <div class="split split--40 split--top">
       <div>
-        <div class="media-rv ph ph--2x3">
-          <span class="ph__ico">◉</span>
-          <span class="ph__label">Портрет Анны — интерьер, естественный свет</span>
-          <span class="ph__spec">2000×3000, JPG · вертикальный, естественный свет</span>
+        <div class="media-rv ph--2x3 shot">
+          <img src="assets/site/anna-portrait.jpg" alt="Анна Ромео — архитектор и Васту-дизайнер интерьеров" loading="lazy" decoding="async">
         </div>
       </div>
       <div style="position:relative">
