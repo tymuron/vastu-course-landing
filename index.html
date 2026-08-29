@@ -109,8 +109,9 @@
   --sp-8:clamp(88px,calc(67.2px + 5.333vw),144px);
   --sp-9:clamp(120px,calc(84.34px + 9.143vw),216px);
   --sp-10:clamp(160px,calc(100.57px + 15.238vw),320px);
-  --r:3px;
-  --r-lg:0px;
+  /* Скруглить уголочки на всех рамках и кнопках — правка Анны. */
+  --r:8px;
+  --r-lg:14px;
 
   /* Кривые. Одна кривая и на ховер, и на появление — главный признак шаблона.
      (.19,1,.22,1) снята с сайта-референса. In-out на появлении — никогда. */
@@ -243,7 +244,7 @@ p:last-child{margin-bottom:0}
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:var(--sans);font-size:12.5px;font-weight:600;
   letter-spacing:.17em;text-transform:uppercase;text-decoration:none;
-  padding:19px 36px;border:1px solid transparent;border-radius:0;
+  padding:19px 36px;border:1px solid transparent;border-radius:var(--r);
   transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .25s var(--ease);
   white-space:nowrap;text-align:center;
 }
@@ -287,7 +288,7 @@ p:last-child{margin-bottom:0}
    Правило одно: тон, противоположный поверхности, на которой лежит слот. */
 .ph{
   position:relative;width:100%;background:var(--burgundy);color:var(--gold);
-  border:0;border-radius:0;
+  border:0;border-radius:var(--r);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:26px;gap:7px;overflow:hidden;
 }
@@ -557,7 +558,7 @@ p:last-child{margin-bottom:0}
   --cell-h:var(--burgundy); --cell-soft:var(--ink-soft); --cell-ph:var(--burgundy);
   background:var(--cell-bg);color:var(--cell-ink);
   border:0;border-right:1px solid var(--burgundy);border-bottom:1px solid var(--burgundy);
-  border-radius:0;margin:0;padding:clamp(28px,3vw,46px);
+  border-radius:var(--r-lg);margin:0;padding:clamp(28px,3vw,46px);
   min-height:clamp(210px,22vw,290px);display:flex;flex-direction:column}
 .mosaic > .card h3,.mosaic > .card .card__n{color:var(--cell-h)}
 .mosaic > .card .muted{color:var(--cell-soft)}
@@ -585,7 +586,7 @@ p:last-child{margin-bottom:0}
 .mosaic--media > .card > .card__body{padding:clamp(28px,3vw,46px)}
 
 .card{
-  background:var(--burgundy);color:var(--on-dark);border:0;border-radius:0;
+  background:var(--burgundy);color:var(--on-dark);border:0;border-radius:var(--r-lg);
   padding:var(--sp-5);position:relative;transition:box-shadow .4s var(--e-ui);
 }
 .card h3,.card .card__n{color:var(--gold)}
@@ -756,7 +757,7 @@ p:last-child{margin-bottom:0}
    и это ровно то, что мы хотим продать. Отступ не меньше самого крупного
    кегля внутри: раньше 43px вокруг 52-пиксельной цены. */
 .tariff{
-  display:flex;flex-direction:column;border-radius:0;padding:max(var(--sp-6),var(--t-price,64px));
+  display:flex;flex-direction:column;border-radius:var(--r-lg);padding:max(var(--sp-6),var(--t-price,64px));
   border:1px solid var(--gold);background:transparent;position:relative;
   transition:box-shadow .4s var(--e-ui);
 }
@@ -853,6 +854,99 @@ p:last-child{margin-bottom:0}
 .faq__a b{color:var(--ink);font-weight:600}
 
 /* ============================================================
+   КАРУСЕЛЬ — формат, в котором Анна публикует разборы у себя.
+   Здесь он мобильный в первую очередь: базовые правила описывают
+   телефон (слайд 4:5, свайп, снап), а min-width расширяет их для
+   больших экранов. Это единственный компонент в файле, собранный
+   от узкого к широкому, — потому что листают его прежде всего с
+   телефона.
+   ============================================================ */
+.crsl{position:relative;min-width:0;max-width:100%}
+/* min-width:0 обязателен: .crsl лежит в grid (.cases), а элемент грида по
+   умолчанию не сжимается уже своего контента. Без этого ширина слайда в 84%
+   считается от max-content, трек раздувается до 826px в окне 390px и
+   карусель уезжает за экран. */
+.crsl__track{
+  display:flex;gap:10px;min-width:0;
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scroll-padding-inline:var(--pad);
+  margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+  scrollbar-width:none;padding-block:2px}
+.crsl__track::-webkit-scrollbar{display:none}
+
+.crsl__slide{
+  flex:0 0 92%;scroll-snap-align:center;
+  position:relative;overflow:hidden;border-radius:var(--r-lg);
+  aspect-ratio:4/5;background:var(--burgundy-deep);color:var(--on-dark);
+  /* Кегль внутри слайда считается от ширины самого слайда, а не экрана:
+     на десктопе в кадр попадает 4 карточки по ~310px, и vw-шкала раздувала
+     заголовок так, что он наползал на подпись. cqw держит пропорцию карточки
+     одинаковой на телефоне и на широком экране — как в самой карусели. */
+  container-type:inline-size;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(20px,5vw,30px)}
+/* Кадр-подложка. Пока фото нет, внутри стоит .ph — он же и фон. */
+.crsl__bg{position:absolute;inset:0;z-index:0}
+.crsl__bg .ph,.crsl__bg img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+/* Внутри .sec--dark общий .ph становится кремовым — для подложки слайда это
+   неверно: обложка выцветает и светлый заголовок по ней не читается.
+   Подложка всегда тёмная, независимо от секции. */
+.crsl__bg .ph,.sec--dark .crsl__bg .ph,.sec--deep .crsl__bg .ph{background:var(--burgundy-deep)}
+.crsl__bg .ph .ph__ico,.sec--dark .crsl__bg .ph .ph__ico,.sec--deep .crsl__bg .ph .ph__ico,
+.crsl__bg .ph .ph__label,.sec--dark .crsl__bg .ph .ph__label,.sec--deep .crsl__bg .ph .ph__label{color:var(--gold)}
+.crsl__bg .ph .ph__spec,.sec--dark .crsl__bg .ph .ph__spec,.sec--deep .crsl__bg .ph .ph__spec{color:var(--on-dark-faint)}
+/* Подпись плейсхолдера — вверх, чтобы не спорить с текстом слайда внизу. */
+.crsl__slide--onphoto .crsl__bg .ph{justify-content:flex-start;padding-top:9%;gap:5px}
+.crsl__bg .ph__label{font-size:9.5px;letter-spacing:.14em}
+.crsl__bg .ph__spec{font-size:9px;opacity:.75}
+/* Затемнение только под текстом: поверх фотографии подпись иначе не читается. */
+.crsl__slide--onphoto::after{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(28,13,15,.86) 0%,rgba(28,13,15,.52) 42%,rgba(28,13,15,.12) 78%)}
+.crsl__c{position:relative;z-index:2;display:grid;gap:12px}
+
+.crsl__step{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);opacity:.9}
+.crsl__t{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em;
+  font-size:clamp(19px,8.6cqw,30px);color:var(--on-dark);margin:0}
+.crsl__p{font-size:clamp(12.5px,4.3cqw,15px);line-height:1.6;color:var(--on-dark-soft);margin:0}
+.crsl__q{font-family:var(--serif);font-style:italic;font-size:clamp(15px,6.2cqw,21px);
+  line-height:1.42;color:var(--on-dark);margin:0}
+.crsl__by{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.crsl__note{font-size:12px;line-height:1.55;color:var(--on-dark-faint)}
+/* Цифры коррекции — то, ради чего кейс и читают: сколько это стоило. */
+.crsl__nums{display:flex;gap:26px;flex-wrap:wrap;margin-top:2px}
+.crsl__n b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(24px,11cqw,38px);line-height:1;color:var(--gold)}
+.crsl__n span{display:block;margin-top:7px;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-faint)}
+/* Слайд без фотографии — центрируем, он несёт только смысл. */
+.crsl__slide--flat{justify-content:center;background:var(--burgundy-mid)}
+.crsl__slide--cover{justify-content:flex-end}
+
+/* Точки и стрелки */
+.crsl__ui{display:flex;align-items:center;gap:14px;margin-top:16px}
+.crsl__dots{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+.crsl__dot{width:6px;height:6px;padding:0;border:0;border-radius:999px;cursor:pointer;
+  background:var(--gold);opacity:.3;transition:opacity .3s var(--e),width .3s var(--e)}
+.crsl__dot.is-on{opacity:1;width:18px}
+.sec--dark .crsl__dot,.sec--deep .crsl__dot{background:var(--gold)}
+.crsl__arrows{display:none;gap:8px}
+.crsl__ar{width:40px;height:40px;border-radius:999px;cursor:pointer;
+  background:transparent;border:1px solid currentColor;color:var(--gold);
+  font-size:14px;line-height:1;transition:opacity .3s var(--e)}
+.crsl__ar[disabled]{opacity:.25;cursor:default}
+
+@media(min-width:640px){
+  .crsl__slide{flex:0 0 46%}
+  .crsl__track{gap:14px}
+}
+@media(min-width:1000px){
+  .crsl__slide{flex:0 0 clamp(280px,23.5%,340px)}
+  .crsl__track{gap:18px}
+  .crsl__arrows{display:flex}
+}
+
+/* ============================================================
    ОТЗЫВЫ / КЕЙСЫ
    ============================================================ */
 .rail{display:flex;gap:clamp(16px,2vw,26px);overflow-x:auto;padding-bottom:22px;
@@ -864,7 +958,7 @@ p:last-child{margin-bottom:0}
    так не рассказать. Кадры дают «до / что нашли / после». */
 .cases{display:grid;gap:var(--sp-7)}
 .case{display:grid;grid-template-columns:1.05fr .95fr;gap:0;
-  background:var(--cream);color:var(--ink);border:0;border-radius:0;
+  background:var(--cream);color:var(--ink);border:0;border-radius:var(--r-lg);
   overflow:visible;position:relative}
 /* Зазор красим фоном карточки, а не бордо: иначе три бордовых кадра
    сливаются в одно пятно — то же «бордо на бордо», только внутри кейса. */
@@ -1517,13 +1611,40 @@ hr.hair.is-in{transform:scaleX(1)}
     </div>
 
     <p class="eyebrow mt-l">Портфолио проектов</p>
-    <div class="rail" role="region" aria-label="Портфолио проектов">
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — гостиная</span><span class="ph__spec">1600×1600</span></div>
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — холл</span><span class="ph__spec">1600×1600</span></div>
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — спальня</span><span class="ph__spec">1600×1600</span></div>
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Mirador 22 — спальня</span><span class="ph__spec">1600×1600</span></div>
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Mirador 22 — третий этаж</span><span class="ph__spec">1600×1600</span></div>
-      <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Кухня-столовая</span><span class="ph__spec">1600×1600</span></div>
+    <div class="crsl rv" data-crsl>
+      <div class="crsl__track" role="region" aria-label="Портфолио проектов" tabindex="0">
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — гостиная</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Villa Rosa · Барселона — гостиная</p></div>
+        </article>
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — холл</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Villa Rosa · Барселона — холл</p></div>
+        </article>
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Villa Rosa · Барселона — спальня</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Villa Rosa · Барселона — спальня</p></div>
+        </article>
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Mirador 22 — спальня</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Mirador 22 — спальня</p></div>
+        </article>
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Mirador 22 — третий этаж</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Mirador 22 — третий этаж</p></div>
+        </article>
+        <article class="crsl__slide crsl__slide--onphoto">
+          <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Кухня-столовая</span><span class="ph__spec">2000×2500</span></div></div>
+          <div class="crsl__c"><p class="crsl__by">Кухня-столовая</p></div>
+        </article>
+      </div>
+      <div class="crsl__ui">
+        <div class="crsl__dots" data-crsl-dots></div>
+        <div class="crsl__arrows">
+          <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+          <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1538,53 +1659,154 @@ hr.hair.is-in{transform:scaleX(1)}
     </div>
 
     <div class="cases">
-      <article class="case">
-        <div class="case__shots">
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Северная ось до коррекции — картина на месте</span><span class="ph__spec">2000×1125</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта: северный сектор</span><span class="ph__spec">1500×2000</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Та же ось после коррекции</span><span class="ph__spec">1500×2000</span></div>
+      <div class="crsl rv" data-crsl>
+        <div class="crsl__track" role="region" aria-label="Разбор: северный сектор" tabindex="0">
+          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Северная ось до коррекции</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <h3 class="crsl__t">Убрала одну картину — через месяц Дубай вместо бюджетной Европы</h3>
+              <p class="crsl__p">Разбор северного сектора · участница мастер-класса</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что было</p>
+              <p class="crsl__q">«Планировали бюджетную поездку в Европу на 3–5 дней. Обычный семейный отпуск после Нового года.»</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта · северный сектор</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Что показал анализ</p>
+              <h3 class="crsl__t">Север — сектор денег</h3>
+              <p class="crsl__p">Материальная энергия, деньги и коммуникации. Ровно на северной оси висела тяжёлая чёрная картина.</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что изменили</p>
+              <h3 class="crsl__t">Убрали картину с северной оси</h3>
+              <p class="crsl__p">Теперь она стоит в плёнке в подвале. Ремонт не трогали.</p>
+              <div class="crsl__nums"><div class="crsl__n"><b>1 действие</b><span>коррекция</span></div><div class="crsl__n"><b>0 ₽</b><span>затрат</span></div></div>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Дубай · отель</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Через месяц</p>
+              <p class="crsl__q">«Мы летим в Дубай на неделю, выбирай один из трёх отелей, все 5★. Он помог закрыть шефу две крупные сделки и получил премию.»</p>
+              <p class="crsl__by">— Участница мастер-класса</p>
+              <p class="crsl__note">Её собственная оговорка: параллельно с Васту она практикует и другие инструменты гармонизации и считает результат работой связки.</p>
+            </div>
+          </article>
         </div>
-        <div class="case__body">
-          <h3>Квартира с готовым ремонтом — коррекция северного сектора</h3>
-          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Участница мастер-класса разбирала собственную квартиру. Семья планировала бюджетную поездку в Европу на 3–5 дней — обычный отпуск после Нового года.</span></div>
-          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Север — сектор материальной энергии, денег и коммуникаций. Ровно на северной оси висела тяжёлая чёрная картина.</span></div>
-          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Ремонт трогать нельзя, бюджет коррекции — ноль. Всё решается перестановкой того, что уже есть в доме.</span></div>
-          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Убрали чёрную картину с северной оси. Одно действие, один вечер, 0 ₽.</span></div>
-          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">Через месяц: «Мы летим в Дубай на неделю, выбирай один из трёх отелей, все 5★». Муж помог закрыть шефу две крупные сделки и получил премию. Сама участница уточняет, что параллельно практикует и другие инструменты гармонизации, и считает результат работой связки.</span></div>
+        <div class="crsl__ui">
+          <div class="crsl__dots" data-crsl-dots></div>
+          <div class="crsl__arrows">
+            <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+            <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <article class="case">
-        <div class="case__shots">
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Детская до перестановки</span><span class="ph__spec">2000×1125</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта квартиры: сектора</span><span class="ph__spec">1500×2000</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Комната после перестановки</span><span class="ph__spec">1500×2000</span></div>
+      <div class="crsl rv" data-crsl>
+        <div class="crsl__track" role="region" aria-label="Разбор: детская и спальня" tabindex="0">
+          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Детская до перестановки</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <h3 class="crsl__t">Переставили кровать — сын перестал просыпаться по ночам</h3>
+              <p class="crsl__p">Разбор детской · реальная история за один вечер</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что было</p>
+              <p class="crsl__q">«Сын постоянно переходил к нам спать. Я испробовала всё: режим, ритуалы, темноту, белый шум. Ничего не помогало. Я была в отчаянии.»</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта квартиры · сектора</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Что показал анализ</p>
+              <h3 class="crsl__t">Две проблемы на карте</h3>
+              <p class="crsl__p">Кровать стояла головой на север — энергия уходила через макушку. А сама детская была на юго-востоке, в секторе Венеры: чувствительному мальчику там некомфортно.</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что изменили</p>
+              <h3 class="crsl__t">Поменяли комнаты местами и развернули кровать</h3>
+              <p class="crsl__p">Теперь ребёнок спит ногами на восток — входит энергия жизни, здоровья и роста.</p>
+              <div class="crsl__nums"><div class="crsl__n"><b>1 вечер</b><span>времени</span></div><div class="crsl__n"><b>0 ₽</b><span>затрат</span></div></div>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Комната после перестановки</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Результат</p>
+              <p class="crsl__q">«Не ожидала такой реакции сына — он был в восторге и благодарил меня. Уже два дня как спит в своей комнате, до этого постоянно переходил к нам.»</p>
+              <p class="crsl__by">— Нина · участница мастер-класса</p>
+              <p class="crsl__note">Сделала перестановку сама, по разобранной на занятии схеме.</p>
+            </div>
+          </article>
         </div>
-        <div class="case__body">
-          <h3>Детская и спальня — перестановка без ремонта</h3>
-          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Сын постоянно переходил спать к родителям. Мать испробовала всё: режим, ритуалы, темноту, белый шум. Ничего не помогало.</span></div>
-          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Кровать стояла головой на север — энергия уходила через макушку: перевозбуждение и беспокойный сон. Сама детская была на юго-востоке, в секторе Венеры, — чувствительному мальчику там некомфортно.</span></div>
-          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Ремонт не трогали, мебель не покупали. Только то, что можно перенести за один вечер.</span></div>
-          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Поменяли детскую и спальню местами и развернули кровать: теперь ребёнок спит ногами на восток.</span></div>
-          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">«Не ожидала такой реакции сына — он был в восторге и благодарил меня. Уже два дня как спит в своей комнате, до этого постоянно переходил к нам». Нина, участница мастер-класса: сделала перестановку сама, за один вечер, по разобранной на занятии схеме.</span></div>
+        <div class="crsl__ui">
+          <div class="crsl__dots" data-crsl-dots></div>
+          <div class="crsl__arrows">
+            <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+            <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <article class="case">
-        <div class="case__shots">
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Входная зона до разбора</span><span class="ph__spec">2000×1125</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта: юго-восточный сектор</span><span class="ph__spec">1500×2000</span></div>
-          <div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Та же зона после коррекции</span><span class="ph__spec">1500×2000</span></div>
+      <div class="crsl rv" data-crsl>
+        <div class="crsl__track" role="region" aria-label="Разбор: юго-восточный сектор" tabindex="0">
+          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Входная зона до разбора</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <h3 class="crsl__t">Разобрала обувь у входа — и отношения перестали рушиться</h3>
+              <p class="crsl__p">Разбор юго-восточного сектора · женская сила</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что было</p>
+              <p class="crsl__q">«Мы чуть не разошлись. Я была в обиде, он — в постоянном недовольстве. Контролировал мои траты, делал замечания по мелочам. А я чувствовала, что просто не могу дышать — и не понимала, что не так.»</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта · юго-восток</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Что показал анализ</p>
+              <h3 class="crsl__t">Юго-восток — сектор женской силы</h3>
+              <p class="crsl__p">Энергия, наслаждение, чувственность. Сектор был мёртв — завален старой обувью. Дальше буквально: об неё «вытирают ноги», мужчина теряет уважение.</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--flat">
+            <div class="crsl__c">
+              <p class="crsl__step">Что изменили</p>
+              <h3 class="crsl__t">Очистили сектор</h3>
+              <p class="crsl__p">Убрали старую обувь. Добавили свет, свечи, цветы — поставили красоту там, где раньше было только «надо».</p>
+            </div>
+          </article>
+          <article class="crsl__slide crsl__slide--onphoto">
+            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Пространство после коррекции</span><span class="ph__spec">2000×2500</span></div></div>
+            <div class="crsl__c">
+              <p class="crsl__step">Результат</p>
+              <h3 class="crsl__t">Муж перестал критиковать. Подарил дорогой подарок. Вернулся секс.</h3>
+              <p class="crsl__q">«Энергия поменялась. Я стала спокойнее, снова наслаждаюсь жизнью и не корю себя за это. Он стал больше уделять мне внимания, делать комплименты.»</p>
+              <p class="crsl__by">— Голосовое сообщение от клиентки</p>
+            </div>
+          </article>
         </div>
-        <div class="case__body">
-          <h3>Юго-восточный сектор — разбор входной зоны</h3>
-          <div class="case__row"><span class="case__k">Исходное пространство и задача</span><span class="case__v">Клиентка пришла на консультацию почти на грани развода. «Я была в обиде, он — в постоянном недовольстве. Контролировал мои траты, делал замечания по мелочам. А я чувствовала, что просто не могу дышать — и не понимала, что не так».</span></div>
-          <div class="case__row"><span class="case__k">Что показал анализ</span><span class="case__v">Юго-восток — сектор женской силы: энергия, наслаждение, чувственность. Сектор был мёртв — завален старой обувью.</span></div>
-          <div class="case__row"><span class="case__k">Реальные ограничения</span><span class="case__v">Ремонт не требовался: работа только с наполнением зоны.</span></div>
-          <div class="case__row"><span class="case__k">Что изменили</span><span class="case__v">Очистили сектор от старой обуви. Добавили свет, свечи, цветы — поставили красоту там, где раньше было только «надо».</span></div>
-          <div class="case__row"><span class="case__k">Как это отразилось</span><span class="case__v">Муж перестал критиковать, подарил дорогой подарок, вернулась близость в паре. «Энергия поменялась. Я стала спокойнее, снова наслаждаюсь жизнью и не корю себя за это. Он стал больше уделять мне внимания, делать комплименты».</span></div>
+        <div class="crsl__ui">
+          <div class="crsl__dots" data-crsl-dots></div>
+          <div class="crsl__arrows">
+            <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+            <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
   <div class="bridge bridge--on-dark bridge--mobile-off" aria-hidden="true">
@@ -2232,6 +2454,68 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   els.forEach(e => io.observe(e));
 })();
 
+
+/* ---------- Карусели ----------
+   Листание — родной скролл со снапом: на телефоне это обычный свайп, и он
+   работает даже если скрипт не выполнился. Точки и стрелки лишь дублируют
+   его для мыши и клавиатуры, поэтому и рисуются скриптом: без него они
+   были бы мёртвой разметкой. */
+document.querySelectorAll('[data-crsl]').forEach(root => {
+  const track  = root.querySelector('.crsl__track');
+  const slides = [...track.children];
+  const dotBox = root.querySelector('[data-crsl-dots]');
+  const prev   = root.querySelector('[data-crsl-prev]');
+  const next   = root.querySelector('[data-crsl-next]');
+  if (!track || slides.length < 2) return;
+
+  const dots = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'crsl__dot';
+    b.setAttribute('aria-label', `Слайд ${i + 1} из ${slides.length}`);
+    b.addEventListener('click', () => go(i));
+    dotBox && dotBox.appendChild(b);
+    return b;
+  });
+
+  // Активным считаем слайд, чей центр ближе всего к центру окна просмотра:
+  // при снапе по центру индекс по scrollLeft врёт на дробных ширинах.
+  const current = () => {
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, bestD = Infinity;
+    slides.forEach((sl, i) => {
+      const c = sl.offsetLeft + sl.offsetWidth / 2;
+      const d = Math.abs(c - mid);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  };
+
+  const go = i => {
+    const sl = slides[Math.max(0, Math.min(slides.length - 1, i))];
+    track.scrollTo({ left: sl.offsetLeft - (track.clientWidth - sl.offsetWidth) / 2, behavior: 'smooth' });
+  };
+
+  const sync = () => {
+    const i = current();
+    dots.forEach((d, k) => d.classList.toggle('is-on', k === i));
+    if (prev) prev.disabled = track.scrollLeft < 8;
+    if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+  };
+
+  prev && prev.addEventListener('click', () => go(current() - 1));
+  next && next.addEventListener('click', () => go(current() + 1));
+  track.addEventListener('scroll', () => {
+    clearTimeout(track._t);
+    track._t = setTimeout(sync, 60);
+  }, { passive: true });
+  track.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(current() - 1); }
+  });
+  addEventListener('resize', sync, { passive: true });
+  sync();
+});
 
 /* ---------- Модалка бронирования ---------- */
 (() => {
