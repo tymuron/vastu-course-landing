@@ -622,6 +622,88 @@ p:last-child{margin-bottom:0}
 .step p{max-width:33em}
 @media(max-width:700px){.grid{gap:var(--sp-4)}.step{grid-template-columns:1fr;gap:var(--sp-3)}}
 
+/* ============================================================
+   ЦЕПЬ ПРИЧИН — блок 3 «Архитектура состояний».
+   Одна проведённая линия идёт через четыре узла; три остриё сидят
+   НА линии, а не между узлами. Линия выходит из узла 04 и входит
+   в единственную заливку блока — финал. Нумерации нет: как только
+   последовательность несут линия и остриё, номер перестаёт работать —
+   а именно он и превращал блок в «просто перечисление».
+   ============================================================ */
+.flow{--chain-line:var(--burgundy);
+      --drop:clamp(46px,4.8vw,66px);
+      --link-px:0px;
+      --link-pr:clamp(24px,2.6vw,40px);
+      --drop-x:50%;
+      margin-top:clamp(6px,1.2vw,16px)}
+
+.chain{position:relative;list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+/* причинная линия, она же верхняя линейка регистра */
+.chain::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;
+  background:var(--chain-line);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 900ms var(--e-out-expo) 260ms}
+.rv.is-in .chain::before{transform:scaleX(1)}
+
+.chain__link{position:relative;margin:0;display:flex;flex-direction:column;
+  padding:20px var(--link-pr) clamp(32px,3.4vw,48px) var(--link-px)}
+.chain__link:last-child{padding-bottom:0}
+/* у первого узла причины нет — вместо остриё простая засечка начала */
+.chain__link:first-child::before{content:'';position:absolute;left:0;top:0;
+  width:1px;height:14px;background:var(--chain-line)}
+.chain__link h3{font-size:clamp(18px,1.5vw,22px);line-height:1.2;margin:0 0 var(--sp-2)}
+.chain__link h3:last-child{margin-bottom:0}
+.chain__link p{margin:0}
+
+/* остриё: фиксированный размер, открытая V ровно в 90°, тот же
+   vector-effect, что у мандалы. Растянутый SVG здесь запрещён —
+   preserveAspectRatio разъезжается и остриё расплывается. */
+.chain__arr{position:absolute;left:0;top:0;width:8px;height:14px;
+  overflow:visible;transform:translate(-50%,-50%);transition:none}
+.chain__arr path,.chain__drop path{fill:none;stroke:var(--chain-line);stroke-width:1;
+  stroke-linejoin:miter;stroke-linecap:butt;vector-effect:non-scaling-stroke}
+
+/* спуск в финал: живёт ВНУТРИ узла 04 и тянется флексом, поэтому линия
+   начинается сразу под его текстом, а не в пустоте. Без магических чисел. */
+.chain__drop{position:relative;flex:1 1 auto;margin-right:calc(-1 * var(--link-pr));
+  margin-top:clamp(14px,1.8vw,22px);min-height:clamp(26px,3vw,40px)}
+.chain__drop::before{content:'';position:absolute;left:calc(var(--drop-x) - .5px);
+  top:0;bottom:calc(-1 * var(--drop));width:1px;background:var(--chain-line)}
+.chain__drop svg{position:absolute;left:var(--drop-x);bottom:calc(-1 * var(--drop));
+  width:14px;height:8px;overflow:visible;transform:translateX(-50%)}
+
+/* ---- ФИНАЛ: единственная заливка блока ---- */
+.payoff{position:relative;margin-top:var(--drop);
+  background:var(--burgundy);color:var(--on-dark);
+  border-radius:var(--r-lg);box-shadow:none;
+  padding:clamp(30px,3.3vw,50px) clamp(24px,2.9vw,46px);
+  display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+  gap:clamp(20px,3vw,56px);align-items:end}
+.payoff__t{font-family:var(--serif);font-weight:500;text-transform:uppercase;
+  letter-spacing:.018em;line-height:1.06;
+  font-size:clamp(30px,4.1vw,58px);color:var(--gold);margin:0}
+.payoff__s{font-size:var(--lead);line-height:1.45;color:var(--on-dark-soft);margin:0}
+
+/* ---- ≤1000px: та же разметка, линия встаёт вертикально ---- */
+@media(max-width:1000px){
+  .flow{--link-px:clamp(22px,3vw,30px);--link-pr:0px;--drop-x:calc(-1 * var(--link-px))}
+  .chain{grid-template-columns:minmax(0,1fr)}
+  .chain::before{width:1px;height:100%;
+    transform:scaleY(0);transform-origin:top center}
+  .rv.is-in .chain::before{transform:scaleY(1)}
+  .chain__link{padding-top:clamp(18px,2.4vw,24px);
+    padding-bottom:clamp(26px,3.4vw,34px)}
+  .chain__link:first-child{padding-top:0}
+  .chain__link:first-child::before{display:none}
+  .chain__link:last-child{padding-bottom:0}
+  .chain__link h3{font-size:var(--h3)}
+  .chain__arr{transform:translate(-50%,-50%) rotate(90deg)}
+  .chain__drop{margin-top:0;min-height:0}
+  .payoff{grid-template-columns:minmax(0,1fr);gap:var(--sp-4);align-items:start}
+  .payoff__s{max-width:46ch}
+}
+
 /* маркированные списки */
 .list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 .list li{position:relative;padding-left:26px;line-height:1.62}
@@ -988,7 +1070,7 @@ hr.hair.is-in{transform:scaleX(1)}
   .hero__h1 .ln>span{transform:none!important;transition:none!important}
   .media-rv::before{display:none}
   .media-rv>img,.media-rv>video{transform:none!important;opacity:1!important;transition:none!important}
-  .eyebrow::after,.eyebrow::before,hr.hair{transform:scaleX(1)!important;transition:none!important}
+  .eyebrow::after,.eyebrow::before,hr.hair,.chain::before{transform:scaleX(1)!important;transition:none!important}
   .layers__panel{animation:none}
   .modal__box,.modal__bg{animation:none}
   .media-tag__dot{box-shadow:none}
@@ -1116,12 +1198,35 @@ hr.hair.is-in{transform:scaleX(1)}
         <span class="ph__spec">SVG или 2000×1500 PNG на прозрачном</span>
       </div>
     </div>
-    <div class="steps">
-      <div class="step"><div><h3>Меняем пространство осознанно</h3><p class="muted small">Не «переставили диван и ждём чуда», а точное изменение в точной зоне — с пониманием, зачем оно здесь.</p></div></div>
-      <div class="step"><div><h3>Повышаются вибрации, меняется внутреннее состояние</h3><p class="muted small">Пространство перестаёт работать против вас.</p></div></div>
-      <div class="step"><div><h3>Из нового состояния меняется мышление</h3></div></div>
-      <div class="step"><div><h3>Вы в новом качестве взаимодействуете с миром</h3></div></div>
-      <div class="step"><div><h3>Получаете другие результаты</h3><p class="muted small">Часто гораздо легче и проще, чем вы привыкли добиваться их раньше.</p></div></div>
+    <div class="flow">
+      <div class="rv">
+        <p class="eyebrow" id="flow-lbl">Трансформация работает так</p>
+        <ol class="chain" role="list" aria-labelledby="flow-lbl">
+          <li class="chain__link">
+            <h3>Меняем пространство осознанно</h3>
+            <p class="muted small">Не «переставили диван и ждём чуда», а точное изменение в точной зоне — с пониманием, зачем оно здесь.</p>
+          </li>
+          <li class="chain__link">
+            <svg class="chain__arr" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true" focusable="false"><path d="M1 1 7 7 1 13"/></svg>
+            <h3>Повышаются вибрации, меняется внутреннее состояние</h3>
+            <p class="muted small">Пространство перестаёт работать против вас.</p>
+          </li>
+          <li class="chain__link">
+            <svg class="chain__arr" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true" focusable="false"><path d="M1 1 7 7 1 13"/></svg>
+            <h3>Из нового состояния меняется мышление</h3>
+          </li>
+          <li class="chain__link">
+            <svg class="chain__arr" width="8" height="14" viewBox="0 0 8 14" aria-hidden="true" focusable="false"><path d="M1 1 7 7 1 13"/></svg>
+            <h3>Вы в новом качестве взаимодействуете с миром</h3>
+            <span class="chain__drop" aria-hidden="true"><svg width="14" height="8" viewBox="0 0 14 8" focusable="false"><path d="M1 1 7 7 13 1"/></svg></span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="payoff rv rv-d2">
+        <h3 class="payoff__t">Получаете другие результаты</h3>
+        <p class="payoff__s">Часто гораздо легче и проще, чем вы привыкли добиваться их раньше.</p>
+      </div>
     </div>
   </div>
   <div class="bridge" aria-hidden="true">
