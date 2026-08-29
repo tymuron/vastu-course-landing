@@ -400,7 +400,8 @@ p:last-child{margin-bottom:0}
 }
 /* Видео проявляется поверх постера, когда действительно может играть —
    пустого тёмного прямоугольника на первом экране не бывает. */
-.hero__video{opacity:0;transition:opacity 600ms var(--e-ui)}
+.hero__video{opacity:0;transition:opacity 600ms var(--e-ui);z-index:0}
+.hero__video--long{z-index:1}
 .hero__video.is-playing{opacity:1}
 @media(prefers-reduced-motion:reduce){.hero__video{display:none}}
 /* фон-«пол»: он же состояние ожидания, он же экран загрузки, он же фолбэк постера */
@@ -1038,10 +1039,9 @@ hr.hair.is-in{transform:scaleX(1)}
     <img class="hero__poster" src="assets/media/hero-poster.webp" alt=""
          fetchpriority="high" decoding="async" width="720" height="1280">
     <video class="hero__video" muted loop playsinline preload="none" disablepictureinpicture
-           aria-hidden="true" tabindex="-1">
-      <source media="(max-width:900px)" src="assets/media/hero-full.mp4" type="video/mp4">
-      <source src="assets/media/hero-card.mp4" type="video/mp4">
-    </video>
+           aria-hidden="true" tabindex="-1" src="assets/media/hero-short.mp4"></video>
+    <video class="hero__video hero__video--long" muted loop playsinline preload="none"
+           disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
   </div>
   <div class="hero__scrim" aria-hidden="true"></div>
 
@@ -2053,26 +2053,56 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Проявление вешаем на несколько сигналов сразу: событие может успеть пройти
   // до подписки, и тогда видео навсегда осталось бы прозрачным.
-  // Источник выбираем сами и один раз. AV1 берём только при ответе 'probably':
-  // Safari на Intel и до 17-й версии его не декодирует, а на codecs-строку может
-  // ответить 'maybe' — и тогда откат на <source> с H.264 уже не срабатывает,
-  // видео остаётся мёртвым под постером. В разметке лежит H.264 — он играет везде.
-  const wide = !matchMedia('(max-width:900px)').matches;
-  const base = 'assets/media/hero-' + (wide ? 'card' : 'full');
-  const av1  = v.canPlayType('video/mp4; codecs="av01.0.05M.08"') === 'probably';
+  // ДВА ЭТАПА. Полный обход виллы — 96 секунд и 16,7 МБ: на канале 3 Мбит/с он
+  // просто не успевает стартовать. Поэтому сначала играет короткая петля (5,3 МБ,
+  // первый кадр за ~90 мс), а длинное видео тем временем набирает буфер и
+  // проявляется поверх, когда действительно готово. Если канал медленный, длинное
+  // не подключается вовсе — посетитель остаётся на короткой петле и ничего не ждёт.
+  const long = document.querySelector('.hero__video--long');
+  const only = 'video/mp4';
+  if (!v.canPlayType(only)) return;
 
-  // Проявление вешаем на несколько событий: любое из них может пройти до подписки.
-  const reveal = () => v.classList.add('is-playing');
-  const start  = () => v.play().catch(() => {});   // iOS Low Power Mode — остаёмся на постере
-  ['loadeddata', 'canplay', 'playing', 'timeupdate'].forEach(e =>
-    v.addEventListener(e, reveal, { once: true }));
-  ['loadedmetadata', 'canplay', 'canplaythrough'].forEach(e =>
-    v.addEventListener(e, start, { once: true }));
+  const reveal = el => el.classList.add('is-playing');
+  const start  = el => el.play().catch(() => {});   // iOS Low Power Mode — остаёмся на постере
+  const wire = el => {
+    ['loadeddata', 'canplay', 'playing', 'timeupdate'].forEach(e =>
+      el.addEventListener(e, () => reveal(el), { once: true }));
+    ['loadedmetadata', 'canplay', 'canplaythrough'].forEach(e =>
+      el.addEventListener(e, () => start(el), { once: true }));
+  };
 
+  wire(v);
   v.preload = 'auto';
-  v.src = base + (av1 ? '.av1.mp4' : '.mp4');
   v.load();
-  setTimeout(() => { if (v.readyState >= 2) { reveal(); start(); } }, 2500);
+  setTimeout(() => { if (v.readyState >= 2) { reveal(v); start(v); } }, 2500);
+
+  // Длинное подключаем после того, как короткое реально пошло. Порог по downlink
+  // здесь НЕ используем: браузеры округляют и занижают его (в headless стабильно
+  // 1,75 на быстром канале), и живая страница из-за этого никогда бы не грузила
+  // полное видео. Решение принимает сам браузер: свап делаем только по
+  // canplaythrough, а если он не пришёл за 15 секунд — отменяем загрузку,
+  // чтобы не тянуть 16 МБ в фоне на медленной связи.
+  if (!long || c.saveData || (c.effectiveType && /(^|-)2g$|3g/.test(c.effectiveType))) return;
+
+  const upgrade = () => {
+    let done = false;
+    const giveUp = setTimeout(() => {
+      if (done) return;
+      long.removeAttribute('src'); long.load();   // обрываем докачку
+    }, 15000);
+
+    long.addEventListener('canplaythrough', () => {
+      done = true; clearTimeout(giveUp);
+      start(long);
+      reveal(long);                               // проявляется поверх короткой петли
+      setTimeout(() => { v.pause(); v.removeAttribute('src'); v.load(); }, 900);
+    }, { once: true });
+
+    long.preload = 'auto';
+    long.src = 'assets/media/hero-long.mp4';
+    long.load();
+  };
+  v.addEventListener('playing', () => setTimeout(upgrade, 1200), { once: true });
 })();
 
 /* Вход героя — по готовности шрифтов. 1800 мс — жёсткий предохранитель:
