@@ -923,6 +923,42 @@ p:last-child{margin-bottom:0}
 .crsl__slide--flat{justify-content:center;background:var(--burgundy-mid)}
 .crsl__slide--cover{justify-content:flex-end}
 
+/* Слайд целиком из готового кадра Анны. Текст на таких слайдах вшит в
+   картинку, на карточке ~320px он мелковат — поэтому кадр открывается
+   по тапу во весь экран (.lb ниже). */
+.crsl__slide--shot{padding:0;cursor:zoom-in}
+.crsl__slide--shot img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+.crsl__slide--shot::after{content:'';position:absolute;inset:0;
+  background:rgba(46,22,25,0);transition:background .3s var(--e)}
+.crsl__slide--shot:hover::after{background:rgba(46,22,25,.14)}
+
+/* Лайтбокс */
+.lb{position:fixed;inset:0;z-index:120;display:none;
+  background:rgba(24,11,13,.94);padding:clamp(12px,3vw,40px);
+  align-items:center;justify-content:center}
+.lb[open],.lb.is-on{display:flex}
+.lb img{max-width:100%;max-height:100%;width:auto;height:auto;
+  object-fit:contain;border-radius:var(--r)}
+.lb__x{position:absolute;top:14px;right:14px;width:44px;height:44px;
+  border-radius:999px;border:1px solid var(--gold);background:transparent;
+  color:var(--gold);font-size:18px;line-height:1;cursor:pointer}
+.lb__nav{position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:999px;border:1px solid var(--gold);
+  background:rgba(24,11,13,.5);color:var(--gold);font-size:17px;cursor:pointer}
+.lb__nav--p{left:10px}.lb__nav--n{right:10px}
+.lb__nav[disabled]{opacity:.25;cursor:default}
+/* На телефоне кадр занимает всю ширину, и боковые стрелки ложатся прямо на
+   текст слайда. Там они уходят вниз, под картинку. */
+@media(max-width:760px){
+  .lb.is-on{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr auto;
+    gap:16px;align-items:center;justify-items:center;padding-bottom:22px}
+  .lb img{grid-row:1;grid-column:1/-1;max-height:100%}
+  .lb__nav{position:static;transform:none;grid-row:2;width:100%;max-width:132px;height:46px}
+  .lb__nav--p{grid-column:1;justify-self:end}
+  .lb__nav--n{grid-column:2;justify-self:start}
+}
+
 /* Точки и стрелки */
 .crsl__ui{display:flex;align-items:center;gap:14px;margin-top:16px}
 .crsl__dots{display:flex;gap:6px;flex:1;flex-wrap:wrap}
@@ -1660,44 +1696,24 @@ hr.hair.is-in{transform:scaleX(1)}
 
     <div class="cases">
       <div class="crsl rv" data-crsl>
-        <div class="crsl__track" role="region" aria-label="Разбор: северный сектор" tabindex="0">
-          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Северная ось до коррекции</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <h3 class="crsl__t">Убрала одну картину — через месяц Дубай вместо бюджетной Европы</h3>
-              <p class="crsl__p">Разбор северного сектора · участница мастер-класса</p>
-            </div>
+        <div class="crsl__track" role="region" aria-label="Разбор: северный сектор и деньги" tabindex="0">
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-1-cover.jpg" alt="Обложка разбора: убрала одну картину — через месяц Дубай вместо бюджетной Европы. Реальная история после мастер-класса по Васту." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что было</p>
-              <p class="crsl__q">«Планировали бюджетную поездку в Европу на 3–5 дней. Обычный семейный отпуск после Нового года.»</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-2-before.jpg" alt="Что было: семья планировала бюджетную поездку в Европу на 3–5 дней, обычный семейный отпуск после Нового года." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта · северный сектор</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Что показал анализ</p>
-              <h3 class="crsl__t">Север — сектор денег</h3>
-              <p class="crsl__p">Материальная энергия, деньги и коммуникации. Ровно на северной оси висела тяжёлая чёрная картина.</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-3-action.jpg" alt="Что сделала: убрала чёрную картину с северной оси — одно простое действие." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что изменили</p>
-              <h3 class="crsl__t">Убрали картину с северной оси</h3>
-              <p class="crsl__p">Теперь она стоит в плёнке в подвале. Ремонт не трогали.</p>
-              <div class="crsl__nums"><div class="crsl__n"><b>1 действие</b><span>коррекция</span></div><div class="crsl__n"><b>0 ₽</b><span>затрат</span></div></div>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-4-month.jpg" alt="Что произошло через месяц: «Мы летим в Дубай на неделю, выбирай один из трёх отелей 5 звёзд». От эконома до люкса." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Дубай · отель</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Через месяц</p>
-              <p class="crsl__q">«Мы летим в Дубай на неделю, выбирай один из трёх отелей, все 5★. Он помог закрыть шефу две крупные сделки и получил премию.»</p>
-              <p class="crsl__by">— Участница мастер-класса</p>
-              <p class="crsl__note">Её собственная оговорка: параллельно с Васту она практикует и другие инструменты гармонизации и считает результат работой связки.</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-5-message.jpg" alt="Сообщение участницы: муж помог закрыть шефу две крупные сделки, получил премию и организовал семейный отдых. Она добавляет, что параллельно практикует и другие инструменты гармонизации." loading="lazy" decoding="async" width="1200" height="1500">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/money-6-why.jpg" alt="Почему это работает: Васту вместе с другими инструментами гармонизации ускоряет процессы. Никаких сложных ритуалов." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
         </div>
         <div class="crsl__ui">
@@ -1711,43 +1727,23 @@ hr.hair.is-in{transform:scaleX(1)}
 
       <div class="crsl rv" data-crsl>
         <div class="crsl__track" role="region" aria-label="Разбор: детская и спальня" tabindex="0">
-          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Детская до перестановки</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <h3 class="crsl__t">Переставили кровать — сын перестал просыпаться по ночам</h3>
-              <p class="crsl__p">Разбор детской · реальная история за один вечер</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-1-cover.jpg" alt="Обложка разбора: переставили кровать — сын перестал просыпаться по ночам. Как Васту и энергии дома влияют на детский сон." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что было</p>
-              <p class="crsl__q">«Сын постоянно переходил к нам спать. Я испробовала всё: режим, ритуалы, темноту, белый шум. Ничего не помогало. Я была в отчаянии.»</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-2-before.jpg" alt="Что было: «Сын постоянно переходил к нам спать. Я испробовала всё: режим, ритуалы, темноту, белый шум. Ничего не помогало». Рядом — сообщение Нины, участницы мастер-класса." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта квартиры · сектора</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Что показал анализ</p>
-              <h3 class="crsl__t">Две проблемы на карте</h3>
-              <p class="crsl__p">Кровать стояла головой на север — энергия уходила через макушку. А сама детская была на юго-востоке, в секторе Венеры: чувствительному мальчику там некомфортно.</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-3-rule.jpg" alt="Правило: север — материальная энергия и деньги, восток — прана и здоровье. Спать ногами на север или восток благоприятно, головой — нет." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что изменили</p>
-              <h3 class="crsl__t">Поменяли комнаты местами и развернули кровать</h3>
-              <p class="crsl__p">Теперь ребёнок спит ногами на восток — входит энергия жизни, здоровья и роста.</p>
-              <div class="crsl__nums"><div class="crsl__n"><b>1 вечер</b><span>времени</span></div><div class="crsl__n"><b>0 ₽</b><span>затрат</span></div></div>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-4-map.jpg" alt="Что показал анализ на Васту-карте: энергия уходила через макушку, а детская была на юго-востоке, в секторе Венеры." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Комната после перестановки</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Результат</p>
-              <p class="crsl__q">«Не ожидала такой реакции сына — он был в восторге и благодарил меня. Уже два дня как спит в своей комнате, до этого постоянно переходил к нам.»</p>
-              <p class="crsl__by">— Нина · участница мастер-класса</p>
-              <p class="crsl__note">Сделала перестановку сама, по разобранной на занятии схеме.</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-5-action.jpg" alt="Что сделали: переложили сына в другую комнату и развернули кровать ногами на восток. Время — один вечер, затраты — ноль рублей." loading="lazy" decoding="async" width="1200" height="1500">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sleep-6-result.jpg" alt="Результат словами клиентки: сын доволен новой комнатой и наконец спит в ней; она сама рано просыпается и хорошо спит, муж стал активнее." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
         </div>
         <div class="crsl__ui">
@@ -1761,42 +1757,23 @@ hr.hair.is-in{transform:scaleX(1)}
 
       <div class="crsl rv" data-crsl>
         <div class="crsl__track" role="region" aria-label="Разбор: юго-восточный сектор" tabindex="0">
-          <article class="crsl__slide crsl__slide--onphoto crsl__slide--cover">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Входная зона до разбора</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <h3 class="crsl__t">Разобрала обувь у входа — и отношения перестали рушиться</h3>
-              <p class="crsl__p">Разбор юго-восточного сектора · женская сила</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-1-cover.jpg" alt="Обложка разбора: если мужчина обесценивает тебя — посмотри, что стоит у тебя возле входа." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что было</p>
-              <p class="crsl__q">«Мы чуть не разошлись. Я была в обиде, он — в постоянном недовольстве. Контролировал мои траты, делал замечания по мелочам. А я чувствовала, что просто не могу дышать — и не понимала, что не так.»</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-2-before.jpg" alt="Что было: клиентка пришла на консультацию почти на грани развода. «Я была в обиде, он — в постоянном недовольстве. Я чувствовала, что просто не могу дышать»." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Васту-карта · юго-восток</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Что показал анализ</p>
-              <h3 class="crsl__t">Юго-восток — сектор женской силы</h3>
-              <p class="crsl__p">Энергия, наслаждение, чувственность. Сектор был мёртв — завален старой обувью. Дальше буквально: об неё «вытирают ноги», мужчина теряет уважение.</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-3-map.jpg" alt="Васту-карта: то, что стоит в секторе женской силы на юго-востоке, определяет, как женщина себя чувствует и как к ней относятся." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--flat">
-            <div class="crsl__c">
-              <p class="crsl__step">Что изменили</p>
-              <h3 class="crsl__t">Очистили сектор</h3>
-              <p class="crsl__p">Убрали старую обувь. Добавили свет, свечи, цветы — поставили красоту там, где раньше было только «надо».</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-4-shoes.jpg" alt="Что показал анализ: сектор был завален старой обувью. Дальше буквально — об неё «вытирают ноги», мужчина теряет уважение." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
-          <article class="crsl__slide crsl__slide--onphoto">
-            <div class="crsl__bg"><div class="ph"><span class="ph__ico">▦</span><span class="ph__label">Пространство после коррекции</span><span class="ph__spec">2000×2500</span></div></div>
-            <div class="crsl__c">
-              <p class="crsl__step">Результат</p>
-              <h3 class="crsl__t">Муж перестал критиковать. Подарил дорогой подарок. Вернулся секс.</h3>
-              <p class="crsl__q">«Энергия поменялась. Я стала спокойнее, снова наслаждаюсь жизнью и не корю себя за это. Он стал больше уделять мне внимания, делать комплименты.»</p>
-              <p class="crsl__by">— Голосовое сообщение от клиентки</p>
-            </div>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-5-action.jpg" alt="Что сделали: очистили сектор, добавили свет, свечи и цветы — поставили красоту там, где раньше было только «надо»." loading="lazy" decoding="async" width="1200" height="1500">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/se-6-result.jpg" alt="Результаты: муж перестал критиковать, подарил дорогой подарок, вернулась близость." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
         </div>
         <div class="crsl__ui">
@@ -1808,190 +1785,6 @@ hr.hair.is-in{transform:scaleX(1)}
         </div>
       </div>
     </div>
-  </div>
-  <div class="bridge bridge--on-dark bridge--mobile-off" aria-hidden="true">
-    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
-      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
-      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
-      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
-      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
-      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
-      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
-      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
-        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
-        <g stroke="var(--o-line)">
-          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
-          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
-          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
-          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
-        </g>
-        <g stroke="var(--o-edge)" stroke-linejoin="miter">
-          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
-          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
-          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
-        </g>
-      </g>
-    </svg>
-  </div>
-</section>
-
-<!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
-<section class="sec sec--under" id="programma">
-  <div class="wrap">
-    <div class="head rv">
-      <p class="eyebrow">Программа</p>
-      <h2 class="title">Путь обучения</h2>
-      <p class="head__sub">Шесть шагов — от «почему пространство вообще на меня влияет» до собственного гармонизированного дома.</p>
-    </div>
-
-    <div class="steps">
-      <div class="step"><div><h3>Увидеть</h3><p class="muted">Понять, почему пространство на нас влияет, как работают энергии и почему всё это взаимосвязано в единую систему.</p></div></div>
-      <div class="step"><div><h3>Построить</h3><p class="muted">Технически создать Васту-карту — самостоятельно, для своего реального объекта.</p></div></div>
-      <div class="step"><div><h3>Прочитать</h3><p class="muted">Понять баланс, перекосы и причины жизненных ситуаций.</p></div></div>
-      <div class="step"><div><h3>Скорректировать</h3><p class="muted">Освоить алгоритм и огромный диапазон мелких, доступных методов коррекции.</p></div></div>
-      <div class="step"><div><h3>Создать Васту-дизайн</h3><p class="muted">Это доступно не только профессиональным дизайнерам. Любой человек научится переводить принципы Васту в цвет, формы и композицию.</p></div></div>
-      <div class="step"><div><h3>Применять</h3><p class="muted">Практика на собственной Васту-карте своего пространства.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
-<section class="sec sec--tight">
-  <div class="wrap">
-    <div class="split split--top">
-      <div>
-        <div class="rv"><h2 class="title">Как проходит обучение <em>и практика</em></h2></div>
-        <p class="muted">Мы не делаем сухие «практические работы» — вы выполняете понятные домашние задания и гармонизируете свою собственную квартиру прямо в процессе курса.</p>
-        <ul class="list list--check mt-m">
-          <li><b>Длительность — 2,5 месяца.</b></li>
-          <li><b>Доступ к материалам — от 6 до 12 месяцев.</b></li>
-          <li>Уроки и <b>еженедельные прямые эфиры</b>.</li>
-          <li>Много практики на собственном пространстве.</li>
-          <li><b>Разборы квартир участников</b> — сквозной формат всего курса.</li>
-          <li>Для тарифа «Практик» — параллельная работа над дипломным проектом.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="ph ph--4x3"><span class="ph__ico">▶</span><span class="ph__label">Скриншот платформы / кадр с прямого эфира</span><span class="ph__spec">2400×1800</span></div>
-        <div class="grid g2 mt-m">
-          <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Урок</span><span class="ph__spec">1200×1200</span></div>
-          <div class="ph ph--1x1"><span class="ph__ico">▦</span><span class="ph__label">Разбор квартиры</span><span class="ph__spec">1200×1200</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
-<section class="sec">
-  <div class="wrap">
-    <div class="head head--c rv">
-      <h2 class="title">С чем вы выйдете</h2>
-      <p class="head__sub">Не только знания — конкретный результат работы.</p>
-    </div>
-
-    <div class="mosaic mosaic--3">
-      <article class="card"><h3>Своя Васту-карта</h3><p class="muted">Собственная построенная и продиагностированная карта вашего пространства.</p></article>
-      <article class="card"><h3>Навык анализа</h3><p class="muted">Практический навык анализа любого помещения — своего и чужого.</p></article>
-      <article class="card"><h3>Гармонизированный дом</h3><p class="muted">Собранное дизайн-решение и гармонизированное собственное пространство уже в процессе обучения.</p></article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ БЛОК 15. ТАРИФЫ ============ -->
-<section class="sec sec--dark sec--sink" id="tarify">
-  <div class="wrap">
-    <div class="head head--c rv">
-      <p class="eyebrow eyebrow--c">Участие</p>
-      <h2 class="title title--xl">Тарифы</h2>
-      <p class="head__sub">Оба тарифа дают полную систему. Разница — в том, останется Васту вашим личным инструментом или станет профессией.</p>
-    </div>
-
-    <div class="center" style="margin-bottom:clamp(30px,3.6vw,50px)">
-      <div class="timer" id="timerTariffs">
-        <span class="timer__lbl">До конца ранней цены</span>
-        <span class="timer__grid">
-          <span class="timer__u"><b class="timer__n" data-t="d">00</b><span class="timer__c" data-t="dl">дней</span></span>
-          <span class="timer__u"><b class="timer__n" data-t="h">00</b><span class="timer__c" data-t="hl">часов</span></span>
-        </span>
-      </div>
-    </div>
-
-    <div class="tariffs">
-      <article class="tariff">
-        <p class="tariff__name">Основной</p>
-        <h3 class="tariff__tag">Освоить Васту-дизайн</h3>
-        <p class="tariff__desc">Идеален для себя и для внедрения в текущую профессию. Вы опробуете всю систему на себе и гармонизируете свой дом.</p>
-        <ul class="tariff__feats">
-          <li>Все материалы курса</li>
-          <li>Еженедельные прямые эфиры</li>
-          <li>Проверка домашних заданий</li>
-          <li>Чат группы</li>
-          <li>Разборы квартир участников</li>
-          <li>Доступ к материалам — <b>от 6 до 12 месяцев</b></li>
-        </ul>
-        <div class="tariff__price">
-          <div class="tariff__now">55 000 ₽ <s>75 000 ₽</s></div>
-        </div>
-        <button class="btn btn--ghost-d btn--wide js-book" data-tariff="base">Забронировать место</button>
-          <p class="tiny muted" style="margin-top:12px">Бронирование ни к чему не обязывает.</p>
-      </article>
-
-      <article class="tariff tariff--pro">
-        <span class="tariff__flag">Только 15 мест</span>
-        <p class="tariff__name">Практик</p>
-        <h3 class="tariff__tag">Превратить навык в профессиональную практику</h3>
-        <p class="tariff__lede">Личный разбор вашего проекта с Анной.</p>
-        <p class="tariff__desc">Всё из основного тарифа плюс профессиональный контур: бизнес-блок и дипломная работа с защитой.</p>
-        <ul class="tariff__feats">
-          <li>Всё из тарифа «Основной»</li>
-          <li class="is-plus"><b>Бизнес-блок:</b> работа с заказчиком, ценообразование, замеры</li>
-                    <li class="is-plus">Параллельная работа над <b>дипломным проектом</b> и защита</li>
-        </ul>
-        <div class="tariff__price">
-          <div class="tariff__now">155 000 ₽ <s>175 000 ₽</s></div>
-        </div>
-        <button class="btn btn--dark btn--wide js-book" data-tariff="pro">Забронировать одно из 15 мест</button>
-          <p class="tiny muted" style="margin-top:12px">Бронирование ни к чему не обязывает.</p>
-      </article>
-    </div>
-
-    <div class="cmp-scroll">
-      <table class="cmp">
-        <thead><tr><th>Что входит</th><th style="text-align:center">Основной</th><th style="text-align:center">Практик</th></tr></thead>
-        <tbody>
-          <tr><th>Все уроки курса</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Еженедельные прямые эфиры</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Проверка домашних заданий</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Чат группы</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Разборы квартир участников</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Практика на собственном пространстве</th><td data-col="Основной" class="yes">✦</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Бизнес-блок: заказчик, цены, замеры</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Личный разбор проекта с Анной</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Дипломный проект и защита</th><td data-col="Основной" class="no">—</td><td data-col="Практик" class="yes">✦</td></tr>
-          <tr><th>Доступ к материалам</th><td data-col="Основной">от 6 до 12 месяцев</td><td data-col="Практик">от 6 до 12 месяцев</td></tr>
-          <tr><th>Количество мест</th><td data-col="Основной">не ограничено</td><td data-col="Практик">15</td></tr>
-          <tr><th>Ранняя стоимость</th><td data-col="Основной"><b class="gold price-inline">55 000 ₽</b></td><td data-col="Практик"><b class="gold price-inline">155 000 ₽</b></td></tr>
-          <tr><th>Стоимость после <span data-c="deadlineShort">22 сентября</span></th><td data-col="Основной">75 000 ₽</td><td data-col="Практик">175 000 ₽</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
-<section class="sec" id="stupen">
-  <div class="wrap wrap--mid">
-    <div class="split split--60">
-      <div>
-        <h2 class="title">Следующая <em>ступень</em></h2>
-        <p class="lead">Курс «Васту-дизайн» — первая ступень целостной системы обучения.</p>
-        <p class="muted">Он работает с существующим пространством: от готового интерьера до стадии перепланировки. После того как вы научитесь диагностировать и гармонизировать то, что уже построено, можно продолжить обучение на углублённой ступени — проектирование дома и участка с нуля, расширенная диагностика, сакральная геометрия и другие профессиональные уровни.</p>
-              </div>
-      <div>
-        <div class="media-rv ph ph--4x3"><span class="ph__ico">△</span><span class="ph__label">Дом и участок — проектирование с нуля</span><span class="ph__spec">2400×1800</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -2186,6 +1979,13 @@ hr.hair.is-in{transform:scaleX(1)}
       <button class="btn btn--ghost-l mt-m" data-close>Закрыть</button>
     </div>
   </div>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Слайд разбора">
+  <button class="lb__x" type="button" data-lb-close aria-label="Закрыть">✕</button>
+  <button class="lb__nav lb__nav--p" type="button" data-lb-prev aria-label="Предыдущий слайд">←</button>
+  <img alt="">
+  <button class="lb__nav lb__nav--n" type="button" data-lb-next aria-label="Следующий слайд">→</button>
 </div>
 
 <script>
@@ -2516,6 +2316,64 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
   addEventListener('resize', sync, { passive: true });
   sync();
 });
+
+/* ---------- Лайтбокс для кадров разбора ----------
+   Слайды Анны несут текст внутри картинки, и на карточке он мелкий.
+   Тап открывает кадр во весь экран; стрелки листают внутри того же разбора. */
+(() => {
+  const lb = document.getElementById('lb');
+  if (!lb) return;
+  const img  = lb.querySelector('img');
+  const prev = lb.querySelector('[data-lb-prev]');
+  const next = lb.querySelector('[data-lb-next]');
+  let group = [], idx = 0, opener = null;
+
+  const show = i => {
+    idx = Math.max(0, Math.min(group.length - 1, i));
+    img.src = group[idx].src;
+    img.alt = group[idx].alt;
+    prev.disabled = idx === 0;
+    next.disabled = idx === group.length - 1;
+  };
+  const open = (shots, i, from) => {
+    group = shots; opener = from;
+    lb.classList.add('is-on');
+    document.body.style.overflow = 'hidden';
+    show(i);
+    lb.querySelector('[data-lb-close]').focus();
+  };
+  const close = () => {
+    lb.classList.remove('is-on');
+    document.body.style.overflow = '';
+    img.removeAttribute('src');
+    opener && opener.focus();
+  };
+
+  document.querySelectorAll('.crsl__slide--shot').forEach(sl => {
+    const track = sl.parentElement;
+    sl.tabIndex = 0;
+    sl.setAttribute('role', 'button');
+    const fire = () => {
+      const shots = [...track.querySelectorAll('.crsl__slide--shot img')];
+      open(shots, shots.indexOf(sl.querySelector('img')), sl);
+    };
+    sl.addEventListener('click', fire);
+    sl.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fire(); }
+    });
+  });
+
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  lb.querySelector('[data-lb-close]').addEventListener('click', close);
+  prev.addEventListener('click', () => show(idx - 1));
+  next.addEventListener('click', () => show(idx + 1));
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('is-on')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+})();
 
 /* ---------- Модалка бронирования ---------- */
 (() => {
