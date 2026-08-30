@@ -76,7 +76,7 @@
   --burgundy-line:#5E3A3D;
   --gold:#CABC90;
   --gold-deep:#A08D5C;
-  --gold-ink:#8A7645;
+  --gold-ink:#77663C;
   --cream:#F4F2ED;
   --cream-2:#EBE7DE;
   --cream-3:#E1DBCF;
@@ -268,8 +268,6 @@ p:last-child{margin-bottom:0}
 .layers__tab:hover{color:var(--on-dark)}
 .nav__links a:hover{color:var(--gold)}
 .foot a:hover{color:var(--gold)}
-.modal__x:hover{color:var(--burgundy)}
-.media-tag:hover::after,.media-tag:focus-visible::after{opacity:1;transform:none}
 }
 .btn--gold{background:var(--gold);color:var(--burgundy);border-color:var(--gold)}
 .btn--ghost-d{background:transparent;color:var(--gold);border-color:rgba(202,188,144,.55)}
@@ -305,7 +303,7 @@ p:last-child{margin-bottom:0}
 .ph__label{position:relative;font-size:11px;font-weight:600;letter-spacing:.19em;
   text-transform:uppercase;color:var(--gold);max-width:90%}
 .sec--dark .ph__label,.sec--deep .ph__label,.ph--dark .ph__label{color:var(--gold)}
-.ph__spec{position:relative;font-size:11px;letter-spacing:.08em;color:rgba(202,188,144,.62)}
+.ph__spec{position:relative;font-size:11px;letter-spacing:.08em;color:rgba(202,188,144,.74)}
 .sec--dark .ph__spec,.sec--deep .ph__spec,.ph--dark .ph__spec{color:var(--on-dark-faint)}
 .ph--16x9{aspect-ratio:16/9}
 .ph--4x3{aspect-ratio:4/3}
@@ -332,6 +330,13 @@ p:last-child{margin-bottom:0}
   background:rgba(66,35,38,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   padding-top:11px;padding-bottom:11px;border-bottom-color:rgba(202,188,144,.16);
 }
+/* До прокрутки шапка лежит прямо на кадре. На постере под ней светлая арка,
+   и золотая половина логотипа держала 2,4:1. Подложка снимается, как только
+   шапка становится сплошной. */
+.nav::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(var(--scrim-ink),.62) 0%,rgba(var(--scrim-ink),.34) 62%,rgba(var(--scrim-ink),0) 100%);
+  transition:opacity .4s var(--ease)}
+.nav.is-solid::before{opacity:0}
 .nav__brand{
   font-family:var(--serif);font-size:17px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--cream);text-decoration:none;white-space:nowrap;flex:0 0 auto;font-weight:400;
@@ -399,7 +404,9 @@ p:last-child{margin-bottom:0}
     max-height:min(78svh,720px);
     border:1px solid rgba(202,188,144,.28);
   }
-  .hero__scrim{display:none}
+  /* Скрим героя нужен только там, где текст лежит на кадре. На финальном
+     экране он лежит на кадре всегда — его скрим не выключаем. */
+  .hero__scrim:not(.hero__scrim--end){display:none}
   .hero__inner{padding-right:clamp(320px,27vw,460px)}
   .hero__sub{max-width:44ch}
 }
@@ -409,12 +416,10 @@ p:last-child{margin-bottom:0}
 .hero__video--long{z-index:1}
 .hero__video.is-playing{opacity:1}
 @media(prefers-reduced-motion:reduce){.hero__video{display:none}}
-/* фон-«пол»: он же состояние ожидания, он же экран загрузки, он же фолбэк постера */
-.hero__media,.hero__media.is-awaiting{background:
+/* фон-«пол»: он же экран загрузки, он же фолбэк постера */
+.hero__media{background:
   radial-gradient(120% 80% at 50% 8%,rgba(84,49,47,.85) 0%,rgba(46,22,25,0) 62%),
   linear-gradient(150deg,#2E1619 0%,#54312F 48%,#2E1619 100%)}
-.hero__media.is-awaiting::after{content:'';position:absolute;inset:0;
-  background:radial-gradient(115% 90% at 50% 45%,rgba(0,0,0,0) 42%,rgba(0,0,0,.42) 100%)}
 @media(max-width:700px){.hero{padding-top:96px}}
 @media(max-width:700px) and (max-height:700px){.hero{padding-top:80px}}
 
@@ -422,47 +427,35 @@ p:last-child{margin-bottom:0}
 /* Затемнение направленное: держим текст читаемым, но кадр остаётся видно.
    Плотное только там, где реально лежит текст — слева внизу. */
 /* Затемнение нужно только там, где текст лежит ПОВЕРХ кадра — то есть до 900px.
-   Стопы посчитаны по реальным границам текста, округлять их нельзя. */
+   Стопы посчитаны по реальным границам текста. Провал до .34 у
+   8 % был рассчитан на тёмный кадр: на постере там светлая арка,
+   и «ANNA ROMEO» с надзаголовком падали до 2,4:1 и 3,8:1. */
 .hero__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
   linear-gradient(to bottom,
-    rgba(var(--scrim-ink),.52) 0%,
-    rgba(var(--scrim-ink),.34) 8%,
-    rgba(var(--scrim-ink),.54) 20%,
+    rgba(var(--scrim-ink),.66) 0%,
+    rgba(var(--scrim-ink),.56) 8%,
+    rgba(var(--scrim-ink),.64) 20%,
     rgba(var(--scrim-ink),.72) 40%,
     rgba(var(--scrim-ink),.82) 58%,
     rgba(var(--scrim-ink),.86) 100%)}
 .hero__scrim--end{background:
   linear-gradient(180deg,rgba(var(--scrim-ink),.30) 0%,rgba(var(--scrim-ink),.20) 22%,rgba(var(--scrim-ink),.20) 78%,rgba(var(--scrim-ink),.44) 100%),
   radial-gradient(78% 62% at 50% 46%,rgba(var(--scrim-ink),.74) 0%,rgba(var(--scrim-ink),.52) 55%,rgba(var(--scrim-ink),.10) 100%)}
-
-/* плашка «здесь будет видео» — вне текстовой зоны, спецификация в подсказке */
-.media-tag{position:absolute;z-index:2;top:calc(var(--nav-h) + 6px);right:var(--pad);
-  display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 10px;
-  font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;line-height:1;color:var(--gold);white-space:nowrap;
-  background:rgba(30,12,14,.55);border:1px solid rgba(202,188,144,.28);border-radius:2px;
-  backdrop-filter:blur(6px)}
-.media-tag--hero{top:auto;bottom:calc(var(--sp-6) + 6px)}
-.media-tag--hero::after{top:auto;bottom:calc(100% + 6px)}
-.media-tag--end{top:auto;bottom:18px}
-.media-tag__dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:0 0 auto;
-  box-shadow:0 0 0 3px rgba(202,188,144,.16)}
-.media-tag::after{content:attr(data-spec);position:absolute;top:calc(100% + 6px);right:0;
-  width:max-content;max-width:min(330px,62vw);padding:7px 10px;text-align:right;
-  white-space:normal;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:none;
-  line-height:1.5;color:rgba(240,235,226,.74);background:rgba(30,12,14,.78);
-  border:1px solid rgba(202,188,144,.18);opacity:0;transform:translateY(-3px);
-  pointer-events:none;transition:opacity .3s var(--e-ui),transform .3s var(--e-ui)}
-.media-tag--end::after{top:auto;bottom:calc(100% + 6px)}
-@media(max-width:700px){
-  .media-tag{font-size:9px;letter-spacing:.13em;padding:6px 10px 6px 8px;gap:6px}
-  /* на телефоне плашка сжимается до точки-маркера: подпись всё равно скрыта,
-     а Анна смотрит макет на десктопе, где она разворачивается полностью */
-  .media-tag--hero{top:calc(var(--nav-h) + 6px);bottom:auto;
-    font-size:0;letter-spacing:0;padding:7px;gap:0}
-  .hero__name{max-width:72%}
-  .media-tag::after{display:none}
+/* Финальный экран держит кадр сам. Через .hero__media его вести нельзя:
+   с 901px там срабатывает правило героя, которое превращает медиа
+   в вертикальную карточку у правого края — она наезжала на текст. */
+.endshot{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--burgundy-deep)}
+/* На телефоне в кадр попадает тёмная верхняя часть комнаты и текст читается.
+   Шире 700px видно светлые шторы целиком — там затемнение нужно сильнее,
+   иначе мелкая строка про оплату проваливается до 2:1. */
+@media(min-width:700px){
+  .hero__scrim--end{background:
+    linear-gradient(180deg,rgba(var(--scrim-ink),.52) 0%,rgba(var(--scrim-ink),.46) 30%,rgba(var(--scrim-ink),.50) 70%,rgba(var(--scrim-ink),.70) 100%),
+    radial-gradient(92% 76% at 50% 48%,rgba(var(--scrim-ink),.36) 0%,rgba(var(--scrim-ink),.24) 62%,rgba(var(--scrim-ink),.08) 100%)}
 }
+.endshot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
+.end__inner{position:relative;z-index:2}
+
 .hero__inner{position:relative;z-index:3;width:100%;max-width:var(--maxw);margin:0 auto;color:var(--on-dark)}
 .hero__name{
   font-family:var(--serif);font-weight:300;letter-spacing:.14em;text-transform:uppercase;
@@ -484,7 +477,7 @@ p:last-child{margin-bottom:0}
 .hero__fact dt{font-size:10.5px;font-weight:600;letter-spacing:.21em;text-transform:uppercase;
   color:rgba(202,188,144,.85);margin:0 0 7px}
 .hero__fact dd{margin:0;font-family:var(--serif);font-size:clamp(20px,2.6vw,32px);line-height:1.15;color:var(--cream)}
-.hero__fact dd s{color:rgba(240,235,226,.42);font-size:.66em;margin-left:9px;text-decoration-thickness:1px}
+.hero__fact dd s{color:rgba(240,235,226,.54);font-size:.66em;margin-left:9px;text-decoration-thickness:1px}
 @media(max-width:640px){
   /* Три факта в строку — иначе цена и кнопка уезжают за первый экран телефона */
   .hero__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
@@ -548,7 +541,7 @@ p:last-child{margin-bottom:0}
 }
 .sticky__price{flex:1 1 auto;min-width:0}
 .sticky__p1{font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--gold);white-space:nowrap}
-.sticky__p1 s{color:rgba(240,235,226,.4);font-size:.62em;margin-left:7px;text-decoration-thickness:1px}
+.sticky__p1 s{color:rgba(240,235,226,.54);font-size:.62em;margin-left:7px;text-decoration-thickness:1px}
 .sticky__p2{font-size:10.5px;letter-spacing:.09em;color:rgba(240,235,226,.62)}
 .sticky .btn{flex:0 0 auto;padding:15px 20px;font-size:11px;letter-spacing:.13em}
 @media(max-width:1000px){.sticky{display:flex}
@@ -795,8 +788,8 @@ p:last-child{margin-bottom:0}
 .tariff--pro .tariff__feats li::before{border-color:var(--burgundy)}
 .tariff--pro .tariff__feats li.is-plus::before{background:var(--burgundy)}
 .tariff--pro .tariff__flag{background:var(--burgundy);color:var(--gold)}
-.tariff--pro .tariff__now s{color:rgba(66,35,38,.5)}
-.tariff--pro .tiny{color:rgba(66,35,38,.7)!important}
+.tariff--pro .tariff__now s{color:rgba(66,35,38,.78)}
+.tariff--pro .tiny{color:rgba(66,35,38,.8)!important}
 .tariff__flag{
   position:absolute;top:0;right:clamp(20px,3vw,40px);transform:translateY(-50%);
   background:var(--gold);color:var(--burgundy);font-size:10px;font-weight:700;
@@ -820,7 +813,7 @@ p:last-child{margin-bottom:0}
 .tariff__price{margin-top:auto;padding-top:24px;border-top:1px solid rgba(202,188,144,.2)}
 .tariff__now{font-family:var(--serif);font-size:var(--t-price);line-height:1;color:var(--gold);
   display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.tariff__now s{font-size:.44em;color:rgba(240,235,226,.4);text-decoration-thickness:1px}
+.tariff__now s{font-size:.44em;color:rgba(240,235,226,.56);text-decoration-thickness:1px}
 .price-inline{font-family:var(--serif);font-size:1.55em;font-weight:500;line-height:1;white-space:nowrap}
 .tariff__inst{font-size:13.5px;color:var(--on-dark-soft);margin:12px 0 0}
 .tariff__inst b{color:var(--cream);font-weight:600}
@@ -842,7 +835,7 @@ p:last-child{margin-bottom:0}
 .cmp tbody th{font-weight:400;color:var(--on-dark-soft);width:44%}
 .cmp td{text-align:center;width:28%;color:var(--on-dark)}
 .cmp .yes{color:var(--gold);font-size:17px;line-height:1}
-.cmp .no{color:rgba(240,235,226,.45);font-size:17px;line-height:1}
+.cmp .no{color:rgba(240,235,226,.56);font-size:17px;line-height:1}
 .cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 @media(max-width:720px){
   /* На телефоне таблица прятала всю колонку «Наставничество» без единого намёка на прокрутку */
@@ -990,9 +983,11 @@ p:last-child{margin-bottom:0}
 .crsl__dot.is-on{opacity:1;width:18px}
 .sec--dark .crsl__dot,.sec--deep .crsl__dot{background:var(--gold)}
 /* Больше двенадцати кадров — точки превращаются в рябь, вместо них счётчик. */
-.crsl__count{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gold);
+.crsl__count{font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gold-ink);
   font-variant-numeric:tabular-nums}
-.crsl__count b{font-weight:600;color:var(--on-dark)}
+.crsl__count b{font-weight:600;color:var(--burgundy)}
+.sec--dark .crsl__count,.sec--deep .crsl__count{color:var(--gold)}
+.sec--dark .crsl__count b,.sec--deep .crsl__count b{color:var(--on-dark)}
 .crsl__arrows{display:none;gap:8px}
 .crsl__ar{width:40px;height:40px;border-radius:999px;cursor:pointer;
   background:transparent;border:1px solid currentColor;color:var(--gold);
@@ -1068,53 +1063,6 @@ p:last-child{margin-bottom:0}
   border-bottom:1px dashed var(--gold-deep)}
 
 /* ============================================================
-   ФОРМА / МОДАЛКА
-   ============================================================ */
-.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.is-on{display:flex}
-.modal__bg{position:absolute;inset:0;background:rgba(30,12,14,.82);backdrop-filter:blur(6px);animation:fade .3s var(--ease)}
-.modal__box{position:relative;background:var(--cream);border-radius:var(--r-lg);width:min(560px,100%);
-  max-height:92svh;overflow:auto;padding:clamp(28px,4vw,48px) clamp(28px,4vw,48px) 0;
-  display:flex;flex-direction:column;animation:pop .4s var(--ease)}
-#bookForm{display:flex;flex-direction:column;min-height:0}
-/* Кнопка отправки была на 375 px ниже собственного сгиба */
-.modal__foot{position:sticky;bottom:0;background:var(--cream);margin-top:auto;
-  padding:16px 0 calc(20px + env(safe-area-inset-bottom));
-  box-shadow:0 -12px 20px -12px rgba(66,35,38,.25)}
-.formfail{display:none;margin:12px 0 0;font-size:13px;line-height:1.5;color:#8E2F2F}
-.formfail.is-on{display:block}
-.formfail a{color:var(--gold-ink);font-weight:600}
-@media(max-width:560px){
-  .modal{padding:0;align-items:flex-end}
-  .modal__box{width:100%;max-height:94svh;border-radius:0}
-}
-@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
-.modal__x{position:absolute;top:8px;right:8px;background:none;border:0;font-size:26px;line-height:1;
-  color:var(--ink-soft);width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-  transition:color .3s;z-index:2}
-.field{display:grid;gap:7px;margin-bottom:16px}
-.field label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink)}
-.field input,.field textarea,.field select{
-  font:inherit;font-size:16px;padding:14px 16px;border:1px solid var(--cream-3);background:#fff;
-  border-radius:var(--r);color:var(--ink);transition:border-color .3s var(--ease);width:100%
-}
-.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--gold-deep)}
-.radios{display:grid;gap:10px;margin-bottom:20px}
-.radio{display:flex;gap:12px;align-items:flex-start;padding:var(--sp-3) var(--sp-4);border:1px solid var(--cream-3);
-  border-radius:var(--r);cursor:pointer;background:#fff;transition:border-color .3s var(--ease)}
-.radio:has(input:checked){border-color:var(--gold-deep);background:#FCFBF8}
-.radio input{margin:4px 0 0;accent-color:var(--burgundy);flex:0 0 auto}
-.radio span{font-size:15px;line-height:1.45}
-.radio b{display:block;font-weight:600;color:var(--burgundy)}
-.radio i{font-style:normal;font-size:13px;color:var(--ink-soft)}
-.consent{display:flex;gap:11px;align-items:center;font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-bottom:18px;padding:8px 0}
-.consent input{margin:0;accent-color:var(--burgundy);flex:0 0 auto;width:22px;height:22px}
-.consent a{color:var(--gold-ink)}
-.ok{display:none;text-align:center;padding:14px 0}
-.ok.is-on{display:block}
-.ok__m{font-family:var(--serif);font-size:30px;color:var(--burgundy);margin:0 0 12px}
-
-/* ============================================================
    ПОДВАЛ
    ============================================================ */
 .foot{background:var(--burgundy-deep);color:var(--on-dark-soft);padding:clamp(50px,6vw,84px) var(--pad) 40px;font-size:13.5px}
@@ -1131,7 +1079,7 @@ p:last-child{margin-bottom:0}
   .foot__legal a{display:inline-block;padding:12px 0}
 }
 .foot__legal{padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
-  font-size:12px;color:rgba(240,235,226,.45);line-height:1.6}
+  font-size:12px;color:rgba(240,235,226,.55);line-height:1.6}
 
 
 /* ============================================================
@@ -1233,8 +1181,6 @@ hr.hair.is-in{transform:scaleX(1)}
   .media-rv>img,.media-rv>video{transform:none!important;opacity:1!important;transition:none!important}
   .eyebrow::after,.eyebrow::before,hr.hair,.chain::before{transform:scaleX(1)!important;transition:none!important}
   .layers__panel{animation:none}
-  .modal__box,.modal__bg{animation:none}
-  .media-tag__dot{box-shadow:none}
 }
 .nowrap{white-space:nowrap}
 .gold{color:var(--burgundy);font-weight:600}
@@ -2143,12 +2089,12 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 19. ФИНАЛЬНЫЙ ЭКРАН ============ -->
 <section class="sec sec--deep" style="padding:0 var(--pad) clamp(46px,6vw,64px);position:relative;min-height:clamp(520px,72vh,760px);display:flex;align-items:center;isolation:isolate">
-  <div class="hero__media is-awaiting" aria-hidden="true"></div>
+  <div class="endshot" aria-hidden="true">
+    <img src="assets/portfolio/carved-living.jpg" alt="" loading="lazy" decoding="async"
+         width="1280" height="1109">
+  </div>
   <div class="hero__scrim hero__scrim--end" aria-hidden="true"></div>
-  <span class="media-tag media-tag--end" tabindex="0"
-        data-spec="MP4 1920×1080 в петле · или JPG 3200×1800">
-    <i class="media-tag__dot" aria-hidden="true"></i>Здесь будет видео или фото</span>
-  <div class="wrap wrap--narrow center" style="padding:clamp(56px,7vw,100px) 0">
+  <div class="wrap wrap--narrow center end__inner" style="padding:clamp(56px,7vw,100px) 0">
     <h2 class="title" style="color:var(--cream)">Дом — это не просто место,<br>в котором проходит жизнь.</h2>
     <p class="lead" style="color:rgba(240,235,226,.85);max-width:640px;margin:0 auto 8px">Это пространство, которое можно научиться видеть, понимать и создавать осознанно.</p>
 
@@ -2159,7 +2105,7 @@ hr.hair.is-in{transform:scaleX(1)}
     <div class="btn-row btn-row--c">
       <button class="btn btn--gold js-book">Занять место</button>
     </div>
-    <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.55)">Оплата на защищённой странице lava.top.</p>
+    <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.84)">Оплата на защищённой странице lava.top.</p>
   </div>
 </section>
 
@@ -2202,57 +2148,6 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </footer>
 
-<!-- ============================ МОДАЛКА ============================ -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal__bg" data-close></div>
-  <div class="modal__box">
-    <button class="modal__x" data-close aria-label="Закрыть">×</button>
-
-    <form id="bookForm" novalidate>
-      <p class="eyebrow" style="margin-bottom:14px">Бронирование места</p>
-      <h3 id="modalTitle" style="font-size:clamp(24px,3vw,32px);margin-bottom:10px">Ранняя цена до <span data-c="deadlineShort">22 сентября</span></h3>
-      <p class="small muted" style="margin-bottom:26px">Оставьте контакты — мы свяжемся, ответим на вопросы и поможем выбрать тариф. Бронь ни к чему не обязывает.</p>
-
-      <div class="radios">
-        <label class="radio">
-          <input type="radio" name="tariff" value="Основной — 55 000 ₽" checked>
-          <span><b>Основной — 55 000 ₽</b><i>вместо 75 000 ₽</i></span>
-        </label>
-        <label class="radio">
-          <input type="radio" name="tariff" value="Наставничество — 155 000 ₽">
-          <span><b>Наставничество — 155 000 ₽</b><i>вместо 175 000 ₽ · только 15 мест</i></span>
-        </label>
-        <label class="radio">
-          <input type="radio" name="tariff" value="Помогите выбрать">
-          <span><b>Пока не выбрала</b><i>нужна консультация по тарифам</i></span>
-        </label>
-      </div>
-
-      <div class="field"><label for="fName">Имя</label><input id="fName" name="name" type="text" required autocomplete="name" placeholder="Как к вам обращаться"></div>
-      <div class="field"><label for="fContact">Telegram или телефон</label><input id="fContact" name="contact" type="text" required autocomplete="tel" placeholder="@nickname или +7 900 000-00-00"></div>
-      <div class="field"><label for="fMail">Почта</label><input id="fMail" name="email" type="email" required autocomplete="email" placeholder="pochta@example.ru"></div>
-      <div class="field"><label for="fNote">Вопрос или комментарий <span style="text-transform:none;letter-spacing:0;font-weight:400">(необязательно)</span></label><textarea id="fNote" name="note" rows="3" placeholder="Например: у меня готовый ремонт, подойдёт ли курс?"></textarea></div>
-
-      <div class="modal__foot">
-        <label class="consent">
-          <input type="checkbox" required id="fConsent">
-          <span>Я согласна с <a href="#" data-todo="privacy">политикой обработки персональных данных</a> и <a href="#" data-todo="oferta">договором оферты</a>.</span>
-        </label>
-        <button class="btn btn--dark btn--wide" type="submit">Забронировать место</button>
-        <p class="tiny muted center" style="margin-top:12px">Мы не рассылаем спам и не передаём контакты третьим лицам.</p>
-        <p class="formfail" id="formFail">Не удалось отправить заявку.
-          <a href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Напишите нам в Telegram</a> — оформим вручную.</p>
-      </div>
-    </form>
-
-    <div class="ok" id="okState">
-      <p class="ok__m">Заявка отправлена</p>
-      <p class="muted small">Спасибо! Мы свяжемся с вами в ближайшее время и пришлём детали по оплате и старту потока.</p>
-      <button class="btn btn--ghost-l mt-m" data-close>Закрыть</button>
-    </div>
-  </div>
-</div>
-
 <button class="totop" id="totop" type="button" aria-label="Наверх">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2278,7 +2173,6 @@ const CFG = {
   // «дата уточняется» и отсчёт спрячется.
   startDate:      '2026-11-09',                  // старт потока — 9 ноября
   earlyDeadline:  '2026-09-10T23:59:59+03:00',   // ранняя цена — до 10 сентября
-  formEndpoint:   '',                            // URL приёма заявок (см. README §4)
 
   // Оплата. Кнопка тарифа ведёт прямо сюда — промежуточного бронирования нет.
   // Соответствие подтверждено: 34229951… — «Наставничество» (VIP), ed760ac8… — «Основной».
@@ -2721,74 +2615,6 @@ document.addEventListener('click', e => {
     if (e.key === 'Escape')     close();
     if (e.key === 'ArrowLeft')  show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
-  });
-})();
-
-/* ---------- Модалка бронирования ---------- */
-(() => {
-  const modal = document.getElementById('modal');
-  const form  = document.getElementById('bookForm');
-  const ok    = document.getElementById('okState');
-  const fail  = document.getElementById('formFail');
-  let lastFocus = null;
-
-  const open = (tariff) => {
-    lastFocus = document.activeElement;
-    if (tariff) {
-      const i = tariff === 'pro' ? 1 : 0;
-      form.querySelectorAll('input[name="tariff"]')[i].checked = true;
-    }
-    modal.classList.add('is-on');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('fName').focus(), 60);
-  };
-  const close = () => {
-    modal.classList.remove('is-on');
-    document.body.style.overflow = '';
-    form.style.display = '';
-    ok.classList.remove('is-on');
-    lastFocus?.focus();
-  };
-
-  document.addEventListener('click', e => {
-    if (e.target.closest('[data-close]')) { e.preventDefault(); close(); }
-  });
-  addEventListener('keydown', e => {
-    if (!modal.classList.contains('is-on')) return;
-    if (e.key === 'Escape') { close(); return; }
-    if (e.key !== 'Tab') return;
-    const f = [...modal.querySelectorAll('a[href],button,input,textarea,select')]
-      .filter(el => !el.disabled && el.offsetParent !== null);
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!form.reportValidity()) return;
-    const data = Object.fromEntries(new FormData(form));
-    data.page = location.href;
-    const btn = form.querySelector('[type="submit"]');
-    fail.classList.remove('is-on');
-    btn.disabled = true; btn.textContent = 'Отправляем…';
-    try {
-      // Экран успеха показываем ТОЛЬКО после реального ответа сервера.
-      if (!CFG.formEndpoint) throw new Error('formEndpoint не задан');
-      const res = await fetch(CFG.formEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      form.style.display = 'none';
-      ok.classList.add('is-on');
-    } catch (err) {
-      console.error('Заявка не отправлена:', err, data);
-      btn.disabled = false; btn.textContent = 'Забронировать место';
-      fail.classList.add('is-on');
-    }
   });
 })();
 </script>
