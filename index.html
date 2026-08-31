@@ -1241,8 +1241,8 @@ hr.hair.is-in{transform:scaleX(1)}
    остаётся белой коробкой (проверено A/B в Chrome). Порядок наложения
    решает поток: positioned-элементы и так рисуются поверх текста,
    а multiply сохраняет читаемость текста под объектом. */
-.orn{position:relative;height:0;pointer-events:none}
-.orn__fig{position:absolute;top:0;transform:translateY(var(--oy,-52%));width:var(--orn-w,260px);
+.orn{position:relative;height:var(--gap,0px);pointer-events:none}
+.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px);
   mix-blend-mode:multiply}
 .orn__fig img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.05)}
 .orn--photo .orn__fig img{filter:none}
@@ -1373,12 +1373,11 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--orn-w:220px;--ox:12vw" aria-hidden="true">
+<div class="orn orn--r" style="--orn-w:240px;--ox:9vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-grapes.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 3. АРХИТЕКТУРА СОСТОЯНИЙ ============ -->
 <section class="sec sec--bridged sec--tight">
-  <div class="deco" style="--dw:190px;top:calc(var(--sec-pt,var(--sp-8)) - 46px);right:36px" aria-hidden="true"><img src="assets/ornaments/orn-onion.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
@@ -1443,7 +1442,6 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 5. ДЛЯ КОГО ============ -->
 <section class="sec sec--open" id="komu">
-  <div class="deco" style="--dw:180px;top:calc(var(--sec-pt,var(--sp-8)) - 30px);right:9%" aria-hidden="true"><img src="assets/ornaments/orn-moth.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head head--c rv">
       <h2 class="title title--caps">Этот курс для вас, если…</h2>
@@ -1472,7 +1470,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l orn--noline" style="--orn-w:400px;--ox:-70px;--oy:-64%" aria-hidden="true">
+<div class="orn orn--l" style="--orn-w:330px;--ox:7vw;--oy:-62%;--gap:clamp(40px,6vw,110px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
@@ -1518,7 +1516,6 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 8. ТРИ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
 <section class="sec">
-  <div class="deco" style="--dw:240px;top:calc(var(--sec-pt,var(--sp-8)) - 58px);right:12px" aria-hidden="true"><img src="assets/ornaments/orn-pomegranate.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
@@ -1562,7 +1559,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </section>
 
 
-<div class="orn orn--r" style="--orn-w:320px;--ox:5vw;--oy:-56%" aria-hidden="true">
+<div class="orn orn--r" style="--orn-w:310px;--ox:6vw;--gap:clamp(24px,4vw,64px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-calla.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
@@ -1588,7 +1585,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l orn--photo orn--noline" style="--orn-w:300px;--ox:-60px;--oy:-48%" aria-hidden="true">
+<div class="orn orn--l orn--photo" style="--orn-w:280px;--ox:8vw;--gap:clamp(24px,4vw,60px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-rock.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
@@ -1901,7 +1898,6 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
 <section class="sec sec--under" id="programma">
-  <div class="deco" style="--dw:210px;top:calc(var(--sec-pt,var(--sp-8)) - 8px);right:12vw" aria-hidden="true"><img src="assets/ornaments/orn-fig.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Программа</p>
@@ -1920,7 +1916,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--orn-w:260px;--ox:10vw" aria-hidden="true">
+<div class="orn orn--r" style="--orn-w:250px;--ox:10vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-palm.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
@@ -1952,12 +1948,11 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r" style="--orn-w:150px;--ox:14vw" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-bud.jpg" alt="" loading="lazy" decoding="async"></div>
+<div class="orn orn--l" style="--orn-w:260px;--ox:12vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-pomegranate.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
 <section class="sec">
-  <div class="deco" style="--dw:190px;top:calc(var(--sec-pt,var(--sp-8)) - 44px);left:8%" aria-hidden="true"><img src="assets/ornaments/orn-disc.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head head--c rv">
       <h2 class="title">С чем вы выйдете</h2>
@@ -2056,7 +2051,6 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
 <section class="sec" id="stupen">
-        <div class="deco" style="--dw:280px;right:-40px;bottom:30px" aria-hidden="true"><img src="assets/ornaments/orn-petals.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="split split--60">
       <div>
@@ -2085,7 +2079,6 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 18. FAQ ============ -->
 <section class="sec sec--open" id="faq">
-  <div class="deco" style="--dw:210px;top:calc(var(--sec-pt,var(--sp-8)) + 6px);right:9vw" aria-hidden="true"><img src="assets/ornaments/orn-raven.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="head rv">
       <p class="eyebrow">Вопросы</p>
