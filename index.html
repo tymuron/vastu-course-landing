@@ -1241,6 +1241,11 @@ hr.hair.is-in{transform:scaleX(1)}
    остаётся белой коробкой (проверено A/B в Chrome). Порядок наложения
    решает поток: positioned-элементы и так рисуются поверх текста,
    а multiply сохраняет читаемость текста под объектом. */
+/* Подложка-холст. Safari не блендит mix-blend-mode с фоном самого body —
+   нужен НАРИСОВАННЫЙ слой. Фиксированный див с тем же кремовым закрывает
+   весь вьюпорт и лежит под всем контентом: бленд видит его в любом браузере. */
+.canvas{position:fixed;inset:0;background:var(--cream);z-index:-1;pointer-events:none}
+
 .orn{position:relative;height:var(--gap,0px);pointer-events:none}
 .orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px);
   mix-blend-mode:multiply}
@@ -1281,6 +1286,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </style>
 </head>
 <body>
+<div class="canvas" aria-hidden="true"></div>
 
 <!-- ============================ ШАПКА ============================ -->
 <header class="nav" id="nav">
@@ -1525,7 +1531,9 @@ hr.hair.is-in{transform:scaleX(1)}
 
     <div class="mosaic mosaic--3 mosaic--media">
       <article class="card">
-        <div class="ph ph--16x9"><span class="ph__ico">▦</span><span class="ph__label">Фото · съёмная или типовая квартира</span><span class="ph__spec">2400×1350</span></div>
+        <div class="ph--16x9 shot">
+          <img src="assets/site/scenario1-khrushchevka.jpg" alt="Съёмная или типовая квартира: кухня хрущёвки с шахматным полом и круглым столом у окна" loading="lazy" decoding="async">
+        </div>
         <div class="card__body">
           <span class="card__n">Сценарий 1</span>
           <h3>Арендная или типовая квартира</h3>
@@ -1585,7 +1593,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l orn--photo" style="--orn-w:280px;--ox:8vw;--gap:clamp(24px,4vw,60px)" aria-hidden="true">
+<div class="orn orn--l orn--photo" style="--orn-w:250px;--ox:9vw;--gap:clamp(24px,4vw,60px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-rock.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
