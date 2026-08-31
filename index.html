@@ -1221,6 +1221,36 @@ hr.hair.is-in{transform:scaleX(1)}
   .eyebrow::after,.eyebrow::before,hr.hair,.chain::before{transform:scaleX(1)!important;transition:none!important}
   .layers__panel{animation:none}
 }
+/* ============================================================
+   ГРАВЮРНЫЕ РАЗДЕЛИТЕЛИ (референс — Costar)
+   Мелкий ч/б объект наезжает на шов между блоками, вразбежку —
+   то к правому краю, то к левому. Волосяная линейка уходит от
+   объекта к краю экрана. Multiply топит светлый фон исходника
+   в кремовом — силуэт не нужно вырезать.
+   ============================================================ */
+.orn{position:relative;height:0;z-index:6;pointer-events:none}
+.orn__fig{position:absolute;top:0;transform:translateY(-52%);width:var(--orn-w,180px)}
+.orn--r .orn__fig{right:clamp(24px,7vw,120px)}
+.orn--l .orn__fig{left:clamp(24px,7vw,120px)}
+.orn__fig img{width:100%;height:auto;display:block;
+  filter:grayscale(1) contrast(1.05);mix-blend-mode:multiply;opacity:.94}
+.orn__fig::before{content:'';position:absolute;top:50%;width:clamp(24px,7vw,120px);height:1px;
+  background:color-mix(in srgb,var(--burgundy) 22%,transparent)}
+.orn--r .orn__fig::before{left:100%}
+.orn--l .orn__fig::before{right:100%}
+@media(max-width:700px){.orn__fig{width:calc(var(--orn-w,180px)*.68)}}
+
+/* Видео «Метод в действии» — говорящая голова со звуком, стартует по клику */
+.method-video{border-radius:var(--r-lg);overflow:hidden;background:var(--burgundy-deep);
+  box-shadow:0 24px 60px -30px rgba(20,8,10,.55)}
+.method-video video{display:block;width:100%;height:auto}
+.method-video__note{margin-top:14px;font-size:13.5px;color:rgba(240,235,226,.62)}
+
+/* Видео-слайд в карусели кейсов: голосовой отзыв */
+.crsl__slide--video{padding:0}
+.crsl__slide--video video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;background:var(--burgundy-deep)}
+
 .nowrap{white-space:nowrap}
 .gold{color:var(--burgundy);font-weight:600}
 .sec--dark .gold,.sec--deep .gold{color:var(--gold)}
@@ -1314,10 +1344,8 @@ hr.hair.is-in{transform:scaleX(1)}
         </div>
       </div>
       <div>
-        <div class="media-rv ph ph--3x4">
-          <span class="ph__ico">▦</span>
-          <span class="ph__label">Фото · реальная квартира до работы, обычная жизнь</span>
-          <span class="ph__spec">2400×3200, JPG</span>
+        <div class="media-rv ph--3x4 shot">
+          <img src="assets/site/before-flat.jpg" alt="Бордовая гостиная с планом квартиры, спроецированным на стену: пространство читается как карта" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1442,6 +1470,11 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
+<!-- Гравюрный разделитель: место отмечено Анной зелёным кружком -->
+<div class="orn orn--r" style="--orn-w:216px" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
+
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
 <section class="sec sec--tight sec--bridged">
   <div class="wrap">
@@ -1491,83 +1524,19 @@ hr.hair.is-in{transform:scaleX(1)}
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head rv">
-      <p class="eyebrow">Один объект — четыре слоя</p>
-      <h2 class="title title--caps">Метод в действии</h2>
-      <p class="head__sub">Разница между сухим взглядом на чертёж и глубоким анализом реальной среды — вот она. Переключайте слои.</p>
+      <p class="eyebrow">Разбор реального объекта</p>
+      <h2 class="title title--caps">Метод в действии</h2>
+      <p class="head__sub">Анна разбирает реальный объект на Васту-карте: как читается пространство и из чего складывается решение. Включите звук — всё главное здесь голосом.</p>
     </div>
 
-    <div>
-      <div class="layers__tabs" role="tablist" aria-label="Слои разбора объекта">
-        <button class="layers__tab" role="tab" aria-selected="true" aria-controls="lay-1" id="tab-1"><i>01</i>План</button>
-        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-2" id="tab-2"><i>02</i>Фото и видео</button>
-        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-3" id="tab-3"><i>03</i>Анализ</button>
-        <button class="layers__tab" role="tab" aria-selected="false" aria-controls="lay-4" id="tab-4"><i>04</i>Дизайн-решение</button>
-      </div>
-
-      <div class="layers__panel is-on" role="tabpanel" id="lay-1" aria-labelledby="tab-1">
-        <div class="layers__body">
-          <div class="ph--16x9 shot">
-          <img src="assets/diagrams/plan-contour.svg" alt="Обмерный план квартиры: контур помещения и вычисленный центр тяжести, от которого строится карта" loading="lazy" decoding="async">
-        </div>
-          <div class="layers__cap">
-            <h3>План</h3>
-            <p class="muted">Начинаем с геометрии: реальный контур, ориентация по сторонам света, границы зон. Здесь ещё не видно ничего о жизни человека — только структура.</p>
-            <dl class="layers__meta">
-              <div><dt>Что видно</dt><dd>Геометрия, ориентация</dd></div>
-              <div><dt>Чего не видно</dt><dd>Свет, вес, наполнение</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div class="layers__panel" role="tabpanel" id="lay-2" aria-labelledby="tab-2" hidden>
-        <div class="layers__body">
-          <div class="ph--16x9 shot">
-          <img src="assets/site/real-space.jpg" alt="Фотография реального пространства: то, чего не видно на плане — свет, объём и материалы" loading="lazy" decoding="async">
-        </div>
-          <div class="layers__cap">
-            <h3>Фото и видео</h3>
-            <p class="muted">Тот же объект глазами человека, который в нём живёт. Появляются свет, тени, визуальный вес, реальная мебель, накопленные вещи и настоящие сценарии дня. Диагностировать только по схеме — нельзя.</p>
-            <dl class="layers__meta">
-              <div><dt>Что добавилось</dt><dd>Свет, цвет, вес, быт</dd></div>
-              <div><dt>Что сразу заметно</dt><dd>Перегруз и пустоты</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div class="layers__panel" role="tabpanel" id="lay-3" aria-labelledby="tab-3" hidden>
-        <div class="layers__body">
-          <div class="ph--16x9 shot">
-          <img src="assets/diagrams/plan-zones.svg" alt="Карта квартиры с разметкой зон: сильные, требующие коррекции и конфликтующие" loading="lazy" decoding="async">
-        </div>
-          <div class="layers__cap">
-            <h3>Анализ</h3>
-            <p class="muted">Соединяем карту и реальность. Видим, какие зоны работают, какие заблокированы и какие конфликтуют между собой — и как именно это отражается на конкретных сферах жизни человека.</p>
-            <dl class="layers__meta">
-              <div><dt>Читаем</dt><dd>Зона ↔ сфера жизни</dd></div>
-              <div><dt>Находим</dt><dd>Причину, а не симптом</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div class="layers__panel" role="tabpanel" id="lay-4" aria-labelledby="tab-4" hidden>
-        <div class="layers__body">
-          <div class="ph--16x9 shot">
-          <img src="assets/site/design-result.jpg" alt="Собранное дизайн-решение: цвет, свет, мебель и материалы работают вместе" loading="lazy" decoding="async">
-        </div>
-          <div class="layers__cap">
-            <h3>Дизайн-решение</h3>
-            <p class="muted">Ограничения объекта известны, причины найдены — собираем решение интерьерными инструментами: цвет, свет, материалы, форма мебели, живопись, растения. Красиво и обоснованно: у каждого решения есть причина.</p>
-            <dl class="layers__meta">
-              <div><dt>Инструменты</dt><dd>Только интерьерные</dd></div>
-              <div><dt>Результат</dt><dd>Дом, работающий на вас</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
+    <div class="method-video rv">
+      <video controls playsinline preload="metadata"
+             poster="assets/media/method-poster.jpg" width="1280" height="720"
+             aria-label="Видео: Анна разбирает реальный объект по Васту-карте">
+        <source src="assets/media/method.mp4" type="video/mp4">
+      </video>
     </div>
+    <p class="method-video__note center rv">Полный разбор · 12 минут · со звуком</p>
   </div>
 </section>
 
@@ -1591,7 +1560,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </article>
       <article class="card">
         <div class="ph--16x9 shot">
-          <img src="assets/site/ready-interior.jpg" alt="Готовый дорогой интерьер: историческая столовая с лепным потолком, азулежу и цементной плиткой" loading="lazy" decoding="async">
+          <img src="assets/site/vila-kitchen-f1.jpg" alt="Ремонт уже сделан: кухня с бордовыми фасадами, латунью и мраморным фартуком" loading="lazy" decoding="async">
         </div>
         <div class="card__body">
           <span class="card__n">Сценарий 2</span>
@@ -1601,7 +1570,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </article>
       <article class="card">
         <div class="ph--16x9 shot">
-          <img src="assets/diagrams/plan-stage2.svg" alt="Планировочное решение с учётом Васту: план квартиры с наложенной картой секторов и центром тяжести" loading="lazy" decoding="async">
+          <img src="assets/site/scenario3-shell.jpg" alt="Перед началом ремонта: бетонная коробка со строительными лесами и дверным проёмом" loading="lazy" decoding="async">
         </div>
         <div class="card__body">
           <span class="card__n">Сценарий 3</span>
@@ -1615,6 +1584,11 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
   </section>
 
+
+<!-- Гравюрный разделитель -->
+<div class="orn orn--l" style="--orn-w:150px" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-calla.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
 
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
 <section class="sec sec--void">
@@ -1860,11 +1834,78 @@ hr.hair.is-in{transform:scaleX(1)}
           <article class="crsl__slide crsl__slide--shot">
             <img src="assets/cases/se-4-shoes.jpg" alt="Что показал анализ: сектор был завален старой обувью. Дальше буквально — об неё «вытирают ноги», мужчина теряет уважение." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
+          <article class="crsl__slide crsl__slide--video">
+            <video controls playsinline preload="none"
+                   poster="assets/cases/se-review-poster.jpg" width="1080" height="1350"
+                   aria-label="Голосовой отзыв клиентки: что изменилось после работы с сектором">
+              <source src="assets/cases/se-review.mp4" type="video/mp4">
+            </video>
+          </article>
           <article class="crsl__slide crsl__slide--shot">
             <img src="assets/cases/se-5-action.jpg" alt="Что сделали: очистили сектор, добавили свет, свечи и цветы — поставили красоту там, где раньше было только «надо»." loading="lazy" decoding="async" width="1200" height="1500">
           </article>
           <article class="crsl__slide crsl__slide--shot">
             <img src="assets/cases/se-6-result.jpg" alt="Результаты: муж перестал критиковать, подарил дорогой подарок, вернулась близость." loading="lazy" decoding="async" width="1200" height="1500">
+          </article>
+        </div>
+        <div class="crsl__ui">
+          <div class="crsl__dots" data-crsl-dots></div>
+          <div class="crsl__arrows">
+            <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+            <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="crsl rv" data-crsl>
+        <div class="crsl__track" role="region" aria-label="Разбор: расчистила центр дома" tabindex="0">
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-1-cover.jpg" alt="Обложка разбора: расчистила центр дома — пришло то, чего ждала 4 года. Как центр дома влияет на работу и учёбу. Ремонт в несколько заходов." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-2-request.jpg" alt="Запрос Натальи: увеличение дохода. Творчество — свой канал о вязании — должно начать приносить большой доход." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-3-before.jpg" alt="Проблемы: центр дома использовался как место хранения, тёмный тяжёлый пол и нет света — самая важная зона дома была самой заваленной. Фото «до»." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-4-map.jpg" alt="В самом центре дома — Брахмастане — стоял шкаф. Брахма — символ внутреннего потенциала, а шкаф — как страхи и сомнения, которые не решаемся отпустить." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-5-action.jpg" alt="Что сделали: расхламили центр, поменяли пол, сделали окно, повесили зеркало — в несколько заходов." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/center-6-result.jpg" alt="Результат: после первого расхламления пришло предложение по учёбе, которое она пыталась получить 4 года. Дальше — контракт на работу и предложение получить образование." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+        </div>
+        <div class="crsl__ui">
+          <div class="crsl__dots" data-crsl-dots></div>
+          <div class="crsl__arrows">
+            <button class="crsl__ar" type="button" data-crsl-prev aria-label="Назад">←</button>
+            <button class="crsl__ar" type="button" data-crsl-next aria-label="Вперёд">→</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="crsl rv" data-crsl>
+        <div class="crsl__track" role="region" aria-label="Разбор: 7 изменений по секторам" tabindex="0">
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-1-cover.jpg" alt="Обложка разбора: 7 изменений по секторам — за три дня заработала месячную норму. Без ремонта, месяц работы с домом." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-2-request.jpg" alt="Запрос: с Васту знакома несколько лет, делала коррекции, пришла за вдохновением — а получила больше." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-3-blocked.jpg" alt="Где была заблокирована энергия: северо-запад забит — детские книги полгода на подоконнике, на востоке чёрные аксессуары, юго-восток — женский сектор — не наполнен." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-4-action.jpg" alt="Что сделала: разобрала северо-запад, заменила серые полотенца на нежно-голубые, обновила уголок женственности на юго-востоке, убрала чёрные аксессуары с востока." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-5-result.jpg" alt="Результаты: новый рабочий проект, который можно масштабировать; за три дня заработала столько, сколько обычно за месяц; сын отлично сдал ОГЭ; у дочки новое хобби." loading="lazy" decoding="async" width="1080" height="1350">
+          </article>
+          <article class="crsl__slide crsl__slide--shot">
+            <img src="assets/cases/sectors-6-system.jpg" alt="Дом работает не одним сектором, а системой: освобождённый сектор начинает работать, забитый работает как заглушка. Чёрный работает так же." loading="lazy" decoding="async" width="1080" height="1350">
           </article>
         </div>
         <div class="crsl__ui">
@@ -1928,6 +1969,11 @@ hr.hair.is-in{transform:scaleX(1)}
     </div>
   </div>
 </section>
+
+<!-- Гравюрный разделитель -->
+<div class="orn orn--r" style="--orn-w:132px" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-anise.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
 
 <!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
 <section class="sec">
@@ -2331,19 +2377,20 @@ document.getElementById('year').textContent = new Date().getFullYear();
   addEventListener('resize', upd);
 })();
 
-/* ---------- Слои «Метод в действии» ---------- */
+/* ---------- Видео «Метод в действии» и голосовой отзыв ----------
+   Звук обязателен: говорящая голова и голосовое сообщение. Поэтому никакого
+   autoplay/muted — стартует по клику, с нативными контролами. Здесь только
+   вежливость: заиграло одно видео — ставим на паузу другое, свернули
+   страницу — ставим на паузу всё. */
 (() => {
-  const tabs = [...document.querySelectorAll('.layers__tab')];
-  tabs.forEach(tab => tab.addEventListener('click', () => {
-    tab.scrollIntoView({ inline: 'center', block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
-    tabs.forEach(t => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', on);
-      const p = document.getElementById(t.getAttribute('aria-controls'));
-      p.classList.toggle('is-on', on);
-      p.hidden = !on;
-    });
-  }));
+  const vids = [...document.querySelectorAll('.method-video video, .crsl__slide--video video')];
+  if (!vids.length) return;
+  vids.forEach(v => {
+    v.addEventListener('play', () => vids.forEach(o => { if (o !== v) o.pause(); }));
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) vids.forEach(v => v.pause());
+  });
 })();
 
 /* ---------- FAQ-аккордеон ---------- */
