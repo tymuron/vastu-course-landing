@@ -206,6 +206,17 @@ button{font:inherit;color:inherit;cursor:pointer}
    разбивает русский заголовок на обрывки по 6 знаков. max-width:11em держит меру. */
 /* Выброс за шкалу. Только для коротких заголовков во всю ширину:
    эмфаза — это отношение, поэтому расти может не всё. */
+/* Разделы, на которые ведёт меню, набираются капителью — правка Анны:
+   «разделы большие (программа, тарифы и т.д.) — крупными заглавными».
+   Прописные в Cormorant оптически ниже строчных, поэтому кегль поднят,
+   а межбуквенное расстояние раскрыто: иначе капитель читается мельче. */
+h2.title.title--caps{text-transform:uppercase;letter-spacing:.045em;line-height:1.12;
+  font-size:clamp(34px,6vw,84px);max-width:15em;margin-bottom:clamp(22px,2.8vw,40px)}
+.split h2.title--caps,.split--60 h2.title--caps,.split--40 h2.title--caps{font-size:clamp(30px,4.6vw,60px)}
+/* та же роль для надзаголовка, который у Анны отмечен «крупнее» */
+.eyebrow--lg{font-family:var(--serif);font-size:clamp(19px,2.2vw,30px);font-weight:500;
+  letter-spacing:.1em;color:var(--burgundy);gap:18px}
+.sec--dark .eyebrow--lg,.sec--deep .eyebrow--lg{color:var(--gold)}
 h2.title.title--xl{font-size:clamp(64px,13vw,200px);max-width:none;letter-spacing:.01em;
   text-transform:uppercase;line-height:1;margin-bottom:clamp(24px,3vw,44px)}
 h2.title{
@@ -297,7 +308,7 @@ p:last-child{margin-bottom:0}
 .sec--dark .ph,.sec--deep .ph,.card .ph{background:var(--cell-ph,var(--cream))}
 .sec--dark .ph .ph__ico,.sec--deep .ph .ph__ico,.card .ph .ph__ico,
 .sec--dark .ph .ph__label,.sec--deep .ph .ph__label,.card .ph .ph__label{color:var(--burgundy)}
-.sec--dark .ph .ph__spec,.sec--deep .ph .ph__spec,.card .ph .ph__spec{color:rgba(66,35,38,.6)}
+.sec--dark .ph .ph__spec,.sec--deep .ph .ph__spec,.card .ph .ph__spec{color:rgba(66,35,38,.7)}
 .ph__ico{position:relative;font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold)}
 .sec--dark .ph__ico,.sec--deep .ph__ico,.ph--dark .ph__ico{color:var(--gold)}
 .ph__label{position:relative;font-size:11px;font-weight:600;letter-spacing:.19em;
@@ -568,13 +579,13 @@ p:last-child{margin-bottom:0}
    исключает соседство золота и сливочного (1,69:1, тот самый «беж на беже»).
    Швы 1px бордо, зазора нет: блок читается одним полотном, а не россыпью
    плиток. Порядок задаётся только переменными. */
-.mosaic{display:grid;gap:0;border:1px solid var(--burgundy);margin-top:var(--sp-5)}
+.mosaic{display:grid;gap:0;border:1px solid var(--burgundy);border-radius:var(--r-lg);overflow:hidden;margin-top:var(--sp-5)}
 .mosaic > .card{
   --cell-bg:var(--cream); --cell-ink:var(--ink);
   --cell-h:var(--burgundy); --cell-soft:var(--ink-soft); --cell-ph:var(--burgundy);
   background:var(--cell-bg);color:var(--cell-ink);
   border:0;border-right:1px solid var(--burgundy);border-bottom:1px solid var(--burgundy);
-  border-radius:var(--r-lg);margin:0;padding:clamp(28px,3vw,46px);
+  border-radius:0;margin:0;padding:clamp(28px,3vw,46px);
   min-height:clamp(210px,22vw,290px);display:flex;flex-direction:column}
 .mosaic > .card h3,.mosaic > .card .card__n{color:var(--cell-h)}
 .mosaic > .card .muted{color:var(--cell-soft)}
@@ -589,6 +600,8 @@ p:last-child{margin-bottom:0}
 .mosaic--2,.mosaic--4{grid-template-columns:repeat(2,minmax(0,1fr))}
 .mosaic--3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:980px){.mosaic--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* три карточки с кадрами в две колонки дают сироту в нижнем ряду */
+@media(max-width:980px){.mosaic--media.mosaic--3{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:620px){
   .mosaic{grid-template-columns:minmax(0,1fr)}
   .mosaic > .card{min-height:0;padding:var(--sp-5)}
@@ -719,6 +732,32 @@ p:last-child{margin-bottom:0}
   .chain__drop{margin-top:0;min-height:0}
   .payoff{grid-template-columns:minmax(0,1fr);gap:var(--sp-4);align-items:start}
   .payoff__s{max-width:46ch}
+}
+
+/* Нумерованный перечень по референсу Анны (Western Union / New Look):
+   номер прижат вправо, под ним волосяная линейка во всю ширину, под ней
+   сама формулировка. Карточек и рамок нет — раньше .card--rule давал
+   border-top поверх скругления, и линия загибалась на концах. */
+.enum{list-style:none;counter-reset:en;margin:var(--sp-5) 0 0;padding:0}
+.enum li{counter-increment:en;padding-bottom:clamp(26px,3vw,44px)}
+.enum li::before{content:'0' counter(en);display:block;text-align:right;
+  font-family:var(--serif);font-size:15px;letter-spacing:.16em;
+  color:var(--gold-ink);margin-bottom:9px}
+.enum p{border-top:1px solid var(--burgundy);padding-top:clamp(16px,1.8vw,24px);
+  margin:0;font-family:var(--serif);font-weight:500;line-height:1.24;
+  font-size:clamp(21px,2.3vw,32px);color:var(--burgundy);letter-spacing:-.008em}
+.enum p span{display:block;max-width:32ch}
+.enum p b{font-weight:500;color:var(--gold-ink)}
+.sec--dark .enum li::before,.sec--deep .enum li::before{color:var(--gold)}
+.sec--dark .enum p,.sec--deep .enum p{color:var(--cream);border-top-color:var(--gold)}
+@media(min-width:900px){
+  /* на широком экране мера в 30ch оставляет справа воздух — туда уходит номер */
+  .enum{max-width:1040px}
+  .enum li{display:grid;grid-template-columns:minmax(0,1fr) 4em;
+    column-gap:clamp(20px,3vw,48px);align-items:start}
+  .enum li::before{grid-column:2;grid-row:1;text-align:left;margin:0;
+    padding-top:clamp(17px,1.9vw,25px)}
+  .enum p{grid-column:1;grid-row:1}
 }
 
 /* маркированные списки */
@@ -1264,7 +1303,7 @@ hr.hair.is-in{transform:scaleX(1)}
     <div class="split split--top">
       <div>
         <p class="eyebrow">С чего всё начинается</p>
-        <h2 class="title">Почему возникает <em>застой?</em></h2>
+        <h2 class="title title--caps">Почему возникает <em>застой?</em></h2>
         <p class="lead">Ты не можешь понять, почему в жизни застой — в деньгах, в отношениях или в здоровье, — потому что ищешь причину только в себе, а не в квартире, в которой живёшь.</p>
         <p class="muted">Все идут к психологу, финансовому консультанту или врачу по отдельности, но это не работает, потому что на все сферы жизни влияет энергия дома.</p>
         <p class="muted">Нужно смотреть на дом как на карту. Что происходит в жизни — видно по тому, что происходит в пространстве. Одно точное изменение вроде перестановки мебели или перекраски стены способно улучшить сразу несколько сфер.</p>
@@ -1362,17 +1401,11 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 4. ДОМ — ЭТО СИСТЕМА ============ -->
 <section class="sec sec--dark sec--under">
-  <div class="wrap">
-    <div class="split split--40">
-      <div>
-        <div class="media-rv ph--4x3 shot">
-          <img src="assets/diagrams/plan-overlay.svg" alt="План реальной квартиры с наложенной Васту-картой: восемь секторов, построенных от центра тяжести помещения" loading="lazy" decoding="async">
-        </div>
-      </div>
+  <div class="wrap wrap--narrow">
+    <div class="rv">
       <div>
         <h2 class="title">Дом — это <em>система</em></h2>
         <p class="lead">Можно знать десятки правил Васту — и при этом не уметь эффективно гармонизировать пространство, чтобы оно наконец начало работать на человека.</p>
-        <p class="muted">Просто прочитать карту и найти причины проблем — это лишь начало. Главное — понимать, как всё это исправить. Нельзя оценить один сектор или отдельный элемент интерьера вне всего пространства.</p>
         <p class="gold">На курсе мы учимся анализировать пространство целиком и видеть прямую взаимосвязь: как блоки в физическом интерьере отражаются результатами в конкретных сферах вашей жизни. Мы видим ориентацию, геометрию, визуальный вес, каждую деталь наполнения — и учимся это гармонизировать.</p>
       </div>
     </div>
@@ -1383,7 +1416,7 @@ hr.hair.is-in{transform:scaleX(1)}
 <section class="sec sec--open" id="komu">
   <div class="wrap">
     <div class="head head--c rv">
-      <h2 class="title">Этот курс для вас, если…</h2>
+      <h2 class="title title--caps">Этот курс для вас, если…</h2>
       <p class="head__sub">Найдите себя — и вы увидите, каким именно инструментом Васту станет лично для вас.</p>
     </div>
 
@@ -1393,12 +1426,12 @@ hr.hair.is-in{transform:scaleX(1)}
         <p class="muted">Хочу научиться читать его как систему, увидеть причины своих проблем и найти решения, которые будут поддерживать меня и мою семью.</p>
       </article>
       <article class="card">
-        <h3>Я дизайнер или архитектор</h3>
-        <p class="muted">Я уже создаю современные пространства и хочу добавить в свою деятельность больше смысла, глубины и ценности.</p>
-      </article>
-      <article class="card">
         <h3>Я специалист помогающей профессии</h3>
         <p class="muted">Астролог, психолог, нумеролог. Для вас Васту станет мощным дополнительным инструментом диагностики состояния человека. Чтобы разобраться в проблемах клиента, вы сможете дополнительно анализировать его дом.</p>
+      </article>
+      <article class="card">
+        <h3>Я дизайнер или архитектор</h3>
+        <p class="muted">Я уже создаю современные пространства и хочу добавить в свою деятельность больше смысла, глубины и ценности.</p>
       </article>
       <article class="card">
         <h3>Я хочу профессионально освоить Васту</h3>
@@ -1417,15 +1450,15 @@ hr.hair.is-in{transform:scaleX(1)}
       <p class="head__sub">Диагностировать → корректировать → создавать Васту-дизайн.</p>
     </div>
 
-    <div class="grid g3">
-      <article class="card card--rule"><p>Самостоятельно строить Васту-карту.</p></article>
-      <article class="card card--rule"><p>Сопоставлять карту с реальными фотографиями и видео жилья — диагностировать только по «голой» схеме нельзя.</p></article>
-      <article class="card card--rule"><p>Видеть сильные, слабые и конфликтующие зоны, читая взаимосвязь между проблемами в жизни человека и его интерьером.</p></article>
-      <article class="card card--rule"><p>Делать точечные корректировки, если у человека есть острый запрос и что-то «болит» прямо сейчас.</p></article>
-      <article class="card card--rule"><p>Комплексно гармонизировать пространство, чтобы оно повышало общий уровень жизни и улучшало судьбу.</p></article>
-      <article class="card card--rule"><p>Выбирать гармоничную квартиру или дом с нуля.</p></article>
-      <article class="card span-all"><p class="lead">Подбирать современные, эстетичные способы гармонизации и собирать полноценный Васту-дизайн.</p></article>
-    </div>
+    <ol class="enum rv">
+      <li><p><span>Самостоятельно строить Васту-карту.</span></p></li>
+      <li><p><span>Сопоставлять карту с реальными фотографиями и видео жилья — диагностировать только по «голой» схеме нельзя.</span></p></li>
+      <li><p><span>Видеть сильные, слабые и конфликтующие зоны, читая взаимосвязь между проблемами в жизни человека и его интерьером.</span></p></li>
+      <li><p><span>Делать точечные корректировки, если у человека есть острый запрос и что-то «болит» прямо сейчас.</span></p></li>
+      <li><p><span>Комплексно гармонизировать пространство, чтобы оно повышало общий уровень жизни и улучшало судьбу.</span></p></li>
+      <li><p><span>Выбирать гармоничную квартиру или дом с нуля.</span></p></li>
+      <li><p><span>Подбирать современные, эстетичные способы гармонизации и собирать полноценный Васту-дизайн.</span></p></li>
+    </ol>
   </div>
 <div class="bridge bridge--mobile-off" aria-hidden="true">
     <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
@@ -1459,7 +1492,7 @@ hr.hair.is-in{transform:scaleX(1)}
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Один объект — четыре слоя</p>
-      <h2 class="title">Метод в действии</h2>
+      <h2 class="title title--caps">Метод в действии</h2>
       <p class="head__sub">Разница между сухим взглядом на чертёж и глубоким анализом реальной среды — вот она. Переключайте слои.</p>
     </div>
 
@@ -1538,42 +1571,50 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<!-- ============ БЛОК 8. ДВЕ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
+<!-- ============ БЛОК 8. ТРИ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
 <section class="sec">
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
-      <h2 class="title">Две реальные ситуации</h2>
-      <p class="head__sub">Курс работает с существующим объектом — от готового интерьера до стадии перепланировки.</p>
+      <h2 class="title">Три реальные ситуации</h2>
+      <p class="head__sub">Курс работает с любым существующим объектом — от съёмной типовой квартиры до готового дорогого интерьера и стадии перед ремонтом.</p>
     </div>
 
-    <div class="mosaic mosaic--2 mosaic--media">
+    <div class="mosaic mosaic--3 mosaic--media">
+      <article class="card">
+        <div class="ph ph--16x9"><span class="ph__ico">▦</span><span class="ph__label">Фото · съёмная или типовая квартира</span><span class="ph__spec">2400×1350</span></div>
+        <div class="card__body">
+          <span class="card__n">Сценарий 1</span>
+          <h3>Арендная или типовая квартира</h3>
+          <p class="muted">Даже если планировку невозможно изменить, с пространством всё равно можно работать. Принципы Васту можно применять через цвет, свет, мебель, декор и другие доступные инструменты — находя лучшее решение в существующих условиях.</p>
+        </div>
+      </article>
       <article class="card">
         <div class="ph--16x9 shot">
           <img src="assets/site/ready-interior.jpg" alt="Готовый дорогой интерьер: историческая столовая с лепным потолком, азулежу и цементной плиткой" loading="lazy" decoding="async">
         </div>
         <div class="card__body">
-          <span class="card__n">Сценарий 1</span>
-          <h3>Пространство уже готово</h3>
-          <p class="muted">Хороший, дорогой ремонт существует, и ломать стены никто не будет. Мы учимся гармонизировать дом с помощью мелких и эстетичных методов коррекции: через изменение функции зон, свет, текстиль, зеркала, картины и растения.</p>
+          <span class="card__n">Сценарий 2</span>
+          <h3>Ремонт уже сделан</h3>
+          <p class="muted">Хороший, дорогой ремонт существует, и ломать стены никто не будет. Мы учимся гармонизировать дом с помощью мелких и эстетичных методов коррекции: через изменение функции зон, свет, текстиль, зеркала, картины и растения.</p>
         </div>
       </article>
       <article class="card">
-          <div class="ph--16x9 shot">
-            <img src="assets/diagrams/plan-stage2.svg" alt="Планировочное решение с учётом Васту: план квартиры с наложенной картой секторов и центром тяжести" loading="lazy" decoding="async">
-          </div>
-        
+        <div class="ph--16x9 shot">
+          <img src="assets/diagrams/plan-stage2.svg" alt="Планировочное решение с учётом Васту: план квартиры с наложенной картой секторов и центром тяжести" loading="lazy" decoding="async">
+        </div>
         <div class="card__body">
-          <span class="card__n">Сценарий 2</span>
-          <h3>Ремонт или перепланировка впереди</h3>
-          <p class="muted">Здесь возможностей больше: можно заранее учитывать принципы Васту при распределении функциональных зон, планировочных решениях и в будущем дизайне интерьера.</p>
+          <span class="card__n">Сценарий 3</span>
+          <h3>Перед началом ремонта</h3>
+          <p class="muted">Здесь возможностей больше: можно заранее учитывать принципы Васту при распределении функциональных зон, планировочных решениях и в будущем дизайне интерьера.</p>
         </div>
       </article>
     </div>
 
-    <p class="small muted center mt-m">Проектирование дома с нуля — это следующая ступень. <a href="#stupen" class="gold">Подробнее ниже →</a></p>
+    <p class="small muted center mt-m">Проектирование дома с нуля — это следующая ступень. <a href="#stupen" class="gold">Подробнее ниже →</a></p>
   </div>
   </section>
+
 
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
 <section class="sec sec--void">
@@ -1590,8 +1631,8 @@ hr.hair.is-in{transform:scaleX(1)}
         </ul>
       </div>
       <div>
-        <div class="media-rv ph--3x4 shot">
-          <img src="assets/site/detail-material.jpg" alt="Фрагмент интерьера: столешница из зелёного мрамора, латунь и тёплый свет — цвет и материал как инструмент" loading="lazy" decoding="async">
+        <div class="media-rv ph--4x3 shot">
+          <img src="assets/portfolio/villa-kitchen2.jpg" alt="Кухня Villa Rosa: бордовые фасады с латунью, столешница из зелёного мрамора, живопись и свет как инструменты Васту-решения" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1609,7 +1650,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </div>
       <div style="position:relative">
         <p class="eyebrow">Автор курса</p>
-        <h2 class="title">Анна Ромео</h2>
+        <h2 class="title title--caps">Анна Ромео</h2>
         <p class="lead">Архитектор, дизайнер интерьеров, Васту-архитектор.</p>
         <ul class="list mt-m">
           <li>Практика в дизайне интерьеров <b>с 2010 года</b>.</li>
@@ -1624,7 +1665,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </div>
     </div>
 
-    <p class="eyebrow mt-l">Портфолио проектов</p>
+    <p class="eyebrow eyebrow--lg mt-l">Портфолио проектов</p>
     <div class="crsl rv" data-crsl>
       <div class="crsl__track" role="region" aria-label="Портфолио проектов" tabindex="0">
         <article class="crsl__slide crsl__slide--shot">
@@ -1637,13 +1678,7 @@ hr.hair.is-in{transform:scaleX(1)}
           <img src="assets/portfolio/villa-living2.jpg" alt="Villa Rosa · Барселона — гостиная с мраморным камином и галереей работ на стене" loading="lazy" decoding="async">
         </article>
         <article class="crsl__slide crsl__slide--shot">
-          <img src="assets/portfolio/villa-salon.jpg" alt="Villa Rosa · Барселона — гостиная с мраморным камином" loading="lazy" decoding="async">
-        </article>
-        <article class="crsl__slide crsl__slide--shot">
           <img src="assets/portfolio/villa-bedroom.jpg" alt="Villa Rosa · Барселона — спальня с кроватью с балдахином" loading="lazy" decoding="async">
-        </article>
-        <article class="crsl__slide crsl__slide--shot">
-          <img src="assets/portfolio/villa-bedroom2.jpg" alt="Villa Rosa · Барселона — спальня с кроватью с балдахином и кожаными креслами" loading="lazy" decoding="async">
         </article>
         <article class="crsl__slide crsl__slide--shot">
           <img src="assets/portfolio/villa-bedroom3.jpg" alt="Villa Rosa · Барселона — зона отдыха в спальне, латунь и цементная плитка" loading="lazy" decoding="async">
@@ -1668,9 +1703,6 @@ hr.hair.is-in{transform:scaleX(1)}
         </article>
         <article class="crsl__slide crsl__slide--shot">
           <img src="assets/portfolio/villa-dining2.jpg" alt="Villa Rosa · Барселона — столовая с витражом" loading="lazy" decoding="async">
-        </article>
-        <article class="crsl__slide crsl__slide--shot">
-          <img src="assets/portfolio/villa-kitchen2.jpg" alt="Villa Rosa · Барселона — кухня: бордовые фасады с латунью и столешница из зелёного мрамора" loading="lazy" decoding="async">
         </article>
         <article class="crsl__slide crsl__slide--shot">
           <img src="assets/portfolio/modern-dressing.jpg" alt="Проект студии — гардеробная со стеклянными шкафами и мраморным полом" loading="lazy" decoding="async">
@@ -1853,7 +1885,7 @@ hr.hair.is-in{transform:scaleX(1)}
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Программа</p>
-      <h2 class="title">Путь обучения</h2>
+      <h2 class="title title--caps">Путь обучения</h2>
       <p class="head__sub">Шесть шагов — от «почему пространство вообще на меня влияет» до собственного гармонизированного дома.</p>
     </div>
 
@@ -2052,7 +2084,7 @@ hr.hair.is-in{transform:scaleX(1)}
   <div class="wrap wrap--mid">
     <div class="head rv">
       <p class="eyebrow">Вопросы</p>
-      <h2 class="title">Перед тем как присоединиться</h2>
+      <h2 class="title title--caps">Перед тем как присоединиться</h2>
     </div>
 
     <div class="faq" id="faqRoot">
@@ -2062,7 +2094,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
       <div class="faq__i"><button class="faq__q">Мне нужен Васту только для своего дома. Не слишком ли это глубоко?</button><div class="faq__a"><div>Нет, основной тариф ровно для этого и сделан: вы проходите систему на себе и гармонизируете свой дом прямо в процессе обучения. Профессиональная часть — работа с заказчиком, ценообразование, диплом — вынесена в отдельный тариф «Наставничество», и вы её просто не берёте.</div></div></div>
 
-      <div class="faq__i"><button class="faq__q">У меня уже сделан хороший дорогой ремонт. Мне придётся всё переделывать?</button><div class="faq__a"><div>Нет. Это Сценарий 1, он разбирается на курсе отдельно. Работаем мелкими эстетичными коррекциями: изменение функции зон, свет, текстиль, зеркала, картины, растения. <b>Ломать ничего не нужно.</b></div></div></div>
+      <div class="faq__i"><button class="faq__q">У меня уже сделан хороший дорогой ремонт. Мне придётся всё переделывать?</button><div class="faq__a"><div>Нет. Это Сценарий 2, он разбирается на курсе отдельно. Работаем мелкими эстетичными коррекциями: изменение функции зон, свет, текстиль, зеркала, картины, растения. <b>Ломать ничего не нужно.</b></div></div></div>
 
       <div class="faq__i"><button class="faq__q">Я только планирую ремонт или перепланировку. Подойдёт ли мне курс?</button><div class="faq__a"><div>Да, и у вас возможностей больше. Вы заранее заложите принципы Васту в распределение функциональных зон, планировочные решения и будущий дизайн — это проще, чем корректировать уже готовое.</div></div></div>
 
@@ -2391,7 +2423,7 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // 1,75 на быстром канале), и живая страница из-за этого никогда бы не грузила
   // полное видео. Решение принимает сам браузер: свап делаем только по
   // canplaythrough, а если он не пришёл за 15 секунд — отменяем загрузку,
-  // чтобы не тянуть 16 МБ в фоне на медленной связи.
+  // чтобы не тянуть 19 МБ в фоне на медленной связи.
   if (!long || c.saveData || (c.effectiveType && /(^|-)2g$|3g/.test(c.effectiveType))) return;
 
   const upgrade = () => {
