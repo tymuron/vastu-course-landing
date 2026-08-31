@@ -89,8 +89,8 @@
   /* Шкала. Потолок 176px: у Cormorant прописная на 11 % ниже, чем у шрифта
      референса, поэтому 176 даёт 94 % его оптического присутствия при 168. */
   --h1:min(clamp(60px,20vw,176px),18vh);
-  --title:clamp(38px,6.7vw,96px);
-  --title-col:clamp(34px,5.3vw,76px);   /* заголовок внутри колонки .split */
+  --title:clamp(40px,7.5vw,110px);
+  --title-col:clamp(36px,5.9vw,86px);   /* заголовок внутри колонки .split */
   --h3:clamp(21px,2.1vw,30px);
   --lead:clamp(18px,1.7vw,23px);
   --body:clamp(16.5px,1.25vw,18px);
@@ -211,10 +211,10 @@ button{font:inherit;color:inherit;cursor:pointer}
    Прописные в Cormorant оптически ниже строчных, поэтому кегль поднят,
    а межбуквенное расстояние раскрыто: иначе капитель читается мельче. */
 h2.title.title--caps{text-transform:uppercase;letter-spacing:.045em;line-height:1.12;
-  font-size:clamp(34px,6vw,84px);max-width:15em;margin-bottom:clamp(22px,2.8vw,40px)}
-.split h2.title--caps,.split--60 h2.title--caps,.split--40 h2.title--caps{font-size:clamp(30px,4.6vw,60px)}
+  font-size:clamp(36px,6.8vw,98px);max-width:15em;margin-bottom:clamp(22px,2.8vw,40px)}
+.split h2.title--caps,.split--60 h2.title--caps,.split--40 h2.title--caps{font-size:clamp(32px,5.1vw,68px)}
 /* та же роль для надзаголовка, который у Анны отмечен «крупнее» */
-.eyebrow--lg{font-family:var(--serif);font-size:clamp(19px,2.2vw,30px);font-weight:500;
+.eyebrow--lg{font-family:var(--serif);font-size:clamp(21px,2.6vw,36px);font-weight:500;
   letter-spacing:.1em;color:var(--burgundy);gap:18px}
 .sec--dark .eyebrow--lg,.sec--deep .eyebrow--lg{color:var(--gold)}
 h2.title.title--xl{font-size:clamp(64px,13vw,200px);max-width:none;letter-spacing:.01em;
@@ -1222,23 +1222,44 @@ hr.hair.is-in{transform:scaleX(1)}
   .layers__panel{animation:none}
 }
 /* ============================================================
-   ГРАВЮРНЫЕ РАЗДЕЛИТЕЛИ (референс — Costar)
-   Мелкий ч/б объект наезжает на шов между блоками, вразбежку —
-   то к правому краю, то к левому. Волосяная линейка уходит от
-   объекта к краю экрана. Multiply топит светлый фон исходника
-   в кремовом — силуэт не нужно вырезать.
+   ОБЪЕКТЫ ГЛУБИНЫ (референсы — Co-Star и shakhrai.com/school)
+   Не «картинка между секциями», а предметы, живущие в вёрстке:
+   крупные, наезжают на швы секций и углы карточек, режутся краем
+   экрана, вразбежку то слева, то справа. Multiply топит белый фон
+   исходника в кремовом, поэтому силуэт не вырезается.
+
+   Два крепления:
+   .orn  — на шве двух светлых секций (обёртка нулевой высоты между
+           ними, объект по центру шва, ничем не клипается);
+   .deco — внутри секции, якорится к .head или к краю секции
+           (position:absolute; overflow:hidden секции даёт срез
+           краем экрана при отрицательных offset).
    ============================================================ */
-.orn{position:relative;height:0;z-index:6;pointer-events:none}
-.orn__fig{position:absolute;top:0;transform:translateY(-52%);width:var(--orn-w,180px)}
-.orn--r .orn__fig{right:clamp(24px,7vw,120px)}
-.orn--l .orn__fig{left:clamp(24px,7vw,120px)}
-.orn__fig img{width:100%;height:auto;display:block;
-  filter:grayscale(1) contrast(1.05);mix-blend-mode:multiply;opacity:.94}
+/* ВАЖНО: у блендящихся контейнеров НЕТ ни z-index, ни opacity.
+   Любой из них создаёт изолированный stacking context — multiply
+   перестаёт видеть кремовую подложку страницы, и белый фон исходника
+   остаётся белой коробкой (проверено A/B в Chrome). Порядок наложения
+   решает поток: positioned-элементы и так рисуются поверх текста,
+   а multiply сохраняет читаемость текста под объектом. */
+.orn{position:relative;height:0;pointer-events:none}
+.orn__fig{position:absolute;top:0;transform:translateY(var(--oy,-52%));width:var(--orn-w,260px);
+  mix-blend-mode:multiply}
+.orn__fig img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.05)}
+.orn--photo .orn__fig img{filter:none}
+.orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
+.orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
 .orn__fig::before{content:'';position:absolute;top:50%;width:clamp(24px,7vw,120px);height:1px;
   background:color-mix(in srgb,var(--burgundy) 22%,transparent)}
-.orn--r .orn__fig::before{left:100%}
-.orn--l .orn__fig::before{right:100%}
-@media(max-width:700px){.orn__fig{width:calc(var(--orn-w,180px)*.68)}}
+/* линия не длиннее отступа до края — иначе горизонтальный вылет */
+.orn--r .orn__fig::before{left:100%;width:min(clamp(24px,7vw,120px),var(--ox,120px))}
+.orn--l .orn__fig::before{right:100%;width:min(clamp(24px,7vw,120px),var(--ox,120px))}
+.orn--noline .orn__fig::before{display:none}
+@media(max-width:700px){.orn__fig{width:calc(var(--orn-w,260px)*.55)}}
+
+.deco{position:absolute;pointer-events:none;width:var(--dw,220px);mix-blend-mode:multiply}
+.deco img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.05)}
+.deco--photo img{filter:none}
+@media(max-width:700px){.deco{width:calc(var(--dw,220px)*.5)}}
 
 /* Видео «Метод в действии» — говорящая голова со звуком, стартует по клику */
 .method-video{border-radius:var(--r-lg);overflow:hidden;background:var(--burgundy-deep);
@@ -1352,8 +1373,12 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
+<div class="orn orn--l" style="--orn-w:220px;--ox:12vw" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-grapes.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
 <!-- ============ БЛОК 3. АРХИТЕКТУРА СОСТОЯНИЙ ============ -->
 <section class="sec sec--bridged sec--tight">
+  <div class="deco" style="--dw:190px;top:calc(var(--sec-pt,var(--sp-8)) - 46px);right:36px" aria-hidden="true"><img src="assets/ornaments/orn-onion.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
@@ -1401,30 +1426,6 @@ hr.hair.is-in{transform:scaleX(1)}
       </div>
     </div>
   </div>
-  <div class="bridge" aria-hidden="true">
-    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
-      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
-      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
-      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
-      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
-      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
-      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
-      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
-        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
-        <g stroke="var(--o-line)">
-          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
-          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
-          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
-          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
-        </g>
-        <g stroke="var(--o-edge)" stroke-linejoin="miter">
-          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
-          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
-          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
-        </g>
-      </g>
-    </svg>
-  </div>
 </section>
 
 <!-- ============ БЛОК 4. ДОМ — ЭТО СИСТЕМА ============ -->
@@ -1442,6 +1443,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 5. ДЛЯ КОГО ============ -->
 <section class="sec sec--open" id="komu">
+  <div class="deco" style="--dw:180px;top:calc(var(--sec-pt,var(--sp-8)) - 30px);right:9%" aria-hidden="true"><img src="assets/ornaments/orn-moth.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head head--c rv">
       <h2 class="title title--caps">Этот курс для вас, если…</h2>
@@ -1470,11 +1472,9 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<!-- Гравюрный разделитель: место отмечено Анной зелёным кружком -->
-<div class="orn orn--r" style="--orn-w:216px" aria-hidden="true">
+<div class="orn orn--l orn--noline" style="--orn-w:400px;--ox:-70px;--oy:-64%" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
-
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
 <section class="sec sec--tight sec--bridged">
   <div class="wrap">
@@ -1492,30 +1492,6 @@ hr.hair.is-in{transform:scaleX(1)}
       <li><p><span>Выбирать гармоничную квартиру или дом с нуля.</span></p></li>
       <li><p><span>Подбирать современные, эстетичные способы гармонизации и собирать полноценный Васту-дизайн.</span></p></li>
     </ol>
-  </div>
-<div class="bridge bridge--mobile-off" aria-hidden="true">
-    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
-      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
-      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
-      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
-      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
-      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
-      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
-      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
-        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
-        <g stroke="var(--o-line)">
-          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
-          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
-          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
-          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
-        </g>
-        <g stroke="var(--o-edge)" stroke-linejoin="miter">
-          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
-          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
-          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
-        </g>
-      </g>
-    </svg>
   </div>
 </section>
 
@@ -1542,6 +1518,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 8. ТРИ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
 <section class="sec">
+  <div class="deco" style="--dw:240px;top:calc(var(--sec-pt,var(--sp-8)) - 58px);right:12px" aria-hidden="true"><img src="assets/ornaments/orn-pomegranate.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
@@ -1585,11 +1562,9 @@ hr.hair.is-in{transform:scaleX(1)}
   </section>
 
 
-<!-- Гравюрный разделитель -->
-<div class="orn orn--l" style="--orn-w:150px" aria-hidden="true">
+<div class="orn orn--r" style="--orn-w:320px;--ox:5vw;--oy:-56%" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-calla.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
-
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
 <section class="sec sec--void">
   <div class="wrap">
@@ -1613,6 +1588,9 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
+<div class="orn orn--l orn--photo orn--noline" style="--orn-w:300px;--ox:-60px;--oy:-48%" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-rock.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
 <section class="sec sec--open" id="anna">
   <div class="wrap">
@@ -1923,6 +1901,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
 <section class="sec sec--under" id="programma">
+  <div class="deco" style="--dw:210px;top:calc(var(--sec-pt,var(--sp-8)) - 8px);right:12vw" aria-hidden="true"><img src="assets/ornaments/orn-fig.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Программа</p>
@@ -1941,6 +1920,9 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
+<div class="orn orn--l" style="--orn-w:260px;--ox:10vw" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-palm.jpg" alt="" loading="lazy" decoding="async"></div>
+</div>
 <!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
 <section class="sec sec--tight">
   <div class="wrap">
@@ -1970,13 +1952,12 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<!-- Гравюрный разделитель -->
-<div class="orn orn--r" style="--orn-w:132px" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-anise.jpg" alt="" loading="lazy" decoding="async"></div>
+<div class="orn orn--r" style="--orn-w:150px;--ox:14vw" aria-hidden="true">
+  <div class="orn__fig"><img src="assets/ornaments/orn-bud.jpg" alt="" loading="lazy" decoding="async"></div>
 </div>
-
 <!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
 <section class="sec">
+  <div class="deco" style="--dw:190px;top:calc(var(--sec-pt,var(--sp-8)) - 44px);left:8%" aria-hidden="true"><img src="assets/ornaments/orn-disc.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head head--c rv">
       <h2 class="title">С чем вы выйдете</h2>
@@ -2075,6 +2056,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
 <section class="sec" id="stupen">
+        <div class="deco" style="--dw:280px;right:-40px;bottom:30px" aria-hidden="true"><img src="assets/ornaments/orn-petals.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="split split--60">
       <div>
@@ -2099,34 +2081,11 @@ hr.hair.is-in{transform:scaleX(1)}
     </div>
     <p class="tiny muted" style="margin-top:20px">Кнопка вернёт к тарифам: выберите свой и переходите к оплате.</p>
   </div>
-  <div class="bridge bridge--on-dark" aria-hidden="true">
-    <svg viewBox="0 0 262.81 241" fill="none" aria-hidden="true" focusable="false">
-      <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5" fill="var(--o-left)"/>
-      <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5" fill="var(--o-right)"/>
-      <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5" fill="var(--o-top)"/>
-      <polygon points="131.4,51.5 174.71,76.5 174.71,113.46 131.4,88.46" fill="var(--o-shaftA)"/>
-      <polygon points="131.4,51.5 88.1,76.5 88.1,113.46 131.4,88.46" fill="var(--o-shaftB)"/>
-      <polygon points="131.4,88.46 174.71,113.46 131.4,138.46 88.1,113.46" fill="var(--o-shaftF)"/>
-      <g fill="none" stroke-width="1.2" vector-effect="non-scaling-stroke">
-        <polygon points="131.4,51.5 174.71,76.5 131.4,101.5 88.1,76.5" stroke="var(--o-edge)"/>
-        <g stroke="var(--o-line)">
-          <line x1="174.71" y1="26.5" x2="44.8" y2="101.5"/>
-          <line x1="88.1" y1="26.5" x2="218.01" y2="101.5"/>
-          <line x1="218.01" y1="51.5" x2="88.1" y2="126.5"/>
-          <line x1="44.8" y1="51.5" x2="174.71" y2="126.5"/>
-        </g>
-        <g stroke="var(--o-edge)" stroke-linejoin="miter">
-          <polygon points="131.4,1.5 261.31,76.5 131.4,151.5 1.5,76.5"/>
-          <polygon points="261.31,76.5 131.4,151.5 131.4,239.5 261.31,164.5"/>
-          <polygon points="131.4,151.5 1.5,76.5 1.5,164.5 131.4,239.5"/>
-        </g>
-      </g>
-    </svg>
-  </div>
 </section>
 
 <!-- ============ БЛОК 18. FAQ ============ -->
 <section class="sec sec--open" id="faq">
+  <div class="deco" style="--dw:210px;top:calc(var(--sec-pt,var(--sp-8)) + 6px);right:9vw" aria-hidden="true"><img src="assets/ornaments/orn-raven.jpg" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="head rv">
       <p class="eyebrow">Вопросы</p>
