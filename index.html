@@ -1241,16 +1241,12 @@ hr.hair.is-in{transform:scaleX(1)}
    остаётся белой коробкой (проверено A/B в Chrome). Порядок наложения
    решает поток: positioned-элементы и так рисуются поверх текста,
    а multiply сохраняет читаемость текста под объектом. */
-/* Подложка-холст. Safari не блендит mix-blend-mode с фоном самого body —
-   нужен НАРИСОВАННЫЙ слой. Фиксированный див с тем же кремовым закрывает
-   весь вьюпорт и лежит под всем контентом: бленд видит его в любом браузере. */
-.canvas{position:fixed;inset:0;background:var(--cream);z-index:-1;pointer-events:none}
-
 .orn{position:relative;height:var(--gap,0px);pointer-events:none}
-.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px);
-  mix-blend-mode:multiply}
-.orn__fig img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.05)}
-.orn--photo .orn__fig img{filter:none}
+/* Объекты — PNG с запечённой альфой (чёрная гравюра + прозрачность = тот же
+   multiply, посчитанный заранее). mix-blend-mode здесь больше не живёт:
+   Safari не блендит его ни с фоном body, ни через fixed-слой. */
+.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px)}
+.orn__fig img{width:100%;height:auto;display:block;opacity:.92}
 .orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
 .orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
 .orn__fig::before{content:'';position:absolute;top:50%;width:clamp(24px,7vw,120px);height:1px;
@@ -1286,7 +1282,6 @@ hr.hair.is-in{transform:scaleX(1)}
 </style>
 </head>
 <body>
-<div class="canvas" aria-hidden="true"></div>
 
 <!-- ============================ ШАПКА ============================ -->
 <header class="nav" id="nav">
@@ -1380,7 +1375,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 
 <div class="orn orn--r" style="--orn-w:240px;--ox:9vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-grapes.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-grapes.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 3. АРХИТЕКТУРА СОСТОЯНИЙ ============ -->
 <section class="sec sec--bridged sec--tight">
@@ -1477,7 +1472,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 
 <div class="orn orn--l" style="--orn-w:330px;--ox:7vw;--oy:-62%;--gap:clamp(40px,6vw,110px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
 <section class="sec sec--tight sec--bridged">
@@ -1568,7 +1563,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 
 <div class="orn orn--r" style="--orn-w:310px;--ox:6vw;--gap:clamp(24px,4vw,64px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-calla.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-calla.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
 <section class="sec sec--void">
@@ -1594,7 +1589,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 
 <div class="orn orn--l orn--photo" style="--orn-w:250px;--ox:9vw;--gap:clamp(24px,4vw,60px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-rock.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-rock.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
 <section class="sec sec--open" id="anna">
@@ -1925,7 +1920,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 
 <div class="orn orn--r" style="--orn-w:250px;--ox:10vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-palm.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-palm.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
 <section class="sec sec--tight">
@@ -1957,7 +1952,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 
 <div class="orn orn--l" style="--orn-w:260px;--ox:12vw;--gap:clamp(16px,3vw,44px)" aria-hidden="true">
-  <div class="orn__fig"><img src="assets/ornaments/orn-pomegranate.jpg" alt="" loading="lazy" decoding="async"></div>
+  <div class="orn__fig"><img src="assets/ornaments/orn-pomegranate.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
 <section class="sec">
