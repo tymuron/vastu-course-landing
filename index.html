@@ -1247,17 +1247,9 @@ hr.hair.is-in{transform:scaleX(1)}
    узлом на этой линии: кремовая подложка .orn__fig гасит линию под собой,
    и линия читается как обрывающаяся у объекта — приём Co-Star. */
 .orn{position:relative;height:var(--gap,0px);pointer-events:none}
-/* линия шва — двумя отрезками: от краёв экрана до объекта, с воздухом 26px.
-   Сплошная линия + кремовая маска не годится: на фактурной бумаге плоская
-   заливка видна прямоугольником. */
-.orn::before,.orn::after{content:'';position:absolute;top:50%;height:1px;
-  background:var(--burgundy)}
-.orn--r::before{left:0;width:calc(100% - var(--ox) - var(--orn-w) - 26px)}
-.orn--r::after{right:0;width:max(0px,calc(var(--ox) - 26px))}
-.orn--l::before{left:0;width:max(0px,calc(var(--ox) - 26px))}
-.orn--l::after{right:0;width:calc(100% - var(--ox) - var(--orn-w) - 26px)}
-/* фото-вырезка на границе тёмной и светлой секций — линий нет, есть тень */
-.orn--x::before,.orn--x::after{display:none}
+/* Никаких линий у объектов: у шахрай разделитель — сам объект и воздух стыка.
+   Линейка-отрезок к объекту (приём Co-Star) снята по правке Тимура. */
+/* фото-вырезка на границе тёмной и светлой секций — с тенью */
 .orn--x .orn__fig img{opacity:1;filter:drop-shadow(0 14px 22px rgba(20,8,10,.22))}
 .orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%)) rotate(var(--rot,0deg));width:var(--orn-w,260px)}
 .orn__fig img{width:100%;height:auto;display:block;opacity:.92}
@@ -1932,7 +1924,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r" style="--rot:-6deg;--orn-w:250px;--ox:10vw;--gap:clamp(50px,6vw,100px)" aria-hidden="true">
+<div class="orn orn--r" style="--rot:-6deg;--orn-w:250px;--ox:10vw;--oy:-26%;--gap:clamp(60px,7vw,110px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-palm.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
