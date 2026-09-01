@@ -1241,20 +1241,19 @@ hr.hair.is-in{transform:scaleX(1)}
    остаётся белой коробкой (проверено A/B в Chrome). Порядок наложения
    решает поток: positioned-элементы и так рисуются поверх текста,
    а multiply сохраняет читаемость текста под объектом. */
+/* Объект — РАЗДЕЛИТЕЛЬ, а не декор. Вставка .orn между секциями разрывает
+   соседство .sec + .sec, и штатная линия шва (border-top) пропадает — поэтому
+   .orn рисует линию шва САМ, во всю ширину, тем же бордовым. Объект стоит
+   узлом на этой линии: кремовая подложка .orn__fig гасит линию под собой,
+   и линия читается как обрывающаяся у объекта — приём Co-Star. */
 .orn{position:relative;height:var(--gap,0px);pointer-events:none}
-/* Объекты — PNG с запечённой альфой (чёрная гравюра + прозрачность = тот же
-   multiply, посчитанный заранее). mix-blend-mode здесь больше не живёт:
-   Safari не блендит его ни с фоном body, ни через fixed-слой. */
-.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px)}
+.orn::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;
+  background:var(--burgundy)}
+.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%));width:var(--orn-w,260px);
+  background:var(--cream)}
 .orn__fig img{width:100%;height:auto;display:block;opacity:.92}
 .orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
 .orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
-.orn__fig::before{content:'';position:absolute;top:50%;width:clamp(24px,7vw,120px);height:1px;
-  background:color-mix(in srgb,var(--burgundy) 22%,transparent)}
-/* линия не длиннее отступа до края — иначе горизонтальный вылет */
-.orn--r .orn__fig::before{left:100%;width:min(clamp(24px,7vw,120px),var(--ox,120px))}
-.orn--l .orn__fig::before{right:100%;width:min(clamp(24px,7vw,120px),var(--ox,120px))}
-.orn--noline .orn__fig::before{display:none}
 @media(max-width:700px){.orn__fig{width:calc(var(--orn-w,260px)*.55)}}
 
 .deco{position:absolute;pointer-events:none;width:var(--dw,220px)}
@@ -1589,7 +1588,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l orn--photo" style="--orn-w:240px;--ox:9vw;--gap:clamp(130px,14vw,210px)" aria-hidden="true">
+<div class="orn orn--l" style="--orn-w:240px;--ox:9vw;--gap:clamp(130px,14vw,210px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-rock.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
