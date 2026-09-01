@@ -942,6 +942,12 @@ p:last-child{margin-bottom:0}
   display:flex;flex-direction:column;justify-content:flex-end;
   padding:clamp(20px,5vw,30px)}
 /* Кадр-подложка. Пока фото нет, внутри стоит .ph — он же и фон. */
+/* Карточность слайдов на тёмной секции: бордовые шаблоны Анны сливались
+   с фоном «Васту в реальной жизни» — золотой волосок + мягкий подъём
+   отделяют карточку (у её слайдов такой же золотой кант внутри). */
+.sec--dark .crsl__slide,.sec--deep .crsl__slide{
+  border:1px solid rgba(202,188,144,.32);
+  box-shadow:0 26px 48px -26px rgba(0,0,0,.55)}
 .crsl__bg{position:absolute;inset:0;z-index:0}
 .crsl__bg .ph,.crsl__bg img{width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
 /* Внутри .sec--dark общий .ph становится кремовым — для подложки слайда это
