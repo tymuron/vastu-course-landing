@@ -330,13 +330,14 @@ p:last-child{margin-bottom:0}
 /* ============================================================
    ШАПКА / ЯКОРНАЯ НАВИГАЦИЯ
    ============================================================ */
+.nav.nav--hidden{transform:translateY(-105%)}
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:120;
   display:flex;align-items:center;gap:22px;
   padding:16px var(--pad);
   transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent;
-}
+;transform:translateY(0)}
 .nav.is-solid{
   background:rgba(66,35,38,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   padding-top:11px;padding-bottom:11px;border-bottom-color:rgba(202,188,144,.16);
@@ -1246,7 +1247,11 @@ hr.hair.is-in{transform:scaleX(1)}
    .orn рисует линию шва САМ, во всю ширину, тем же бордовым. Объект стоит
    узлом на этой линии: кремовая подложка .orn__fig гасит линию под собой,
    и линия читается как обрывающаяся у объекта — приём Co-Star. */
-.orn{position:relative;height:var(--gap,0px);pointer-events:none}
+/* per-axis clip: горизонтальные свесы объектов режутся краем экрана
+   и НЕ создают горизонтальный скролл на iOS; вертикальные свесы живут.
+   Тот же приём, что у .sec--bridged. */
+.orn{position:relative;height:var(--gap,0px);pointer-events:none;
+  overflow-x:clip;overflow-y:visible}
 /* Никаких линий у объектов: у шахрай разделитель — сам объект и воздух стыка.
    Линейка-отрезок к объекту (приём Co-Star) снята по правке Тимура. */
 /* фото-вырезка на границе тёмной и светлой секций — с тенью */
@@ -2362,6 +2367,18 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const onScroll = () => nav.classList.toggle('is-solid', window.scrollY > 60);
   onScroll();
   addEventListener('scroll', onScroll, { passive: true });
+
+  /* Шапка уходит вверх при скролле вниз и возвращается при скролле вверх —
+     особенно важно в telegram-браузере, где своя обвязка сверху. */
+  let lastY = window.scrollY, acc = 0;
+  addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const dy = y - lastY; lastY = y;
+    if (nav.classList.contains('is-open')) { nav.classList.remove('nav--hidden'); acc = 0; return; }
+    acc = (dy > 0) === (acc > 0) ? acc + dy : dy;
+    if (y < 120 || acc < -24) nav.classList.remove('nav--hidden');
+    else if (acc > 60) nav.classList.add('nav--hidden');
+  }, { passive: true });
 
   burger.addEventListener('click', () => {
     const open = nav.classList.toggle('is-open');

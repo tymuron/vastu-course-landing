@@ -160,6 +160,12 @@ parallax/gsap/rAF). Их «погружение» — статическое, и
 `assets/site/platform-mockup.png`; зачёркнутый план и «Урок» удалены.
 Головные deco скрыты на мобиле (`deco--desk`), у orn есть `--oym`
 для мобильного смещения. Чекер CLEAN на 1440/390 в webkit+chrome.
+Горизонтальный скролл на iOS убит per-axis клипом на .orn
+(`overflow-x:clip;overflow-y:visible` — как у .sec--bridged; html-клипы
+iOS игнорирует, а scrollWidth от clip-path не меняется — только так).
+Шапка прячется при скролле вниз и возвращается при скролле вверх
+(`.nav.nav--hidden` — специфичность обязательна, базовый .nav с
+transform:translateY(0) стоит ПОЗЖЕ в каскаде и иначе перебивает).
 
 ## Всё ещё не закрыто
 
