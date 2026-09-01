@@ -1257,10 +1257,9 @@ hr.hair.is-in{transform:scaleX(1)}
 .orn--noline .orn__fig::before{display:none}
 @media(max-width:700px){.orn__fig{width:calc(var(--orn-w,260px)*.55)}}
 
-.deco{position:absolute;pointer-events:none;width:var(--dw,220px);mix-blend-mode:multiply}
-.deco img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.05)}
-.deco--photo img{filter:none}
-@media(max-width:700px){.deco{width:calc(var(--dw,220px)*.5)}}
+.deco{position:absolute;pointer-events:none;width:var(--dw,220px)}
+.deco img{width:100%;height:auto;display:block;opacity:.92}
+@media(max-width:700px){.deco{display:none}}
 
 /* Видео «Метод в действии» — говорящая голова со звуком, стартует по клику */
 .method-video{border-radius:var(--r-lg);overflow:hidden;background:var(--burgundy-deep);
@@ -1351,6 +1350,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 2. ПОЧЕМУ ВОЗНИКАЕТ ЗАСТОЙ ============ -->
 <section class="sec sec--open" id="o-kurse">
+  <div class="deco" style="--dw:150px;left:42%;bottom:36px" aria-hidden="true"><img src="assets/ornaments/orn-bud.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="split split--top">
       <div>
@@ -1471,7 +1471,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--orn-w:300px;--ox:8vw;--gap:clamp(160px,18vw,260px)" aria-hidden="true">
+<div class="orn orn--l" style="--orn-w:340px;--ox:8vw;--gap:clamp(190px,20vw,300px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-nautilus.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
@@ -1517,6 +1517,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 8. ТРИ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
 <section class="sec">
+  <div class="deco" style="--dw:160px;top:calc(var(--sec-pt,var(--sp-8)) - 14px);right:2vw" aria-hidden="true"><img src="assets/ornaments/orn-moth.png" alt="" loading="lazy" decoding="async"></div>
   <div class="guides"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="head head--c rv">
@@ -1562,7 +1563,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </section>
 
 
-<div class="orn orn--r" style="--orn-w:230px;--ox:7vw;--gap:clamp(150px,16vw,240px)" aria-hidden="true">
+<div class="orn orn--r" style="--orn-w:260px;--ox:7vw;--gap:clamp(170px,18vw,270px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/orn-calla.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
@@ -1617,7 +1618,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </div>
     </div>
 
-    <p class="eyebrow eyebrow--lg mt-l">Портфолио проектов</p>
+    <p class="eyebrow eyebrow--lg mt-l" style="position:relative">Портфолио проектов<span class="deco" style="--dw:190px;right:-9vw;top:-34px" aria-hidden="true"><img src="assets/ornaments/orn-raven.png" alt="" loading="lazy" decoding="async"></span></p>
     <div class="crsl rv" data-crsl>
       <div class="crsl__track" role="region" aria-label="Портфолио проектов" tabindex="0">
         <article class="crsl__slide crsl__slide--shot">
@@ -1901,6 +1902,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
 <section class="sec sec--under" id="programma">
+  <div class="deco" style="--dw:210px;top:calc(var(--sec-pt,var(--sp-8)) - 6px);right:11vw" aria-hidden="true"><img src="assets/ornaments/orn-fig.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Программа</p>
@@ -2054,6 +2056,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
 <section class="sec" id="stupen">
+  <div class="deco" style="--dw:390px;right:4vw;top:50px" aria-hidden="true"><img src="assets/ornaments/orn-petals.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="split split--60">
       <div>
@@ -2082,6 +2085,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 18. FAQ ============ -->
 <section class="sec sec--open" id="faq">
+  <div class="deco" style="--dw:230px;top:calc(var(--sec-pt,var(--sp-8)) - 30px);right:1.5vw" aria-hidden="true"><img src="assets/ornaments/orn-disc.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="head rv">
       <p class="eyebrow">Вопросы</p>
