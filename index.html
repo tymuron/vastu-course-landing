@@ -1256,8 +1256,13 @@ hr.hair.is-in{transform:scaleX(1)}
 /* per-axis clip: горизонтальные свесы объектов режутся краем экрана
    и НЕ создают горизонтальный скролл на iOS; вертикальные свесы живут.
    Тот же приём, что у .sec--bridged. */
+/* Размер объекта привязан к вьюпорту: ~30% ширины на десктопе (как у
+   шахрай), 58% на телефоне (как в раскладках Анны). Один --ow на всех:
+   ширина объекта, воздух полосы и отрезки линии считаются от него. */
 .orn{position:relative;height:var(--gap,0px);pointer-events:none;
-  overflow-x:clip;overflow-y:visible;--s:1}
+  overflow-x:clip;overflow-y:visible;
+  --ow:clamp(240px,30vw,440px);--orn-w:var(--ow);--gap:calc(var(--ow) + 40px)}
+.orn--x{--gap:calc(var(--ow)*.85)}
 /* ОБЪЕКТ = РАЗДЕЛИТЕЛЬ БЛОКОВ. У светлых швов без объекта секции разделяет
    волосяная линия (border-top); на шве с объектом ту же линию рисует .orn:
    от краёв экрана к объекту, с воздухом 28px, объект стоит узлом на границе.
@@ -1265,17 +1270,17 @@ hr.hair.is-in{transform:scaleX(1)}
    ширина объекта, поэтому на мобиле линия не лезет под картинку. */
 .orn::before,.orn::after{content:'';position:absolute;top:50%;height:1px;
   background:var(--burgundy)}
-.orn--r::before{left:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w,260px)*var(--s) - 28px))}
+.orn--r::before{left:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w) - 28px))}
 .orn--r::after{right:0;width:max(0px,calc(var(--ox,0px) - 28px))}
 .orn--l::before{left:0;width:max(0px,calc(var(--ox,0px) - 28px))}
-.orn--l::after{right:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w,260px)*var(--s) - 28px))}
+.orn--l::after{right:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w) - 28px))}
 /* на границе тёмного и светлого разделяет сам перепад цвета — линии нет */
 .orn--x::before,.orn--x::after{display:none}
 /* Никаких линий у объектов: у шахрай разделитель — сам объект и воздух стыка.
    Линейка-отрезок к объекту (приём Co-Star) снята по правке Тимура. */
 /* фото-вырезка на границе тёмной и светлой секций — с тенью */
 .orn--x .orn__fig img{opacity:1;filter:drop-shadow(0 14px 22px rgba(20,8,10,.22))}
-.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%)) rotate(var(--rot,0deg));width:calc(var(--orn-w,260px)*var(--s))}
+.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%)) rotate(var(--rot,0deg));width:var(--orn-w)}
 .orn__fig img{width:100%;height:auto;display:block;opacity:.92}
 .orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
 .orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
@@ -1284,7 +1289,7 @@ hr.hair.is-in{transform:scaleX(1)}
 .orn + .sec{--sec-pt:clamp(40px,4.4vw,64px)}
 .sec:has(+ .orn){--sec-pb:clamp(40px,4.4vw,64px)}
 @media(max-width:700px){
-  .orn{--s:.75}
+  .orn{--ow:58vw}
   .orn + .sec{--sec-pt:clamp(26px,6vw,40px)}
   .sec:has(+ .orn){--sec-pb:clamp(26px,6vw,40px)}
 }
@@ -1297,9 +1302,9 @@ hr.hair.is-in{transform:scaleX(1)}
 @media(max-width:700px){.platform-mini{flex-direction:column;text-align:center}
   .platform-mini img{width:min(64%,230px)}}
 
-.deco{position:absolute;pointer-events:none;width:var(--dw,220px);transform:rotate(var(--rot,0deg))}
+.deco{position:absolute;pointer-events:none;width:var(--dw,clamp(200px,22vw,330px));transform:rotate(var(--rot,0deg))}
 .deco img{width:100%;height:auto;display:block;opacity:.92}
-@media(max-width:700px){.deco{width:calc(var(--dw,220px)*.55)}.deco--desk{display:none}.orn__fig{transform:translateY(var(--oym,var(--oy,-50%))) rotate(var(--rot,0deg))}}
+@media(max-width:700px){.deco{width:44vw}.deco--desk{display:none}.orn__fig{transform:translateY(var(--oym,var(--oy,-50%))) rotate(var(--rot,0deg))}}
 
 /* Видео «Метод в действии» — говорящая голова со звуком, стартует по клику */
 .method-video{border-radius:var(--r-lg);overflow:hidden;background:var(--burgundy-deep);
@@ -1413,7 +1418,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--rot:-2deg;--orn-w:300px;--ox:8vw;--gap:clamp(250px,25vw,330px)" aria-hidden="true">
+<div class="orn orn--l" style="--rot:-2deg;--ox:8vw" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-petunia.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 3. АРХИТЕКТУРА СОСТОЯНИЙ ============ -->
@@ -1467,7 +1472,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l orn--x" style="--orn-w:300px;--ox:-30px;--oy:-62%;--gap:clamp(170px,18vw,240px)" aria-hidden="true">
+<div class="orn orn--l orn--x" style="--ox:-30px;--oy:-62%" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-stones.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 4. ДОМ — ЭТО СИСТЕМА ============ -->
@@ -1483,7 +1488,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r orn--x" style="--rot:-3deg;--orn-w:240px;--ox:5vw;--oy:-50%;--gap:clamp(240px,23vw,310px)" aria-hidden="true">
+<div class="orn orn--r orn--x" style="--rot:-3deg;--ox:5vw;--oy:-50%;--orn-w:calc(var(--ow)*.8);--gap:calc(var(--ow)*1.05)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/cut-rock.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 5. ДЛЯ КОГО ============ -->
@@ -1516,7 +1521,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--orn-w:300px;--ox:6vw;--gap:clamp(250px,25vw,330px)" aria-hidden="true">
+<div class="orn orn--l" style="--ox:6vw" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-nautilus.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 6. ЧТО ВЫ РЕАЛЬНО БУДЕТЕ УМЕТЬ ============ -->
@@ -1539,7 +1544,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r" style="--orn-w:300px;--ox:-40px;--oy:-64%;--oym:-60%;--gap:clamp(170px,18vw,240px)" aria-hidden="true">
+<div class="orn orn--r" style="--ox:-40px;--oy:-56%;--oym:-58%" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-fibonacci.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 7. МЕТОД В ДЕЙСТВИИ ============ -->
@@ -1563,7 +1568,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r orn--x" style="--orn-w:300px;--ox:0px;--oy:-50%;--gap:clamp(190px,19vw,250px)" aria-hidden="true">
+<div class="orn orn--r orn--x" style="--ox:0px;--oy:-50%" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-crystal.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 8. ТРИ РЕАЛЬНЫЕ СИТУАЦИИ ============ -->
@@ -1613,7 +1618,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </section>
 
 
-<div class="orn orn--l" style="--orn-w:300px;--ox:7vw;--gap:clamp(250px,25vw,330px)" aria-hidden="true">
+<div class="orn orn--l" style="--ox:7vw" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-fern.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 9. МЕТОД АННЫ РОМЕО ============ -->
@@ -1639,7 +1644,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r" style="--rot:-3deg;--orn-w:200px;--ox:8vw;--gap:clamp(290px,27vw,370px)" aria-hidden="true">
+<div class="orn orn--r" style="--rot:-3deg;--ox:8vw;--orn-w:calc(var(--ow)*.68);--gap:calc(var(--ow)*1.2 + 30px)" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-branch.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 10. АННА РОМЕО ============ -->
@@ -1668,7 +1673,7 @@ hr.hair.is-in{transform:scaleX(1)}
       </div>
     </div>
 
-    <p class="eyebrow eyebrow--lg mt-l" style="position:relative">Портфолио проектов<span class="deco" style="--dw:220px;right:-10vw;top:-56px" aria-hidden="true"><img src="assets/ornaments/a-succulent.png" alt="" loading="lazy" decoding="async"></span></p>
+    <p class="eyebrow eyebrow--lg mt-l" style="position:relative">Портфолио проектов<span class="deco deco--desk" style="right:-10vw;top:-56px" aria-hidden="true"><img src="assets/ornaments/a-succulent.png" alt="" loading="lazy" decoding="async"></span></p>
     <div class="crsl rv" data-crsl>
       <div class="crsl__track" role="region" aria-label="Портфолио проектов" tabindex="0">
         <article class="crsl__slide crsl__slide--shot">
@@ -1952,7 +1957,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 12. ПУТЬ ОБУЧЕНИЯ ============ -->
 <section class="sec sec--under" id="programma">
-  <div class="deco deco--desk" style="--rot:5deg;--dw:260px;top:calc(var(--sec-pt,var(--sp-8)) - 6px);right:11vw" aria-hidden="true"><img src="assets/ornaments/a-anise.png" alt="" loading="lazy" decoding="async"></div>
+  <div class="deco deco--desk" style="--rot:5deg;top:calc(var(--sec-pt,var(--sp-8)) - 6px);right:11vw" aria-hidden="true"><img src="assets/ornaments/a-anise.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap">
     <div class="head rv">
       <p class="eyebrow">Программа</p>
@@ -1971,7 +1976,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--l" style="--orn-w:300px;--ox:7vw;--gap:clamp(250px,25vw,330px)" aria-hidden="true">
+<div class="orn orn--l" style="--ox:7vw" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-milkweed.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 13. КАК ПРОХОДИТ ОБУЧЕНИЕ ============ -->
@@ -2003,7 +2008,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<div class="orn orn--r" style="--rot:4deg;--orn-w:300px;--ox:9vw;--gap:clamp(250px,25vw,330px)" aria-hidden="true">
+<div class="orn orn--r" style="--rot:4deg;--ox:9vw" aria-hidden="true">
   <div class="orn__fig"><img src="assets/ornaments/a-pomegranate.png" alt="" loading="lazy" decoding="async"></div>
 </div>
 <!-- ============ БЛОК 14. С ЧЕМ ВЫ ВЫЙДЕТЕ ============ -->
@@ -2106,7 +2111,7 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <!-- ============ БЛОК 16. СЛЕДУЮЩАЯ СТУПЕНЬ ============ -->
 <section class="sec" id="stupen">
-  <div class="deco deco--desk" style="--dw:260px;right:5vw;top:60px" aria-hidden="true"><img src="assets/ornaments/a-rings.png" alt="" loading="lazy" decoding="async"></div>
+  <div class="deco deco--desk" style="right:5vw;top:60px" aria-hidden="true"><img src="assets/ornaments/a-rings.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="split split--60">
       <div>
@@ -2207,7 +2212,7 @@ hr.hair.is-in{transform:scaleX(1)}
 </section>
 <!-- ============ БЛОК 18. FAQ ============ -->
 <section class="sec sec--open" id="faq">
-  <div class="deco deco--desk" style="--rot:-4deg;--dw:260px;top:calc(var(--sec-pt,var(--sp-8)) - 30px);right:2vw" aria-hidden="true"><img src="assets/ornaments/a-milkweed-top.png" alt="" loading="lazy" decoding="async"></div>
+  <div class="deco deco--desk" style="--rot:-4deg;--dw:clamp(170px,16vw,240px);top:calc(var(--sec-pt,var(--sp-8)) - 70px);right:1vw" aria-hidden="true"><img src="assets/ornaments/a-milkweed-top.png" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap wrap--mid">
     <div class="head rv">
       <p class="eyebrow">Вопросы</p>
