@@ -1257,12 +1257,25 @@ hr.hair.is-in{transform:scaleX(1)}
    и НЕ создают горизонтальный скролл на iOS; вертикальные свесы живут.
    Тот же приём, что у .sec--bridged. */
 .orn{position:relative;height:var(--gap,0px);pointer-events:none;
-  overflow-x:clip;overflow-y:visible}
+  overflow-x:clip;overflow-y:visible;--s:1}
+/* ОБЪЕКТ = РАЗДЕЛИТЕЛЬ БЛОКОВ. У светлых швов без объекта секции разделяет
+   волосяная линия (border-top); на шве с объектом ту же линию рисует .orn:
+   от краёв экрана к объекту, с воздухом 28px, объект стоит узлом на границе.
+   Ширина отрезков считается через ту же переменную масштаба --s, что и
+   ширина объекта, поэтому на мобиле линия не лезет под картинку. */
+.orn::before,.orn::after{content:'';position:absolute;top:50%;height:1px;
+  background:var(--burgundy)}
+.orn--r::before{left:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w,260px)*var(--s) - 28px))}
+.orn--r::after{right:0;width:max(0px,calc(var(--ox,0px) - 28px))}
+.orn--l::before{left:0;width:max(0px,calc(var(--ox,0px) - 28px))}
+.orn--l::after{right:0;width:max(0px,calc(100% - var(--ox,0px) - var(--orn-w,260px)*var(--s) - 28px))}
+/* на границе тёмного и светлого разделяет сам перепад цвета — линии нет */
+.orn--x::before,.orn--x::after{display:none}
 /* Никаких линий у объектов: у шахрай разделитель — сам объект и воздух стыка.
    Линейка-отрезок к объекту (приём Co-Star) снята по правке Тимура. */
 /* фото-вырезка на границе тёмной и светлой секций — с тенью */
 .orn--x .orn__fig img{opacity:1;filter:drop-shadow(0 14px 22px rgba(20,8,10,.22))}
-.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%)) rotate(var(--rot,0deg));width:var(--orn-w,260px)}
+.orn__fig{position:absolute;top:50%;transform:translateY(var(--oy,-50%)) rotate(var(--rot,0deg));width:calc(var(--orn-w,260px)*var(--s))}
 .orn__fig img{width:100%;height:auto;display:block;opacity:.92}
 .orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
 .orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
@@ -1271,7 +1284,7 @@ hr.hair.is-in{transform:scaleX(1)}
 .orn + .sec{--sec-pt:clamp(40px,4.4vw,64px)}
 .sec:has(+ .orn){--sec-pb:clamp(40px,4.4vw,64px)}
 @media(max-width:700px){
-  .orn__fig{width:calc(var(--orn-w,260px)*.75)}
+  .orn{--s:.75}
   .orn + .sec{--sec-pt:clamp(26px,6vw,40px)}
   .sec:has(+ .orn){--sec-pb:clamp(26px,6vw,40px)}
 }
