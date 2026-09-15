@@ -2404,8 +2404,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
     });
     if (stickyLeft) stickyLeft.textContent = `осталось ${d} ${plural(d, ['день','дня','дней'])}`;
   }
+  let iv = null;
   tick();
-  const iv = setInterval(tick, 1000);
+  if (dEnd > new Date()) iv = setInterval(tick, 1000);
 })();
 
 /* ---------- Шапка: фон при скролле + мобильное меню ---------- */
