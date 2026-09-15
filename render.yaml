@@ -4,14 +4,15 @@ services:
     runtime: static
     staticPublishPath: .
     pullRequestPreviewsEnabled: false
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    # Без rewrite /* → /index.html: страница одна, клиентской маршрутизации нет.
+    # Rewrite отдавал index.html (200, text/html) вместо любого отсутствующего
+    # файла — битые картинки и шрифты не было видно ни в логах, ни в проверках.
     headers:
+      # Имена файлов без хэша, и их уже заменяли под тем же именем — поэтому
+      # не immutable на год, а сутки, дальше браузер переспрашивает по ETag.
       - path: /assets/*
         name: Cache-Control
-        value: public, max-age=31536000, immutable
+        value: public, max-age=86400
       - path: /index.html
         name: Cache-Control
         value: no-cache

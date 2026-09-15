@@ -5,9 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#422326">
 <link rel="preload" as="image" href="assets/media/hero-poster.webp" fetchpriority="high">
-<script>document.documentElement.className+=" js"</script>
+<script>
+(function (h) {
+  h.className += ' js';
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!/(^|\s)js-ok(\s|$)/.test(h.className)) h.className = h.className.replace(/(^|\s)js(?=\s|$)/g, ' ');
+  });
+})(document.documentElement);
+</script>
 <title>Васту-дизайн — флагманский курс Анны Ромео</title>
-<meta name="description" content="Флагманский курс «Васту-дизайн» Анны Ромео. Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие. 2,5 месяца, ранняя стоимость от 55 000 ₽.">
+<meta name="description" content="Флагманский курс «Васту-дизайн» Анны Ромео. Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие. 2,5 месяца, стоимость от 75 000 ₽.">
 <meta property="og:title" content="Васту-дизайн — флагманский курс Анны Ромео">
 <meta property="og:description" content="Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие.">
 <meta property="og:type" content="website">
@@ -40,29 +47,29 @@
 
 /* ---- Manrope — метрически близкий фолбэк Vela Sans ---- */
 @font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Manrope';src:url('assets/fonts/manrope-cyrillic-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Manrope';src:url('assets/fonts/manrope-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
 /* ---- Cormorant — дисплейный ---- */
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-cyrillic-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/cormorant-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
 
 <style>
@@ -335,9 +342,8 @@ p:last-child{margin-bottom:0}
   position:fixed;top:0;left:0;right:0;z-index:120;
   display:flex;align-items:center;gap:22px;
   padding:16px var(--pad);
-  transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
-  border-bottom:1px solid transparent;
-;transform:translateY(0)}
+  transition:transform .35s var(--ease),background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent}
 .nav.is-solid{
   background:rgba(66,35,38,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   padding-top:11px;padding-bottom:11px;border-bottom-color:rgba(202,188,144,.16);
@@ -368,9 +374,17 @@ p:last-child{margin-bottom:0}
 .nav__links a:hover::after,.nav__links a.is-active::after{right:0}
 .nav__cta{flex:0 0 auto}
 .nav__links .m-cta{display:none}
-.nav::after{content:'';position:fixed;inset:0;background:rgba(30,12,14,.6);opacity:0;
-  pointer-events:none;transition:opacity .35s var(--e-ui);z-index:-1}
-.nav.is-open::after{opacity:1;pointer-events:auto}
+.nav-scrim{position:fixed;inset:0;z-index:119;background:rgba(30,12,14,.6);opacity:0;
+  pointer-events:none;transition:opacity .35s var(--e-ui)}
+.nav.is-open + .nav-scrim{opacity:1;pointer-events:auto}
+/* Затемнение под меню — отдельный слой после шапки, а не .nav::after:
+   фиксированный псевдоэлемент внутри шапки с backdrop-filter сжимался до её
+   высоты, и тап ниже меню проваливался в страницу. Вложенный backdrop-filter
+   к тому же просвечивал текст страницы сквозь панель меню. */
+.nav.is-open{-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav.is-open.is-solid{background:rgb(66,35,38)}
+/* Кнопка меню не подсвечивается scroll-spy: было золото на золоте */
+.nav__links a.btn.is-active{color:var(--burgundy)}
 .nav__burger{display:none;flex:0 0 auto;margin-left:auto;background:none;border:0;padding:8px;width:44px;height:44px}
 .nav__burger span{display:block;height:1.5px;background:var(--cream);margin:5px 0;transition:transform .3s var(--ease),opacity .3s var(--ease)}
 .nav.is-open .nav__burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
@@ -384,7 +398,7 @@ p:last-child{margin-bottom:0}
     background:rgba(46,22,25,.985);backdrop-filter:blur(16px);visibility:hidden;
     padding:10px var(--pad) 26px;transform:translateY(-118%);
     transition:transform .45s var(--ease),visibility .45s;
-    border-bottom:1px solid rgba(202,188,144,.18);max-height:calc(100svh - var(--nav-h));overflow:auto;
+    border-bottom:1px solid rgba(202,188,144,.18);max-height:calc(100vh - var(--nav-h));max-height:calc(100svh - var(--nav-h));overflow:auto;
   }
   .nav.is-open .nav__links{transform:translateY(0);visibility:visible}
   .nav.is-open ~ .sticky{transform:translateY(105%)}
@@ -396,7 +410,7 @@ p:last-child{margin-bottom:0}
 /* ============================================================
    ГЕРОЙ
    ============================================================ */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;
   padding:clamp(88px,12vh,168px) var(--pad) var(--sp-6);background:var(--burgundy-deep);overflow:hidden}
 /* слои героя: медиа 0 · скрим 1 · плашка 2 · текст 3 */
 .hero__media{position:absolute;inset:0;z-index:0}
@@ -489,7 +503,6 @@ p:last-child{margin-bottom:0}
 .hero__fact dt{font-size:10.5px;font-weight:600;letter-spacing:.21em;text-transform:uppercase;
   color:rgba(202,188,144,.85);margin:0 0 7px}
 .hero__fact dd{margin:0;font-family:var(--serif);font-size:clamp(20px,2.6vw,32px);line-height:1.15;color:var(--cream)}
-.hero__fact dd s{color:rgba(240,235,226,.54);font-size:.66em;margin-left:9px;text-decoration-thickness:1px}
 @media(max-width:640px){
   /* Три факта в строку — иначе цена и кнопка уезжают за первый экран телефона */
   .hero__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
@@ -497,29 +510,11 @@ p:last-child{margin-bottom:0}
   .hero__fact + .hero__fact{border-left:1px solid rgba(202,188,144,.2);border-top:0;padding-left:10px}
   .hero__fact dt{font-size:9px;letter-spacing:.14em;margin-bottom:5px}
   .hero__fact dd{font-size:18px}
-  .hero__fact dd s{display:inline;font-size:.6em;margin-left:6px}
 }
 .hero__ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 @media(max-width:560px){.hero__ctas .btn{width:100%}.hero__note{font-size:12px}}
 .hero__note{font-size:12.5px;color:rgba(240,235,226,.6);letter-spacing:.02em}
-@media(max-width:700px){.hero{min-height:92svh}}
-
-/* ============================================================
-   ТАЙМЕР
-   ============================================================ */
-.timer{display:inline-flex;align-items:center;gap:clamp(10px,2vw,20px);flex-wrap:wrap}
-.timer__lbl{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.timer__grid{display:flex;gap:clamp(8px,1.4vw,16px)}
-.timer__u{text-align:center;min-width:52px}
-.timer__n{font-family:var(--serif);font-size:clamp(26px,3.4vw,40px);line-height:1;color:var(--cream);
-  font-variant-numeric:tabular-nums;display:block}
-.timer__c{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,235,226,.55);margin-top:6px;display:block}
-.timer--light .timer__n{color:var(--burgundy)}
-.timer--light .timer__c{color:var(--ink-soft)}
-.timer--light .timer__lbl{color:var(--gold-ink)}
-.timer--sm .timer__n{font-size:20px}
-.timer--sm .timer__u{min-width:38px}
-.timer--sm .timer__c{font-size:8.5px;margin-top:3px}
+@media(max-width:700px){.hero{min-height:92vh;min-height:92svh}}
 
 /* ============================================================
    ЛИПКАЯ CTA-ПАНЕЛЬ (моб.)
@@ -553,13 +548,13 @@ p:last-child{margin-bottom:0}
 }
 .sticky__price{flex:1 1 auto;min-width:0}
 .sticky__p1{font-family:var(--serif);font-size:20px;line-height:1.1;color:var(--gold);white-space:nowrap}
-.sticky__p1 s{color:rgba(240,235,226,.54);font-size:.62em;margin-left:7px;text-decoration-thickness:1px}
 .sticky__p2{font-size:10.5px;letter-spacing:.09em;color:rgba(240,235,226,.62)}
 .sticky .btn{flex:0 0 auto;padding:15px 20px;font-size:11px;letter-spacing:.13em}
 @media(max-width:1000px){.sticky{display:flex}
-  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}}
+}
 .sticky::before{content:'';position:absolute;left:0;right:0;bottom:100%;height:28px;
-  background:linear-gradient(to top,rgba(46,22,25,.9),transparent);pointer-events:none}
+  background:linear-gradient(to top,rgba(46,22,25,.9),transparent);pointer-events:none;transition:opacity .45s var(--ease)}
+.sticky:not(.is-on)::before{opacity:0}
 
 /* ============================================================
    СЕТКИ И КАРТОЧКИ
@@ -673,9 +668,9 @@ p:last-child{margin-bottom:0}
 /* причинная линия, она же верхняя линейка регистра */
 .chain::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;
   background:var(--chain-line);
-  transform:scaleX(0);transform-origin:left center;
+  transform-origin:left center;
   transition:transform 900ms var(--e-out-expo) 260ms}
-.rv.is-in .chain::before{transform:scaleX(1)}
+html.js .rv:not(.is-in) .chain::before{transform:scaleX(0)}
 
 .chain__link{position:relative;margin:0;display:flex;flex-direction:column;
   padding:20px var(--link-pr) clamp(32px,3.4vw,48px) var(--link-px)}
@@ -720,9 +715,8 @@ p:last-child{margin-bottom:0}
 @media(max-width:1000px){
   .flow{--link-px:clamp(22px,3vw,30px);--link-pr:0px;--drop-x:calc(-1 * var(--link-px))}
   .chain{grid-template-columns:minmax(0,1fr)}
-  .chain::before{width:1px;height:100%;
-    transform:scaleY(0);transform-origin:top center}
-  .rv.is-in .chain::before{transform:scaleY(1)}
+  .chain::before{width:1px;height:100%;transform-origin:top center}
+  html.js .rv:not(.is-in) .chain::before{transform:scaleY(0)}
   .chain__link{padding-top:clamp(18px,2.4vw,24px);
     padding-bottom:clamp(26px,3.4vw,34px)}
   .chain__link:first-child{padding-top:0}
@@ -828,7 +822,6 @@ p:last-child{margin-bottom:0}
 .tariff--pro .tariff__feats li::before{border-color:var(--burgundy)}
 .tariff--pro .tariff__feats li.is-plus::before{background:var(--burgundy)}
 .tariff--pro .tariff__flag{background:var(--burgundy);color:var(--gold)}
-.tariff--pro .tariff__now s{color:rgba(66,35,38,.78)}
 .tariff--pro .tiny{color:rgba(66,35,38,.8)!important}
 .tariff__flag{
   position:absolute;top:0;right:clamp(20px,3vw,40px);transform:translateY(-50%);
@@ -853,7 +846,6 @@ p:last-child{margin-bottom:0}
 .tariff__price{margin-top:auto;padding-top:24px;border-top:1px solid rgba(202,188,144,.2)}
 .tariff__now{font-family:var(--serif);font-size:var(--t-price);line-height:1;color:var(--gold);
   display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.tariff__now s{font-size:.44em;color:rgba(240,235,226,.56);text-decoration-thickness:1px}
 .price-inline{font-family:var(--serif);font-size:1.55em;font-weight:500;line-height:1;white-space:nowrap}
 .tariff__inst{font-size:13.5px;color:var(--on-dark-soft);margin:12px 0 0}
 .tariff__inst b{color:var(--cream);font-weight:600}
@@ -903,9 +895,12 @@ p:last-child{margin-bottom:0}
 .faq__q::before{width:15px;height:1px;transform:translateY(-50%)}
 .faq__q::after{width:1px;height:15px;right:15px;transform:translateY(-50%)}
 .faq__i.is-open .faq__q::after{transform:translateY(-50%) rotate(90deg);opacity:0}
-.faq__a{max-height:0;overflow:hidden;opacity:0;
-  transition:max-height 300ms var(--e-ui),opacity 300ms var(--e-ui)}
+.faq__a{transition:max-height 300ms var(--e-ui),opacity 300ms var(--e-ui)}
+.faq.is-live .faq__a{max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+  transition:max-height 300ms var(--e-ui),opacity 300ms var(--e-ui),visibility 0s linear 300ms}
 .faq__i.is-open .faq__a{opacity:1}
+.faq.is-live .faq__i.is-open .faq__a{visibility:visible;
+  transition:max-height 300ms var(--e-ui),opacity 300ms var(--e-ui),visibility 0s}
 .faq__a > div{padding:0 clamp(20px,5vw,80px) 28px 0;color:var(--ink-soft);font-size:var(--body);line-height:1.62;max-width:33em}
 .faq__a b{color:var(--ink);font-weight:600}
 
@@ -992,7 +987,7 @@ p:last-child{margin-bottom:0}
 .crsl__slide--shot img{position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;display:block}
 .crsl__slide--shot::after{content:'';position:absolute;inset:0;
-  background:rgba(46,22,25,0);transition:background .3s var(--e)}
+  background:rgba(46,22,25,0);transition:background .3s var(--e-ui)}
 .crsl__slide--shot:hover::after{background:rgba(46,22,25,.14)}
 
 /* Лайтбокс */
@@ -1025,7 +1020,7 @@ p:last-child{margin-bottom:0}
 .crsl__ui{display:flex;align-items:center;gap:14px;margin-top:16px}
 .crsl__dots{display:flex;gap:6px;flex:1;flex-wrap:wrap}
 .crsl__dot{width:6px;height:6px;padding:0;border:0;border-radius:999px;cursor:pointer;
-  background:var(--gold);opacity:.3;transition:opacity .3s var(--e),width .3s var(--e)}
+  background:var(--gold);opacity:.3;transition:opacity .3s var(--e-ui),width .3s var(--e-ui)}
 .crsl__dot.is-on{opacity:1;width:18px}
 .sec--dark .crsl__dot,.sec--deep .crsl__dot{background:var(--gold)}
 /* Больше двенадцати кадров — точки превращаются в рябь, вместо них счётчик. */
@@ -1037,7 +1032,7 @@ p:last-child{margin-bottom:0}
 .crsl__arrows{display:none;gap:8px}
 .crsl__ar{width:40px;height:40px;border-radius:999px;cursor:pointer;
   background:transparent;border:1px solid currentColor;color:var(--gold);
-  font-size:14px;line-height:1;transition:opacity .3s var(--e)}
+  font-size:14px;line-height:1;transition:opacity .3s var(--e-ui)}
 .crsl__ar[disabled]{opacity:.25;cursor:default}
 
 @media(min-width:640px){
@@ -1112,6 +1107,7 @@ p:last-child{margin-bottom:0}
    ПОДВАЛ
    ============================================================ */
 .foot{background:var(--burgundy-deep);color:var(--on-dark-soft);padding:clamp(50px,6vw,84px) var(--pad) 40px;font-size:13.5px}
+@media(max-width:1000px){.foot{padding-bottom:calc(40px + env(safe-area-inset-bottom))}}
 .foot a{color:var(--on-dark-soft);text-decoration:none;transition:color .3s}
 .foot__top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(26px,4vw,60px);
   padding-bottom:36px;border-bottom:1px solid rgba(202,188,144,.16)}
@@ -1168,9 +1164,8 @@ p:last-child{margin-bottom:0}
 /* Появление: 8px, а не 26px — это оседание, а не выезд.
    Прозрачность заканчивается на ~300 мс раньше движения: элемент читается
    присутствующим, пока ещё тихо доезжает. In-out на появлении не используется. */
-.rv{opacity:0;transform:translateY(8px);
-    transition:opacity 700ms var(--e-ui),transform 1000ms var(--e-out-expo)}
-.rv.is-in{opacity:1;transform:none}
+.rv{transition:opacity 700ms var(--e-ui),transform 1000ms var(--e-out-expo)}
+html.js .rv:not(.is-in){opacity:0;transform:translateY(8px)}
 .rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}
 
 /* Вход героя — по готовности шрифтов, не по скроллу */
@@ -1200,23 +1195,24 @@ html.ready .hero__h1 .ln:nth-child(3)>span{transform:none;transition-delay:270ms
 .media-rv>img,.media-rv>video,.shot>img{width:100%;height:100%;object-fit:cover;display:block}
 .shot{position:relative;overflow:hidden;border-radius:var(--r-lg)}
 .media-rv::before{content:'';position:absolute;inset:0;z-index:3;
-  background:var(--cream-2);transform-origin:left;
+  background:var(--cream-2);transform-origin:left;transform:scaleX(0);
   transition:transform 1400ms var(--e-out-quart)}
 .sec--dark .media-rv::before,.sec--deep .media-rv::before{background:var(--burgundy)}
-.media-rv.is-in::before{transform:scaleX(0)}
-.media-rv>img,.media-rv>video{transform:scale(1.06);opacity:0;
+html.js .media-rv:not(.is-in)::before{transform:none}
+.media-rv>img,.media-rv>video{
   transition:transform 1400ms var(--e-out-quart),opacity 700ms var(--e-ui)}
-.media-rv.is-in>img,.media-rv.is-in>video{transform:none;opacity:1}
+html.js .media-rv:not(.is-in)>img,html.js .media-rv:not(.is-in)>video{transform:scale(1.06);opacity:0}
 @media(max-width:700px){.media-rv::before,.media-rv>img,.media-rv>video{transition-duration:1000ms}}
 
 /* Волосяная линия, которая себя прочерчивает — язык архитектурного чертежа */
 .eyebrow::after,.eyebrow--c::before,.head--c .eyebrow::before{
-  transform:scaleX(0);transform-origin:left;
+  transform-origin:left;
   transition:transform 900ms var(--e-out-expo) 260ms}
-.rv.is-in .eyebrow::after,.rv.is-in .eyebrow::before{transform:scaleX(1)}
-hr.hair{transform:scaleX(0);transform-origin:left;
+html.js .eyebrow::after,html.js .eyebrow--c::before,html.js .head--c .eyebrow::before{transform:scaleX(0)}
+html.js .rv.is-in .eyebrow::after,html.js .rv.is-in .eyebrow::before{transform:scaleX(1)}
+hr.hair{transform-origin:left;
   transition:transform 900ms var(--e-out-expo)}
-hr.hair.is-in{transform:scaleX(1)}
+html.js hr.hair:not(.is-in){transform:scaleX(0)}
 
 
 @media(prefers-reduced-motion:reduce){
@@ -1284,6 +1280,11 @@ hr.hair.is-in{transform:scaleX(1)}
 .orn__fig img{width:100%;height:auto;display:block;opacity:.92}
 .orn--r .orn__fig{right:var(--ox,clamp(24px,7vw,120px))}
 .orn--l .orn__fig{left:var(--ox,clamp(24px,7vw,120px))}
+/* iOS <16 не знает overflow-x:clip — объекты с отрицательным --ox раздвигали страницу вбок */
+@supports not (overflow-x:clip){
+  .orn--r .orn__fig{right:max(0px,var(--ox,clamp(24px,7vw,120px)))}
+  .orn--l .orn__fig{left:max(0px,var(--ox,clamp(24px,7vw,120px)))}
+}
 /* Секции ОБНИМАЮТ полосу объекта: расстояние между блоками — это и есть
    объект (как в раскладках Анны: карточка → объект → заголовок вплотную). */
 .orn + .sec{--sec-pt:clamp(40px,4.4vw,64px)}
@@ -1295,6 +1296,7 @@ hr.hair.is-in{transform:scaleX(1)}
 }
 
 .platform-mini{display:flex;align-items:center;gap:clamp(16px,2.4vw,30px);
+  border:1px solid rgba(66,35,38,.22);
   border:1px solid color-mix(in srgb,var(--burgundy) 22%,transparent);
   border-radius:var(--r-lg);padding:clamp(16px,2.2vw,26px)}
 .platform-mini img{width:min(44%,240px);height:auto;flex:0 0 auto}
@@ -1337,22 +1339,23 @@ hr.hair.is-in{transform:scaleX(1)}
     <li><a href="#o-kurse">О курсе</a></li>
     <li><a href="#komu">Для кого</a></li>
     <li><a href="#metod">Метод</a></li>
-    <li><a href="#programma">Программа</a></li>
     <li><a href="#anna">Анна</a></li>
+    <li><a href="#programma">Программа</a></li>
     <li><a href="#tarify">Тарифы</a></li>
     <li><a href="#faq">Вопросы</a></li>
     <li class="m-cta"><a class="btn btn--gold btn--sm btn--wide js-book" href="#tarify">Занять место</a></li>
   </ul>
   <a class="btn btn--gold btn--sm nav__cta js-book" href="#tarify">Занять место</a>
 </header>
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 
 <!-- ==================== ЛИПКАЯ CTA-ПАНЕЛЬ (моб.) ==================== -->
 <div class="sticky" id="sticky">
   <div class="sticky__price">
-    <div class="sticky__p1">55 000 ₽</div>
-    <div class="sticky__p2">Ранняя цена · <span id="stickyLeft">осталось 27 дней</span></div>
+    <div class="sticky__p1">75 000 ₽</div>
+    <div class="sticky__p2">Тариф «Основной»</div>
   </div>
-  <button class="btn btn--gold js-book">Занять место</button>
+  <a class="btn btn--gold js-book" href="#tarify">Занять место</a>
 </div>
 
 <!-- ============================ БЛОК 1. ГЕРОЙ ============================ -->
@@ -1379,15 +1382,15 @@ hr.hair.is-in{transform:scaleX(1)}
     <p class="hero__sub">Научитесь читать пространство как систему и создавать дома, которые работают на ваше благополучие.</p>
 
     <dl class="hero__facts">
-      <div class="hero__fact"><dt>Старт потока</dt><dd data-c="startLong">6 октября 2026</dd></div>
+      <div class="hero__fact"><dt>Старт потока</dt><dd data-c="startLong">9 ноября 2026</dd></div>
       <div class="hero__fact"><dt>Длительность</dt><dd>2,5 месяца</dd></div>
-      <div class="hero__fact"><dt>Ранняя стоимость</dt><dd>55 000 ₽ <s>75 000 ₽</s></dd></div>
+      <div class="hero__fact"><dt>Стоимость</dt><dd>от 75 000 ₽</dd></div>
     </dl>
 
     <div class="hero__ctas">
-      <button class="btn btn--gold js-book">Занять место</button>
+      <a class="btn btn--gold js-book" href="#tarify">Занять место</a>
       <a class="btn btn--ghost-d" href="#tarify">Смотреть тарифы</a>
-      <span class="hero__note">Ранняя цена действует до <span data-c="deadlineShort">22 сентября</span> · оплата на сайте lava.top</span>
+      <span class="hero__note">Оплата на сайте lava.top</span>
     </div>
   </div>
 
@@ -1405,7 +1408,7 @@ hr.hair.is-in{transform:scaleX(1)}
         <p class="muted">Нужно смотреть на дом как на карту. Что происходит в жизни — видно по тому, что происходит в пространстве. Одно точное изменение вроде перестановки мебели или перекраски стены способно улучшить сразу несколько сфер.</p>
         <p><b>На курсе вы научитесь диагностировать причины жизненных проблем через интерьер и создавать дома, которые работают на вас.</b></p>
         <div class="btn-row">
-          <button class="btn btn--dark js-book">Занять место</button>
+          <a class="btn btn--dark js-book" href="#tarify">Занять место</a>
           <a class="btn btn--ghost-l" href="#metod">Как это работает</a>
         </div>
       </div>
@@ -1668,7 +1671,7 @@ hr.hair.is-in{transform:scaleX(1)}
           <li>Работа с интерьерными предметами, мебелью, декором, материалами и предметами collectible design как неразрывной частью Васту-решения.</li>
         </ul>
         <div class="btn-row">
-          <button class="btn btn--dark js-book">Учиться у Анны</button>
+          <a class="btn btn--dark js-book" href="#tarify">Учиться у Анны</a>
         </div>
       </div>
     </div>
@@ -2036,16 +2039,6 @@ hr.hair.is-in{transform:scaleX(1)}
       <p class="head__sub">Оба тарифа дают полную систему. Разница — в том, останется Васту вашим личным инструментом или станет профессией.</p>
     </div>
 
-    <div class="center" style="margin-bottom:clamp(30px,3.6vw,50px)">
-      <div class="timer" id="timerTariffs">
-        <span class="timer__lbl">До конца ранней цены</span>
-        <span class="timer__grid">
-          <span class="timer__u"><b class="timer__n" data-t="d">00</b><span class="timer__c" data-t="dl">дней</span></span>
-          <span class="timer__u"><b class="timer__n" data-t="h">00</b><span class="timer__c" data-t="hl">часов</span></span>
-        </span>
-      </div>
-    </div>
-
     <div class="tariffs">
       <article class="tariff">
         <p class="tariff__name">Основной</p>
@@ -2060,9 +2053,9 @@ hr.hair.is-in{transform:scaleX(1)}
           <li>Доступ к материалам — <b>6 месяцев</b></li>
         </ul>
         <div class="tariff__price">
-          <div class="tariff__now">55 000 ₽ <s>75 000 ₽</s></div>
+          <div class="tariff__now">75 000 ₽</div>
         </div>
-        <button class="btn btn--ghost-d btn--wide js-book" data-tariff="base">Занять место</button>
+        <a class="btn btn--ghost-d btn--wide" data-tariff="base" href="https://app.lava.top/products/ed760ac8-79d2-4f9e-9255-baeba0bdd1ac" target="_blank" rel="noopener">Занять место</a>
           <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
       </article>
 
@@ -2078,9 +2071,9 @@ hr.hair.is-in{transform:scaleX(1)}
                     <li class="is-plus">Параллельная работа над <b>дипломным проектом</b> и защита</li>
         </ul>
         <div class="tariff__price">
-          <div class="tariff__now">155 000 ₽ <s>175 000 ₽</s></div>
+          <div class="tariff__now">175 000 ₽</div>
         </div>
-        <button class="btn btn--dark btn--wide js-book" data-tariff="pro">Занять место</button>
+        <a class="btn btn--dark btn--wide" data-tariff="pro" href="https://app.lava.top/products/34229951-b58e-424a-b1d1-d26823fd0373" target="_blank" rel="noopener">Занять место</a>
           <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
       </article>
     </div>
@@ -2100,8 +2093,7 @@ hr.hair.is-in{transform:scaleX(1)}
           <tr><th>Дипломный проект и защита</th><td data-col="Основной" class="no">—</td><td data-col="Наставничество" class="yes">✦</td></tr>
           <tr><th>Доступ к материалам</th><td data-col="Основной">6 месяцев</td><td data-col="Наставничество">1 год</td></tr>
           <tr><th>Количество мест</th><td data-col="Основной">не ограничено</td><td data-col="Наставничество">15</td></tr>
-          <tr><th>Ранняя стоимость</th><td data-col="Основной"><b class="gold price-inline">55 000 ₽</b></td><td data-col="Наставничество"><b class="gold price-inline">155 000 ₽</b></td></tr>
-          <tr><th>Стоимость после <span data-c="deadlineShort">22 сентября</span></th><td data-col="Основной">75 000 ₽</td><td data-col="Наставничество">175 000 ₽</td></tr>
+          <tr><th>Стоимость</th><td data-col="Основной"><b class="gold price-inline">75 000 ₽</b></td><td data-col="Наставничество"><b class="gold price-inline">175 000 ₽</b></td></tr>
         </tbody>
       </table>
     </div>
@@ -2123,22 +2115,7 @@ hr.hair.is-in{transform:scaleX(1)}
   </div>
 </section>
 
-<!-- ============ БЛОК 17. РАННЯЯ ЗАПИСЬ ============ -->
-<section class="sec sec--dark sec--bridged">
-  <div class="guides"><i></i><i></i><i></i></div>
-  <div class="wrap wrap--narrow center">
-    <div class="rv"><h2 class="title">Ранняя цена — для тех, кто приходит<br>до начала основной кампании</h2></div>
-    <p class="head__sub" style="margin-inline:auto">До <b class="gold" data-c="deadlineLong">22 сентября 2026</b> участие доступно по цене <b class="gold price-inline">55 000 ₽</b> на основном тарифе и <b class="gold price-inline">155 000 ₽</b> на тарифе «Наставничество». После этой даты стоимость составит 75 000 ₽ и 175 000 ₽ соответственно.</p>
-
-
-    <div class="btn-row btn-row--c">
-      <button class="btn btn--gold js-book">Занять место по ранней цене</button>
-    </div>
-    <p class="tiny muted" style="margin-top:20px">Кнопка вернёт к тарифам: выберите свой и переходите к оплате.</p>
-  </div>
-</section>
-
-<!-- ============ БЛОК 17б. ОТЗЫВЫ ОБ ОБУЧЕНИИ ============ -->
+<!-- ============ БЛОК 17. ОТЗЫВЫ ОБ ОБУЧЕНИИ ============ -->
 <section class="sec">
   <div class="wrap">
     <div class="head head--c rv">
@@ -2264,10 +2241,10 @@ hr.hair.is-in{transform:scaleX(1)}
 
 
     <p class="small mt-m" style="color:rgba(240,235,226,.7)">
-      Флагманский курс «Васту-дизайн» Анны Ромео · старт <span data-c="startShort">6 октября</span> · 2,5 месяца · ранняя стоимость от 55 000 ₽
+      Флагманский курс «Васту-дизайн» Анны Ромео · старт <span data-c="startShort">9 ноября</span> · 2,5 месяца · стоимость от 75 000 ₽
     </p>
     <div class="btn-row btn-row--c">
-      <button class="btn btn--gold js-book">Занять место</button>
+      <a class="btn btn--gold js-book" href="#tarify">Занять место</a>
     </div>
     <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.84)">Оплата на защищённой странице lava.top.</p>
   </div>
@@ -2294,7 +2271,7 @@ hr.hair.is-in{transform:scaleX(1)}
       <div>
         <h4>Связь</h4>
         <ul>
-          <li><a href="https://annaromeo.design" target="_blank" rel="noopener">annaromeo.design</a></li>
+          <li><a href="https://annaromeovastu.com" target="_blank" rel="noopener">annaromeovastu.com</a></li>
           <li><a href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Telegram</a></li>
           <li><a href="https://www.instagram.com/annaromeo.blog/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="mailto:annaromeostudio@gmail.com">annaromeostudio@gmail.com</a></li>
@@ -2305,7 +2282,7 @@ hr.hair.is-in{transform:scaleX(1)}
     <div class="foot__legal">
       <span>ИП Чистякова Елена Яковлевна · ИНН 614334916160 · ОГРНИП 322930100040113</span>
       <span>
-        <a href="https://annaromeo.design/main#oferta" target="_blank" rel="noopener">Договор оферты</a>
+        <a href="https://annaromeovastu.com/#oferta" target="_blank" rel="noopener">Договор оферты</a>
       </span>
       <span>© <span id="year">2026</span> Anna Romeo</span>
     </div>
@@ -2328,22 +2305,15 @@ hr.hair.is-in{transform:scaleX(1)}
 
 <script>
 /* ============================================================
-   КОНФИГУРАЦИЯ — единственное место, где меняются даты и цены
+   КОНФИГУРАЦИЯ — дата старта. Цены (75 000 / 175 000 ₽) и ссылки
+   на оплату lava.top записаны прямо в разметке: meta description,
+   липкая панель, первый экран, карточки тарифов, таблица, финальный экран
    ============================================================ */
 const CFG = {
-  // Даты подтверждены Анной 29 августа: ранняя цена до 10 сентября,
-  // старт потока 9 ноября. Правятся только здесь — подписи по всей
-  // странице и таймер пересчитаются сами; вернёте null — снова
-  // «дата уточняется» и отсчёт спрячется.
+  // Старт потока подтверждён Анной 29 августа — 9 ноября. Правится здесь,
+  // подписи [data-c] пересчитаются сами; вернёте null — «дата уточняется».
+  // Ранняя цена снята 15 сентября вместе с таймером обратного отсчёта.
   startDate:      '2026-11-09',                  // старт потока — 9 ноября
-  earlyDeadline:  '2026-09-10T23:59:59+03:00',   // ранняя цена — до 10 сентября
-
-  // Оплата. Кнопка тарифа ведёт прямо сюда — промежуточного бронирования нет.
-  // Соответствие подтверждено: 34229951… — «Наставничество» (VIP), ed760ac8… — «Основной».
-  pay: {
-    base: 'https://app.lava.top/products/ed760ac8-79d2-4f9e-9255-baeba0bdd1ac',
-    pro:  'https://app.lava.top/products/34229951-b58e-424a-b1d1-d26823fd0373',
-  },
 };
 
 /* ---------- Даты в человеческом виде ---------- */
@@ -2351,12 +2321,9 @@ const MONTHS_GEN = ['января','февраля','марта','апреля',
 const fmt = (d, withYear) => `${d.getDate()}\u00A0${MONTHS_GEN[d.getMonth()]}${withYear ? ' ' + d.getFullYear() : ''}`;
 const TBD = 'дата уточняется';
 const dStart = CFG.startDate     ? new Date(CFG.startDate + 'T00:00:00') : null;
-const dEnd   = CFG.earlyDeadline ? new Date(CFG.earlyDeadline)           : null;
 const TEXTS = {
   startShort:    dStart ? fmt(dStart, false) : TBD,
   startLong:     dStart ? fmt(dStart, true)  : TBD,
-  deadlineShort: dEnd   ? fmt(dEnd, false)   : TBD,
-  deadlineLong:  dEnd   ? fmt(dEnd, true)    : TBD,
 };
 document.querySelectorAll('[data-c]').forEach(el => {
   const v = TEXTS[el.dataset.c];
@@ -2365,50 +2332,10 @@ document.querySelectorAll('[data-c]').forEach(el => {
     if (v === TBD) el.classList.add('draft', 'draft--inline');
   }
 });
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ---------- Таймеры обратного отсчёта ---------- */
-(() => {
-  const timers = [...document.querySelectorAll('#timerTariffs')];
-  const stickyLeft = document.getElementById('stickyLeft');
-  if (!dEnd) {                       // дедлайна нет — обратного отсчёта нет
-    timers.forEach(t => t.remove());
-    if (stickyLeft) stickyLeft.textContent = 'до объявления даты старта';
-    return;
-  }
-  const plural = (n, forms) => {
-    const n10 = n % 10, n100 = n % 100;
-    if (n10 === 1 && n100 !== 11) return forms[0];
-    if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return forms[1];
-    return forms[2];
-  };
-  const pad = n => String(n).padStart(2, '0');
-
-  function tick() {
-    const diff = dEnd - new Date();
-    if (diff <= 0) {
-      timers.forEach(t => { t.innerHTML = '<span class="timer__lbl">Ранняя цена завершена — действует основная стоимость</span>'; });
-      if (stickyLeft) stickyLeft.textContent = 'основная стоимость';
-      clearInterval(iv);
-      return;
-    }
-    const d = Math.floor(diff / 864e5);
-    const h = Math.floor(diff / 36e5) % 24;
-    const m = Math.floor(diff / 6e4) % 60;
-    const s = Math.floor(diff / 1e3) % 60;
-    timers.forEach(t => {
-      const set = (k, v) => { const e = t.querySelector(`[data-t="${k}"]`); if (e) e.textContent = v; };
-      set('d', d); set('h', h);
-      set('dl', plural(d, ['день','дня','дней']));
-      set('hl', plural(h, ['час','часа','часов']));
-    });
-    if (stickyLeft) stickyLeft.textContent = `осталось ${d} ${plural(d, ['день','дня','дней'])}`;
-  }
-  let iv = null;
-  tick();
-  if (dEnd > new Date()) iv = setInterval(tick, 1000);
-})();
-
+</script>
+<script>
 /* ---------- Шапка: фон при скролле + мобильное меню ---------- */
 (() => {
   const nav = document.getElementById('nav');
@@ -2430,20 +2357,34 @@ document.getElementById('year').textContent = new Date().getFullYear();
     else if (acc > 60) nav.classList.add('nav--hidden');
   }, { passive: true });
 
+  const close = () => {
+    nav.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
   burger.addEventListener('click', () => {
-    const open = nav.classList.toggle('is-open');
-    burger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    if (nav.classList.contains('is-open')) { close(); return; }
+    // панель встаёт вплотную под фактическую высоту шапки (у сплошной она ниже --nav-h)
+    links.style.top = nav.offsetHeight + 'px';
+    nav.classList.add('is-open');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   });
-  links.addEventListener('click', e => {
-    if (e.target.closest('a')) { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-  });
+  links.addEventListener('click', e => { if (e.target.closest('a')) close(); });
+  const scrim = document.getElementById('navScrim');
+  if (scrim) scrim.addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('is-open')) close(); });
+  const mq = matchMedia('(max-width: 1000px)');
+  const onMq = e => { if (!e.matches) { if (nav.classList.contains('is-open')) close(); links.style.top = ''; } };
+  if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
 })();
 
+</script>
+<script>
 /* ---------- Подсветка активного пункта навигации ---------- */
 (() => {
   const map = new Map();
-  document.querySelectorAll('.nav__links a[href^="#"]').forEach(a => {
+  document.querySelectorAll('.nav__links a[href^="#"]:not(.btn)').forEach(a => {
     const sec = document.querySelector(a.getAttribute('href'));
     if (sec) map.set(sec, a);
   });
@@ -2452,21 +2393,27 @@ document.getElementById('year').textContent = new Date().getFullYear();
     entries.forEach(en => {
       if (en.isIntersecting) {
         map.forEach(a => a.classList.remove('is-active'));
-        map.get(en.target)?.classList.add('is-active');
+        const act = map.get(en.target); if (act) act.classList.add('is-active');
       }
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   map.forEach((_, sec) => io.observe(sec));
+  const hero = document.querySelector('.hero');   // вернулись на первый экран — подсветку снять
+  if (hero) io.observe(hero);
 })();
 
+</script>
+<script>
 /* ---------- Липкая CTA-панель ---------- */
 (() => {
   const bar = document.getElementById('sticky');
-  const hero = document.querySelector('.hero');
+  if (!bar) return;
+  const ctas = document.querySelector('.hero__ctas');
   const foot = document.querySelector('.foot');
   const upd = () => {
-    const passedHero = window.scrollY > 40;
-    const atFoot = foot.getBoundingClientRect().top < innerHeight;
+    // панель выезжает, когда кнопки первого экрана ушли — иначе на 390×664 она их накрывала
+    const passedHero = ctas ? ctas.getBoundingClientRect().bottom < 0 : window.scrollY > 40;
+    const atFoot = foot ? foot.getBoundingClientRect().top < innerHeight : false;
     const on = passedHero && !atFoot;
     bar.classList.toggle('is-on', on);
     document.body.classList.toggle('sticky-on', on);
@@ -2476,6 +2423,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
   addEventListener('resize', upd);
 })();
 
+</script>
+<script>
 /* ---------- Видео «Метод в действии» и голосовой отзыв ----------
    Звук обязателен: говорящая голова и голосовое сообщение. Поэтому никакого
    autoplay/muted — стартует по клику, с нативными контролами. Здесь только
@@ -2486,12 +2435,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
   if (!vids.length) return;
   vids.forEach(v => {
     v.addEventListener('play', () => vids.forEach(o => { if (o !== v) o.pause(); }));
+    // Chrome не стартует ролик без метаданных по клику в центр кадра
+    v.addEventListener('click', () => { if (v.paused && v.readyState === 0) v.play().catch(() => {}); });
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) vids.forEach(v => v.pause());
   });
 })();
 
+</script>
+<script>
 /* ---------- FAQ-аккордеон ---------- */
 (() => {
   document.querySelectorAll('.faq__q').forEach((q, i) => {
@@ -2515,12 +2468,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
       }
     });
   });
+  const faqRoot = document.getElementById('faqRoot');
+  if (faqRoot) faqRoot.classList.add('is-live');
   addEventListener('resize', () => {
     const o = document.querySelector('.faq__i.is-open .faq__a');
     if (o) o.style.maxHeight = o.scrollHeight + 'px';
   });
 })();
 
+</script>
+<script>
 /* ============================================================
    ДВИЖЕНИЕ. Бюджет: ~40 элементов из ~660 ≈ 6 %.
    В секции движутся максимум три вещи: заголовок, его линия и одна картинка.
@@ -2528,6 +2485,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
    ============================================================ */
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+</script>
+<script>
 /* Фоновое видео героя. Грузим только если сеть это оправдывает: постер уже
    нарисован, поэтому отказ от видео ничего не ломает. */
 (() => {
@@ -2536,7 +2495,7 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const c = navigator.connection || {};
   const slow = c.saveData
     || (c.effectiveType && /(^|-)2g$|3g/.test(c.effectiveType))
-    || (c.downlink && c.downlink < 1.5);
+    || (c.downlink && c.downlink < 0.6);   // downlink занижается: 1,45 на быстром канале
   if (slow) return;                       // остаётся постер — это осознанный кадр, а не пустота
 
   // Проявление вешаем на несколько сигналов сразу: событие может успеть пройти
@@ -2593,6 +2552,8 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   v.addEventListener('playing', () => setTimeout(upgrade, 1200), { once: true });
 })();
 
+</script>
+<script>
 /* Вход героя — по готовности шрифтов. 1800 мс — жёсткий предохранитель:
    таймаут шрифта не должен оставить первый экран пустым. */
 (() => {
@@ -2607,15 +2568,19 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const els = document.querySelectorAll('.rv, .media-rv, hr.hair');
   if (RM || !('IntersectionObserver' in window)) {
     els.forEach(e => e.classList.add('is-in'));
+    document.documentElement.classList.add('js-ok');
     return;
   }
   const io = new IntersectionObserver((ents, obs) => {
     ents.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); obs.unobserve(en.target); } });
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
   els.forEach(e => io.observe(e));
+  document.documentElement.classList.add('js-ok');
 })();
 
 
+</script>
+<script>
 /* ---------- Кнопка «наверх» ----------
    Отзыв с теста: человек жмёт «Занять место» на первом экране, чтобы увидеть
    цену, а потом хочет вернуться и дочитать — и возвращаться нечем. */
@@ -2638,6 +2603,8 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   addEventListener('resize', upd, { passive: true });
 })();
 
+</script>
+<script>
 /* ---------- Карусели ----------
    Листание — родной скролл со снапом: на телефоне это обычный свайп, и он
    работает даже если скрипт не выполнился. Точки и стрелки лишь дублируют
@@ -2645,11 +2612,12 @@ const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
    были бы мёртвой разметкой. */
 document.querySelectorAll('[data-crsl]').forEach(root => {
   const track  = root.querySelector('.crsl__track');
+  if (!track) return;
   const slides = [...track.children];
   const dotBox = root.querySelector('[data-crsl-dots]');
   const prev   = root.querySelector('[data-crsl-prev]');
   const next   = root.querySelector('[data-crsl-next]');
-  if (!track || slides.length < 2) return;
+  if (slides.length < 2) return;
 
   // Точки читаются, пока их немного. На длинной ленте они превращаются в
   // рябь, по которой нельзя понять ни позицию, ни длину — там честнее счётчик.
@@ -2711,24 +2679,14 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
   sync();
 });
 
+</script>
+<script>
 /* ---------- Оплата ----------
-   Анна: «вместо кнопки бронирования — сразу оплата». Кнопка тарифа поэтому
-   становится настоящей ссылкой на lava.top: её можно открыть в новой вкладке
-   и скопировать, чего не умеет кнопка. Адреса лежат в CFG.pay — в одном месте.
-   Кнопки, не привязанные к тарифу (шапка, первый экран, липкая панель), тарифа
-   не знают, поэтому просто ведут к блоку с тарифами: выбор делает человек. */
-document.querySelectorAll('.js-book[data-tariff]').forEach(btn => {
-  const url = (CFG.pay || {})[btn.dataset.tariff];
-  if (!url) return;
-  const a = document.createElement('a');
-  a.className = btn.className.replace('js-book', '').trim();
-  a.href = url;
-  a.target = '_blank';
-  a.rel = 'noopener';
-  a.textContent = btn.textContent;
-  btn.replaceWith(a);
-});
-
+   Анна: «вместо кнопки бронирования — сразу оплата». Кнопки тарифов — настоящие
+   ссылки на lava.top прямо в разметке (#tarify), поэтому оплата работает даже
+   если скрипт не загрузился. Кнопки без тарифа (шапка, первый экран, липкая
+   панель) — ссылки на #tarify; скрипт только делает прокрутку плавной и не
+   пишет якорь в адрес. */
 document.addEventListener('click', e => {
   const btn = e.target.closest('.js-book');
   if (!btn) return;
@@ -2737,6 +2695,8 @@ document.addEventListener('click', e => {
   if (tarify) tarify.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
+</script>
+<script>
 /* ---------- Лайтбокс для кадров разбора ----------
    Слайды Анны несут текст внутри картинки, и на карточке он мелкий.
    Тап открывает кадр во весь экран; стрелки листают внутри того же разбора. */
@@ -2790,6 +2750,14 @@ document.addEventListener('click', e => {
   next.addEventListener('click', () => show(idx + 1));
   addEventListener('keydown', e => {
     if (!lb.classList.contains('is-on')) return;
+    if (e.key === 'Tab') {                 // фокус не уходит на страницу за окном
+      const f = [...lb.querySelectorAll('button:not([disabled])')];
+      if (f.length) {
+        e.preventDefault();
+        const k = f.indexOf(document.activeElement);
+        f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      }
+    }
     if (e.key === 'Escape')     close();
     if (e.key === 'ArrowLeft')  show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
