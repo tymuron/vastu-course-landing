@@ -16,3 +16,6 @@ services:
       - path: /index.html
         name: Cache-Control
         value: no-cache
+      - path: /mk/*
+        name: Cache-Control
+        value: no-cache

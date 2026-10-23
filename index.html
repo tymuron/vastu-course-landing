@@ -2055,7 +2055,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
         <div class="tariff__price">
           <div class="tariff__now">75 000 ₽</div>
         </div>
-        <a class="btn btn--ghost-d btn--wide" data-tariff="base" href="https://app.lava.top/products/ed760ac8-79d2-4f9e-9255-baeba0bdd1ac" target="_blank" rel="noopener">Занять место</a>
+        <a class="btn btn--ghost-d btn--wide" data-tariff="base" href="https://vastu-portal-app.onrender.com/buy/4d14d633-0578-4ce8-8ad6-2d85bc3e0c49?currency=RUB" target="_blank" rel="noopener">Занять место</a>
           <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
       </article>
 
@@ -2073,7 +2073,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
         <div class="tariff__price">
           <div class="tariff__now">175 000 ₽</div>
         </div>
-        <a class="btn btn--dark btn--wide" data-tariff="pro" href="https://app.lava.top/products/34229951-b58e-424a-b1d1-d26823fd0373" target="_blank" rel="noopener">Занять место</a>
+        <a class="btn btn--dark btn--wide" data-tariff="pro" href="https://vastu-portal-app.onrender.com/buy/d6a1aacb-974b-411c-8cee-3d353a44c852?currency=RUB" target="_blank" rel="noopener">Занять место</a>
           <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
       </article>
     </div>
@@ -2306,7 +2306,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
 <script>
 /* ============================================================
    КОНФИГУРАЦИЯ — дата старта. Цены (75 000 / 175 000 ₽) и ссылки
-   на оплату lava.top записаны прямо в разметке: meta description,
+   на оплату (/buy платформы) записаны прямо в разметке: meta description,
    липкая панель, первый экран, карточки тарифов, таблица, финальный экран
    ============================================================ */
 const CFG = {
@@ -2683,8 +2683,11 @@ document.querySelectorAll('[data-crsl]').forEach(root => {
 <script>
 /* ---------- Оплата ----------
    Анна: «вместо кнопки бронирования — сразу оплата». Кнопки тарифов — настоящие
-   ссылки на lava.top прямо в разметке (#tarify), поэтому оплата работает даже
-   если скрипт не загрузился. Кнопки без тарифа (шапка, первый экран, липкая
+   ссылки прямо в разметке (#tarify), поэтому оплата работает даже если скрипт
+   не загрузился. Ведут на /buy/<offer> платформы, а НЕ на страницу товара
+   lava.top: только оплата, начатая через API платформы, присылает вебхук —
+   по ней ученик сразу получает доступ и письмо (см. vastu-portal/fulfilment.js).
+   Кнопки без тарифа (шапка, первый экран, липкая
    панель) — ссылки на #tarify; скрипт только делает прокрутку плавной и не
    пишет якорь в адрес. */
 document.addEventListener('click', e => {
