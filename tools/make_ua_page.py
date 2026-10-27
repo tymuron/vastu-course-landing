@@ -16,15 +16,8 @@ switching on «Покупка Частинами». What differs from the Russia
   * the footer carries monobank's product legal block;
   * the language switch points back to the Russian page.
 
-It also builds mk/ua/index.html from mk/index.html: the masterclass copy in
-Ukrainian, for masterclass participants in Ukraine. «Основний» is at the
-masterclass price (design-base-mk in MONO_PRICES_UAH, the lava СПЕЦЦЕНА
-offer) with the full price struck through, as on the Russian copy; noindex,
-like its source. «Покупка Частинами» appears on it only once the Russian
-masterclass page carries it — the badges wait there for monobank's live test.
-
 Never edit ua/index.html by hand. Change index.html, then run:
-    python3 tools/make_mk_page.py && python3 tools/make_ua_page.py
+    python3 tools/make_ua_page.py
 If the Russian page gains or changes text, the script stops and lists every
 string that has no translation yet — add them to tools/ua_strings.json.
 Text that is already Ukrainian (і ї є ґ and no ы э ъ ё) is left as is.
@@ -46,12 +39,6 @@ UAH = {"base": f"42{NB}066,73{NB}₴", "pro": f"98{NB}155,70{NB}₴"}
 CARD = {"base": f"832,5{NB}€ · 930{NB}$", "pro": f"1{NB}942,5{NB}€ · 2{NB}170{NB}$"}
 LAVA_OFFER = {"base": "4d14d633-0578-4ce8-8ad6-2d85bc3e0c49", "pro": "d6a1aacb-974b-411c-8cee-3d353a44c852"}
 MONO_PLAN = {"base": "design-base", "pro": "design-pro"}
-# The masterclass price of «Основний» (mk/ua/): design-base-mk / СПЕЦЦЕНА.
-MK = {"uah": f"30{NB}848,93{NB}₴", "card": f"610,5{NB}€ · 682{NB}$",
-      "lava": "ded0ec37-2888-4336-8e2d-38c49bab7df6", "mono": "design-base-mk"}
-MK_NOTE = "Ціна для учасниць майстер-класу"
-# Translations that mention «Покупка Частинами», for a page that has no badge yet.
-NO_MONO = {"Оплата на защищённой странице lava.top · есть рассрочка в рублях.": "Оплата карткою на захищеній сторінці lava.top."}
 
 # The seller behind «Покупка Частинами monobank»: the Ukrainian ФОП that owns
 # the monobank store (store id 2882500098_823). Shown in the footer next to
@@ -110,46 +97,35 @@ def bind(text):
     return re.sub(r"(?<![\w’-])(\w{1,2}|від|без|про|при|під|над|між|для|або|щоб)\s(?=\S)", rf"\1{NB}", text)
 
 
-def tariff_block(key, mk=False, mono=True):
+def tariff_block(key):
     gold = key == "pro"
     btn = "btn--dark" if gold else "btn--ghost-d"
-    if mk and key == "base":  # the masterclass price, the full one struck through
-        price = f'<div class="tariff__now">{MK["uah"]} <s>{UAH[key]}</s></div>\n          <p class="tariff__mk">{MK_NOTE}</p>'
-        card, offer, plan = MK["card"], MK["lava"], MK["mono"]
-    else:
-        price = f'<div class="tariff__now">{UAH[key]}</div>'
-        card, offer, plan = CARD[key], LAVA_OFFER[key], MONO_PLAN[key]
-    badge = f"""
-        <a class="tariff__mono" data-tariff="{key}-mono" href="{PORTAL}/buy/mono/{plan}" target="_blank" rel="noopener">
+    return f"""<div class="tariff__price">
+          <div class="tariff__now">{UAH[key]}</div>
+          <p class="tariff__card">або карткою: <b>{CARD[key]}</b></p>
+        </div>
+        <a class="btn {btn} btn--wide" data-tariff="{key}" href="{PORTAL}/buy/{LAVA_OFFER[key]}?currency=EUR&amp;lang=uk" target="_blank" rel="noopener">Зайняти місце</a>
+        <a class="tariff__mono" data-tariff="{key}-mono" href="{PORTAL}/buy/mono/{MONO_PLAN[key]}" target="_blank" rel="noopener">
           <span class="tariff__mono-cap">Для клієнтів monobank · у{NB}гривнях</span>
           <img src="assets/mono/chast-6-white.png" width="800" height="264" alt="Покупка Частинами monobank: це можна купити частинами, до 6 платежів" loading="lazy" decoding="async">
         </a>
-        <p class="tariff__mono-legal">{MONO_AD_LEGAL}</p>""" if mono else ""
-    how = f"Карткою в{NB}євро чи доларах — на{NB}захищеній сторінці lava.top" + (f", Покупка Частинами — у{NB}застосунку monobank" if mono else "")
-    return f"""<div class="tariff__price">
-          {price}
-          <p class="tariff__card">або карткою: <b>{card}</b></p>
-        </div>
-        <a class="btn {btn} btn--wide" data-tariff="{key}" href="{PORTAL}/buy/{offer}?currency=EUR&amp;lang=uk" target="_blank" rel="noopener">Зайняти місце</a>{badge}
-          <p class="tiny muted" style="margin-top:12px">{how}. Відкриється в{NB}новій вкладці.</p>
+        <p class="tariff__mono-legal">{MONO_AD_LEGAL}</p>
+          <p class="tiny muted" style="margin-top:12px">Карткою в{NB}євро чи доларах — на{NB}захищеній сторінці lava.top, Покупка Частинами — у{NB}застосунку monobank. Відкриється в{NB}новій вкладці.</p>
       </article>"""
 
 
-def faq_ua(mono=True):
-    how = ("Двома способами. Покупкою Частинами monobank — до 6 платежів у гривнях за тією самою ціною: посилання з лапкою під тарифом, "
-           "оформлення в застосунку monobank. Або карткою в євро чи доларах — за основною кнопкою тарифу, на захищеній сторінці lava.top. "
-           if mono else "Карткою в євро чи доларах — за кнопкою тарифу, на захищеній сторінці lava.top. ")
-    return (
-        f'<div class="faq__i"><button class="faq__q">Якою мовою проходить курс?</button><div class="faq__a"><div>'
-        f"Російською: уроки, прямі ефіри, чат і матеріали курсу — російською мовою. Ця сторінка українською, щоб вам було зручно "
-        f"ознайомитися з програмою та умовами.</div></div></div>\n"
-        f'      <div class="faq__i"><button class="faq__q">Як оплатити з України?</button><div class="faq__a"><div>'
-        f"{how}"
-        f"Одразу після оплати на пошту, вказану під час оплати, прийде лист із доступом до платформи та чатів курсу."
-        f'<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm js-book" href="#tarify">До тарифів</a>'
-        f'<a class="btn btn--ghost-l btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Поставити запитання</a></div>'
-        f"</div></div></div>"
-    )
+FAQ_UA = (
+    f'<div class="faq__i"><button class="faq__q">Якою мовою проходить курс?</button><div class="faq__a"><div>'
+    f"Російською: уроки, прямі ефіри, чат і матеріали курсу — російською мовою. Ця сторінка українською, щоб вам було зручно "
+    f"ознайомитися з програмою та умовами.</div></div></div>\n"
+    f'      <div class="faq__i"><button class="faq__q">Як оплатити з України?</button><div class="faq__a"><div>'
+    f"Двома способами. Покупкою Частинами monobank — до 6 платежів у гривнях за тією самою ціною: посилання з лапкою під тарифом, "
+    f"оформлення в застосунку monobank. Або карткою в євро чи доларах — за основною кнопкою тарифу, на захищеній сторінці lava.top. "
+    f"Одразу після оплати на пошту, вказану під час оплати, прийде лист із доступом до платформи та чатів курсу."
+    f'<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm js-book" href="#tarify">До тарифів</a>'
+    f'<a class="btn btn--ghost-l btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Поставити запитання</a></div>'
+    f"</div></div></div>"
+)
 
 
 def translate(doc, strings):
@@ -202,23 +178,19 @@ def translate(doc, strings):
     return doc
 
 
-def build(src, out, ru_url, mk=False):
-    doc = open(os.path.join(ROOT, src), encoding="utf-8").read()
-    doc = re.sub(r"\A<!-- GENERATED[^\n]*\n", "", doc).replace("../assets/", "assets/")
-    mono = not mk or "/buy/mono/" in doc  # the masterclass copy: once its Russian page has the badge
+def main():
+    doc = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
     strings = json.load(open(os.path.join(ROOT, "tools", "ua_strings.json"), encoding="utf-8"))
-    if not mono:
-        strings["text"].update(NO_MONO)
 
     # head
     doc = sub1(doc, r'<html lang="ru">', '<html lang="uk">', "html lang")
-    doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', rf"\g<1>{SITE}/{out}/\2", "og:url")
+    doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', rf"\g<1>{SITE}/ua/\2", "og:url")
     doc = sub1(doc, r'(<meta property="og:type"[^>]*>)', r'\1\n<meta property="og:locale" content="uk_UA">', "og:type")
     doc = sub1(doc, r"</head>", CSS + "</head>", "</head>")
 
     # language switch -> back to Russian
     doc = sub1(doc, r'<li class="nav__lang"><a href="[^"]*" lang="uk" hreflang="uk" title="[^"]*">UA</a></li>',
-               f'<li class="nav__lang"><a href="{ru_url}" lang="ru" hreflang="ru" title="Російська версія">RU</a></li>', "language switch")
+               f'<li class="nav__lang"><a href="{SITE}/" lang="ru" hreflang="ru" title="Російська версія">RU</a></li>', "language switch")
 
     # tariff cards: everything from the price to the end of the card (ruble
     # buttons, GetCourse, any monobank block the Russian page may carry)
@@ -231,18 +203,16 @@ def build(src, out, ru_url, mk=False):
     # prices in hryvnias (Наставничество first: "175 000" contains "75 000")
     doc = re.sub(rf"175[ {NB}]000[ {NB}]₽", UAH["pro"], doc)
     doc = re.sub(rf"(?<!\d)75[ {NB}]000[ {NB}]₽", UAH["base"], doc)
-    if mk:
-        doc = re.sub(rf"(?<!\d)55[ {NB}]000[ {NB}]₽", MK["uah"], doc)
     if "₽" in re.sub(r"<(script|style)\b.*?</\1>|<!--.*?-->", "", doc, flags=re.S):
-        sys.exit(f"make_ua_page: a ruble price survived on {out}/ — update the price substitutions")
+        sys.exit("make_ua_page: a ruble price survived — update the price substitutions")
 
     doc = translate(doc, strings)
 
-    doc = doc.replace("\x01TARIFF_base\x01", tariff_block("base", mk, mono)).replace("\x01TARIFF_pro\x01", tariff_block("pro", mk, mono))
-    doc = doc.replace("\x01FAQ\x01", faq_ua(mono))
-    if mono and FOP_UA:
+    doc = doc.replace("\x01TARIFF_base\x01", tariff_block("base")).replace("\x01TARIFF_pro\x01", tariff_block("pro"))
+    doc = doc.replace("\x01FAQ\x01", FAQ_UA)
+    if FOP_UA:
         doc = sub1(doc, r'(<div class="foot__legal">)', rf'\1\n      <span>Продавець за Покупкою Частинами monobank: {html.escape(FOP_UA)}</span>', "footer seller")
-    if mono and "foot__mono" not in doc.split("</head>", 1)[1]:
+    if "foot__mono" not in doc.split("</head>", 1)[1]:
         doc = sub1(doc, r'(<div class="foot__legal">.*?</div>)', rf'\1\n    <p class="foot__mono">{MONO_PRODUCT_LEGAL}</p>', "footer legal", re.S)
 
     # nothing Russian may remain in what a visitor reads
@@ -250,29 +220,19 @@ def build(src, out, ru_url, mk=False):
     visible = visible.replace("ИП Чистякова Елена Яковлевна · ИНН 614334916160 · ОГРНИП 322930100040113", "")
     ru_left = sorted(set(w for w in re.findall(r"\w*[ыэъё]\w*", html.unescape(visible), re.I)))
     if ru_left:
-        sys.exit(f"make_ua_page: Russian words left on {out}/: {', '.join(ru_left[:30])}")
-    if not mono and "monobank" in visible:
-        sys.exit(f"make_ua_page: {out}/ has no «Покупка Частинами» badge yet but still mentions monobank")
+        sys.exit(f"make_ua_page: Russian words left on the page: {', '.join(ru_left[:30])}")
 
-    # assets/ -> ../assets/ (or ../../ for mk/ua/) in attributes, CSS url(), JS strings
-    up = "../" * (out.count("/") + 1)
-    doc = doc.replace('="assets/', f'="{up}assets/')
-    doc = re.sub(r"url\(\s*(['\"]?)assets/", rf"url(\g<1>{up}assets/", doc)
-    doc = doc.replace("'assets/", f"'{up}assets/")
+    # one folder down: assets/ -> ../assets/ (attributes, CSS url(), JS strings)
+    doc = doc.replace('="assets/', '="../assets/')
+    doc = re.sub(r"url\(\s*(['\"]?)assets/", r"url(\1../assets/", doc)
+    doc = doc.replace("'assets/", "'../assets/")
     if re.search(r"""(?<![./])['"(]assets/""", doc):
         sys.exit("make_ua_page: a relative asset path was not rewritten")
 
-    banner = f"<!-- GENERATED by tools/make_ua_page.py from {src} + tools/ua_strings.json — do not edit -->\n"
-    os.makedirs(os.path.join(ROOT, out), exist_ok=True)
-    open(os.path.join(ROOT, out, "index.html"), "w", encoding="utf-8").write(banner + doc)
-    base = f"{MK['uah']} (майстер-клас)" if mk else UAH["base"]
-    print(f"{out}/index.html written: {base} / {UAH['pro']}, " + ("monobank «Покупка Частинами»" if mono else "card only (no monobank badge yet)"))
-
-
-def main():
-    build("index.html", "ua", f"{SITE}/")
-    # the masterclass copy — tools/make_mk_page.py writes mk/index.html first
-    build("mk/index.html", "mk/ua", f"{SITE}/mk/", mk=True)
+    banner = "<!-- GENERATED by tools/make_ua_page.py from index.html + tools/ua_strings.json — do not edit -->\n"
+    os.makedirs(os.path.join(ROOT, "ua"), exist_ok=True)
+    open(os.path.join(ROOT, "ua", "index.html"), "w", encoding="utf-8").write(banner + doc)
+    print(f"ua/index.html written: {UAH['base']} / {UAH['pro']}, card {CARD['base']} / {CARD['pro']}, monobank «Покупка Частинами»")
 
 
 if __name__ == "__main__":
