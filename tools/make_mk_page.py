@@ -59,6 +59,11 @@ def main():
     doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', r'\g<1>https://annaromeo-vastu-course.onrender.com/mk/\2', "og:url")
     doc = sub1(doc, r"</head>", CSS + "</head>", "</head>")
     doc = sub1(doc, r"(<meta name=\"description\" content=\"[^\"]*?)стоимость от 75 000 ₽", r"\1стоимость от 55 000 ₽ для участников мастер-класса", "meta description price")
+    # no language switch: the Ukrainian page (ua/) has the full price, and
+    # Ukrainians pay here through the «Покупка Частинами» badge
+    doc = sub1(doc, r'<link rel="alternate" hreflang="ru" href="[^"]*">\n', "", "hreflang ru")
+    doc = sub1(doc, r'<link rel="alternate" hreflang="uk" href="[^"]*">\n', "", "hreflang uk")
+    doc = sub1(doc, r'\s*<li class="nav__lang">.*?</li>', "", "language switch")
 
     # prices («(?<!1)» keeps 175 000 untouched)
     doc = sub1(doc, rf'<div class="sticky__p1">{FULL}</div>', f'<div class="sticky__p1">{SPECIAL}<s>{FULL}</s></div>', "sticky price")
