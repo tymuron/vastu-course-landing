@@ -22,6 +22,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://annaromeo-vastu-course.onrender.com/">
+<link rel="alternate" hreflang="ru" href="https://annaromeo-vastu-course.onrender.com/">
+<link rel="alternate" hreflang="uk" href="https://annaromeo-vastu-course.onrender.com/ua/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23422326'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23CABC90'>A</text></svg>">
 
@@ -374,6 +376,8 @@ p:last-child{margin-bottom:0}
 .nav__links a.is-active{color:var(--gold)}
 .nav__links a:hover::after,.nav__links a.is-active::after{right:0}
 .nav__cta{flex:0 0 auto}
+/* Переключатель языка: русская версия ↔ украинская (/ua/, tools/make_ua_page.py). */
+.nav__lang a{padding-left:clamp(14px,2vw,30px);border-left:1px solid rgba(202,188,144,.3)}
 .nav__links .m-cta{display:none}
 .nav-scrim{position:fixed;inset:0;z-index:119;background:rgba(30,12,14,.6);opacity:0;
   pointer-events:none;transition:opacity .35s var(--e-ui)}
@@ -406,6 +410,7 @@ p:last-child{margin-bottom:0}
   .nav__links li{width:100%;border-top:1px solid rgba(202,188,144,.12)}
   .nav__links a{display:block;padding:16px 0;font-size:12px;letter-spacing:.2em}
   .nav__links .m-cta{display:block;padding-top:20px;border:0}
+  .nav__lang a{padding-left:0;border-left:0}
 }
 
 /* ============================================================
@@ -1351,6 +1356,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
     <li><a href="#programma">Программа</a></li>
     <li><a href="#tarify">Тарифы</a></li>
     <li><a href="#faq">Вопросы</a></li>
+    <li class="nav__lang"><a href="https://annaromeo-vastu-course.onrender.com/ua/" lang="uk" hreflang="uk" title="Українська версія">UA</a></li>
     <li class="m-cta"><a class="btn btn--gold btn--sm btn--wide js-book" href="#tarify">Занять место</a></li>
   </ul>
   <a class="btn btn--gold btn--sm nav__cta js-book" href="#tarify">Занять место</a>
