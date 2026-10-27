@@ -40,6 +40,11 @@ CARD = {"base": f"832,5{NB}€ · 930{NB}$", "pro": f"1{NB}942,5{NB}€ · 2{NB}
 LAVA_OFFER = {"base": "4d14d633-0578-4ce8-8ad6-2d85bc3e0c49", "pro": "d6a1aacb-974b-411c-8cee-3d353a44c852"}
 MONO_PLAN = {"base": "design-base", "pro": "design-pro"}
 
+# The seller behind «Покупка Частинами monobank»: the Ukrainian ФОП that owns
+# the monobank store (store id 2882500098_823). Shown in the footer next to
+# the card seller. None = not known yet, nothing is printed.
+FOP_UA = None  # e.g. "ФОП Прізвище Ім’я По батькові · РНОКПП 0000000000"
+
 # monobank's two lines for any promotion of «Покупка Частинами»
 # (knowledge-base/chast/marketing) and its product block for the site
 # (knowledge-base/chast/marketing/product) — verbatim.
@@ -205,6 +210,8 @@ def main():
 
     doc = doc.replace("\x01TARIFF_base\x01", tariff_block("base")).replace("\x01TARIFF_pro\x01", tariff_block("pro"))
     doc = doc.replace("\x01FAQ\x01", FAQ_UA)
+    if FOP_UA:
+        doc = sub1(doc, r'(<div class="foot__legal">)', rf'\1\n      <span>Продавець за Покупкою Частинами monobank: {html.escape(FOP_UA)}</span>', "footer seller")
     if "foot__mono" not in doc.split("</head>", 1)[1]:
         doc = sub1(doc, r'(<div class="foot__legal">.*?</div>)', rf'\1\n    <p class="foot__mono">{MONO_PRODUCT_LEGAL}</p>', "footer legal", re.S)
 
