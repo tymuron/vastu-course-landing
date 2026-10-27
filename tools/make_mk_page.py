@@ -69,6 +69,8 @@ def main():
     doc = sub1(doc, rf"стоимость от([ {NB}]){FULL}", rf"стоимость от\g<1>{SPECIAL} для участников мастер-класса", "final screen price")
     doc = sub1(doc, rf"/buy/{BASE_OFFER}\?", f"/buy/{SPECIAL_OFFER}?", "Основной buy link")
     doc = sub1(doc, rf'href="{re.escape(GK_BASE)}"', f'href="{GK_SPECIAL}"', "Основной installment link")
+    # monobank «Покупка Частинами»: the masterclass price in hryvnias (vastu-portal MONO_PRICES_UAH)
+    doc = sub1(doc, r'/buy/mono/design-base"', '/buy/mono/design-base-mk"', "Основной monobank link")
     visible = re.sub(r"<s[^>]*>.*?</s>", "", doc.split("КОНФИГУРАЦИЯ")[0])
     if re.search(rf"(?<![1\d]){FULL}|от 75 000", visible):
         sys.exit("make_mk_page: a 75 000 ₽ price survived outside the strike-throughs")

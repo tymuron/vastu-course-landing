@@ -285,6 +285,7 @@ p:last-child{margin-bottom:0}
 .sec--dark .card:hover,.sec--deep .card:hover{box-shadow:inset 0 0 0 2px var(--burgundy)}
 .tariff:hover{box-shadow:inset 0 0 0 1px var(--gold)}
 .tariff__alt:hover{text-decoration-color:currentColor}
+.tariff__mono:hover img{transform:translateY(-2px)}
 .faq__q:hover{color:var(--gold-ink)}
 .layers__tab:hover{color:var(--on-dark)}
 .nav__links a:hover{color:var(--gold)}
@@ -863,6 +864,17 @@ html.js .rv:not(.is-in) .chain::before{transform:scaleX(0)}
   color:var(--gold);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;
   text-decoration-color:rgba(202,188,144,.5);transition:text-decoration-color .3s var(--ease)}
 .tariff--pro .tariff__alt{color:var(--burgundy);text-decoration-color:rgba(66,35,38,.45)}
+/* Третий путь — «Покупка Частинами monobank» (Украина, гривны). Шильдик —
+   официальный файл monobank как есть: менять их визуал без согласования
+   нельзя. Две юр. строки рядом обязательны в любой рекламе ПЧ, кегль — не
+   меньше половины слов «Покупка Частинами» на шильдике
+   (monobank.ua/knowledge-base/chast/marketing). */
+.tariff__mono{display:flex;flex-direction:column;align-items:center;gap:9px;margin-top:16px;text-decoration:none}
+.tariff__mono img{display:block;width:min(236px,100%);height:auto;transition:transform .3s var(--ease)}
+.tariff__mono-cap{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-soft);text-align:center}
+.tariff--pro .tariff__mono-cap{color:rgba(66,35,38,.78)}
+.tariff__mono-legal{font-size:10px;line-height:1.5;color:var(--on-dark-soft);margin:10px 0 0;text-align:center}
+.tariff--pro .tariff__mono-legal{color:rgba(66,35,38,.72)}
 @media(max-width:900px){
   .tariffs{grid-template-columns:minmax(0,1fr)}
   .tariff{padding-top:44px}
@@ -1130,6 +1142,7 @@ html.js .rv:not(.is-in) .chain::before{transform:scaleX(0)}
   .foot ul a{display:block;padding:13px 0}
   .foot__legal a{display:inline-block;padding:12px 0}
 }
+.foot__mono{margin:20px 0 0;font-size:11px;line-height:1.6;max-width:980px;opacity:.82}
 .foot__legal{padding-top:26px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
   font-size:12px;color:rgba(240,235,226,.55);line-height:1.6}
 
@@ -2077,7 +2090,12 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
         </div>
         <a class="btn btn--ghost-d btn--wide" data-tariff="base" href="https://vastu-portal-app.onrender.com/buy/ded0ec37-2888-4336-8e2d-38c49bab7df6?currency=RUB" target="_blank" rel="noopener">Занять место</a>
         <a class="tariff__alt" data-tariff="base-installment" href="https://annaromeoschool.getcourse.ru/vastu-course_55" target="_blank" rel="noopener">Рассрочка в рублях <span aria-hidden="true">→</span></a>
-          <p class="tiny muted" style="margin-top:4px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse. Откроется в новой вкладке.</p>
+        <a class="tariff__mono" data-tariff="base-mono" href="https://vastu-portal-app.onrender.com/buy/mono/design-base-mk" target="_blank" rel="noopener">
+          <span class="tariff__mono-cap">Для клиентов monobank · в гривнах</span>
+          <img src="../assets/mono/chast-6-white.png" width="800" height="264" alt="Покупка Частинами monobank: це можна купити частинами, до 6 платежів" loading="lazy" decoding="async">
+        </a>
+        <p class="tariff__mono-legal" lang="uk">Реальна річна процентна ставка — 0,000001%, макс. строк кредитування до 400 000 грн — 24 місяці. Перший внесок — аванс у розмірі щомісячного платежу. АТ «УНІВЕРСАЛ БАНК», Ліцензія НБУ №92 від 20.01.1994, у держреєстрі банків №226, деталі на monobank.ua</p>
+          <p class="tiny muted" style="margin-top:12px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse, Покупка Частинами — в приложении monobank. Откроется в новой вкладке.</p>
       </article>
 
       <article class="tariff tariff--pro">
@@ -2096,7 +2114,12 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
         </div>
         <a class="btn btn--dark btn--wide" data-tariff="pro" href="https://vastu-portal-app.onrender.com/buy/d6a1aacb-974b-411c-8cee-3d353a44c852?currency=RUB" target="_blank" rel="noopener">Занять место</a>
         <a class="tariff__alt" data-tariff="pro-installment" href="https://annaromeoschool.getcourse.ru/vastu-course_175" target="_blank" rel="noopener">Рассрочка в рублях <span aria-hidden="true">→</span></a>
-          <p class="tiny muted" style="margin-top:4px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse. Откроется в новой вкладке.</p>
+        <a class="tariff__mono" data-tariff="pro-mono" href="https://vastu-portal-app.onrender.com/buy/mono/design-pro" target="_blank" rel="noopener">
+          <span class="tariff__mono-cap">Для клиентов monobank · в гривнах</span>
+          <img src="../assets/mono/chast-6-white.png" width="800" height="264" alt="Покупка Частинами monobank: це можна купити частинами, до 6 платежів" loading="lazy" decoding="async">
+        </a>
+        <p class="tariff__mono-legal" lang="uk">Реальна річна процентна ставка — 0,000001%, макс. строк кредитування до 400 000 грн — 24 місяці. Перший внесок — аванс у розмірі щомісячного платежу. АТ «УНІВЕРСАЛ БАНК», Ліцензія НБУ №92 від 20.01.1994, у держреєстрі банків №226, деталі на monobank.ua</p>
+          <p class="tiny muted" style="margin-top:12px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse, Покупка Частинами — в приложении monobank. Откроется в новой вкладке.</p>
       </article>
     </div>
 
@@ -2243,7 +2266,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
 
       <div class="faq__i"><button class="faq__q">Сколько сохраняется доступ к материалам?</button><div class="faq__a"><div>На тарифе «Основной» — <b>6 месяцев</b>, на «Наставничестве» — <b>год</b>.</div></div></div>
 
-      <div class="faq__i"><button class="faq__q">Есть ли рассрочка и оплата из-за рубежа?</button><div class="faq__a"><div>Да. Рассрочка в рублях — по ссылке «Рассрочка в рублях» под каждым тарифом: она оформляется на странице GetCourse, а письмо с доступом к платформе и чатам курса придёт на почту, указанную при оплате. Оплата картой из-за рубежа — по основной кнопке тарифа.<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm js-book" href="#tarify">К тарифам</a><a class="btn btn--ghost-l btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Задать вопрос</a></div></div></div></div>
+      <div class="faq__i"><button class="faq__q">Есть ли рассрочка и оплата из-за рубежа?</button><div class="faq__a"><div>Да. Рассрочка в рублях — по ссылке «Рассрочка в рублях» под каждым тарифом: она оформляется на странице GetCourse, а письмо с доступом к платформе и чатам курса придёт на почту, указанную при оплате. Из Украины — «Покупка Частинами monobank»: до 6 платежей в гривнах по той же цене, оформляется в приложении monobank, ссылка с лапкой — под тарифом. Оплата картой из-за рубежа — по основной кнопке тарифа.<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm js-book" href="#tarify">К тарифам</a><a class="btn btn--ghost-l btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Задать вопрос</a></div></div></div></div>
     </div>
 
     <p class="center mt-l"><a class="btn btn--ghost-l" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Остался вопрос? Напишите нам</a></p>
@@ -2308,6 +2331,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
       </span>
       <span>© <span id="year">2026</span> Anna Romeo</span>
     </div>
+    <p class="foot__mono" lang="uk">Покупка частинами monobank | Universal Bank. Надавач послуг: АТ «УНІВЕРСАЛ БАНК» ліцензія НБУ №92 від 20.01.1994, номер у держреєстрі банків № 226. Мінімальна сума розстрочки: 2 грн. Максимальна сума розстрочки: 400&nbsp;000 грн. Реальна річна процентна ставка: 0,000001%. Доступний строк, платежів: 3 — 25. Порядок погашення: щомісячні платежі рівними частинами. Перший платіж у момент оформлення покупки. Інформація про істотні характеристики продукту та попередження розміщені на сайті продукту <a href="https://chast.monobank.ua" target="_blank" rel="noopener">chast.monobank.ua</a></p>
   </div>
 </footer>
 
