@@ -284,6 +284,7 @@ p:last-child{margin-bottom:0}
 .card:hover{box-shadow:inset 0 0 0 2px var(--gold)}
 .sec--dark .card:hover,.sec--deep .card:hover{box-shadow:inset 0 0 0 2px var(--burgundy)}
 .tariff:hover{box-shadow:inset 0 0 0 1px var(--gold)}
+.tariff__alt:hover{text-decoration-color:currentColor}
 .faq__q:hover{color:var(--gold-ink)}
 .layers__tab:hover{color:var(--on-dark)}
 .nav__links a:hover{color:var(--gold)}
@@ -855,6 +856,13 @@ html.js .rv:not(.is-in) .chain::before{transform:scaleX(0)}
 .tariff__bar{flex:1;height:2px;background:rgba(202,188,144,.22);position:relative;overflow:hidden}
 .tariff__bar i{position:absolute;inset:0 auto 0 0;background:var(--gold);display:block}
 .tariff .btn{margin-top:24px}
+/* Второй путь к оплате — рассрочка в рублях на GetCourse. Тише кнопки тарифа,
+   но с полноценной зоной нажатия, чтобы её находили и на телефоне. */
+.tariff__alt{display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;margin-top:10px;
+  font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;
+  text-decoration-color:rgba(202,188,144,.5);transition:text-decoration-color .3s var(--ease)}
+.tariff--pro .tariff__alt{color:var(--burgundy);text-decoration-color:rgba(66,35,38,.45)}
 @media(max-width:900px){
   .tariffs{grid-template-columns:minmax(0,1fr)}
   .tariff{padding-top:44px}
@@ -1401,7 +1409,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
     <div class="hero__ctas">
       <a class="btn btn--gold js-book" href="#tarify">Занять место</a>
       <a class="btn btn--ghost-d" href="#tarify">Смотреть тарифы</a>
-      <span class="hero__note">Цена для участников мастер-класса · оплата на сайте lava.top</span>
+      <span class="hero__note">Цена для участников мастер-класса · есть рассрочка в рублях</span>
     </div>
   </div>
 
@@ -2068,7 +2076,8 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
           <p class="tariff__mk">Цена для участников мастер-класса</p>
         </div>
         <a class="btn btn--ghost-d btn--wide" data-tariff="base" href="https://vastu-portal-app.onrender.com/buy/ded0ec37-2888-4336-8e2d-38c49bab7df6?currency=RUB" target="_blank" rel="noopener">Занять место</a>
-          <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
+        <a class="tariff__alt" data-tariff="base-installment" href="https://annaromeoschool.getcourse.ru/vastu-course_55" target="_blank" rel="noopener">Рассрочка в рублях <span aria-hidden="true">→</span></a>
+          <p class="tiny muted" style="margin-top:4px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse. Откроется в новой вкладке.</p>
       </article>
 
       <article class="tariff tariff--pro">
@@ -2086,7 +2095,8 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
           <div class="tariff__now">175 000 ₽</div>
         </div>
         <a class="btn btn--dark btn--wide" data-tariff="pro" href="https://vastu-portal-app.onrender.com/buy/d6a1aacb-974b-411c-8cee-3d353a44c852?currency=RUB" target="_blank" rel="noopener">Занять место</a>
-          <p class="tiny muted" style="margin-top:12px">Оплата на защищённой странице lava.top, откроется в новой вкладке.</p>
+        <a class="tariff__alt" data-tariff="pro-installment" href="https://annaromeoschool.getcourse.ru/vastu-course_175" target="_blank" rel="noopener">Рассрочка в рублях <span aria-hidden="true">→</span></a>
+          <p class="tiny muted" style="margin-top:4px">Картой или СБП — на защищённой странице lava.top, рассрочка — на GetCourse. Откроется в новой вкладке.</p>
       </article>
     </div>
 
@@ -2233,7 +2243,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
 
       <div class="faq__i"><button class="faq__q">Сколько сохраняется доступ к материалам?</button><div class="faq__a"><div>На тарифе «Основной» — <b>6 месяцев</b>, на «Наставничестве» — <b>год</b>.</div></div></div>
 
-      <div class="faq__i"><button class="faq__q">Есть ли рассрочка и оплата из-за рубежа?</button><div class="faq__a"><div>Да. Есть внутренняя рассрочка — напишите Анне в Telegram, обсудим условия. Оплата картой из-за рубежа проходит по тем же ссылкам на оплату.<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Написать про рассрочку</a></div></div></div></div>
+      <div class="faq__i"><button class="faq__q">Есть ли рассрочка и оплата из-за рубежа?</button><div class="faq__a"><div>Да. Рассрочка в рублях — по ссылке «Рассрочка в рублях» под каждым тарифом: она оформляется на странице GetCourse, а письмо с доступом к платформе и чатам курса придёт на почту, указанную при оплате. Оплата картой из-за рубежа — по основной кнопке тарифа.<div class="btn-row" style="margin-top:18px"><a class="btn btn--dark btn--sm js-book" href="#tarify">К тарифам</a><a class="btn btn--ghost-l btn--sm" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Задать вопрос</a></div></div></div></div>
     </div>
 
     <p class="center mt-l"><a class="btn btn--ghost-l" href="https://t.me/annaromeo_vastu_bot" target="_blank" rel="noopener">Остался вопрос? Напишите нам</a></p>
@@ -2258,7 +2268,7 @@ html.js hr.hair:not(.is-in){transform:scaleX(0)}
     <div class="btn-row btn-row--c">
       <a class="btn btn--gold js-book" href="#tarify">Занять место</a>
     </div>
-    <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.84)">Оплата на защищённой странице lava.top.</p>
+    <p class="tiny" style="margin-top:16px;color:rgba(240,235,226,.84)">Оплата на защищённой странице lava.top · есть рассрочка в рублях.</p>
   </div>
 </section>
 
