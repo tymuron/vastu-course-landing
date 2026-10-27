@@ -8,7 +8,8 @@ only masterclass participants get the link. The lava products are hidden
 too, so there is no deadline: the price works for whoever has the link.
 
 Never edit mk/index.html by hand. Change index.html, then run:
-    python3 tools/make_mk_page.py
+    python3 tools/make_mk_page.py && python3 tools/make_ua_page.py
+(the second builds its Ukrainian version, mk/ua/, from it).
 Every substitution must hit exactly once — if index.html changes shape the
 script stops instead of quietly shipping a page with the wrong price.
 """
@@ -17,6 +18,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = "https://annaromeo-vastu-course.onrender.com"
 NB = " "
 
 # /buy/<offerId> on the platform (see vastu-portal/fulfilment.js for why it is
@@ -59,6 +61,10 @@ def main():
     doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', r'\g<1>https://annaromeo-vastu-course.onrender.com/mk/\2', "og:url")
     doc = sub1(doc, r"</head>", CSS + "</head>", "</head>")
     doc = sub1(doc, r"(<meta name=\"description\" content=\"[^\"]*?)стоимость от 75 000 ₽", r"\1стоимость от 55 000 ₽ для участников мастер-класса", "meta description price")
+    # its Ukrainian version is the masterclass one too (mk/ua/, tools/make_ua_page.py)
+    doc = sub1(doc, r'(<link rel="alternate" hreflang="ru" href=")[^"]*(")', rf"\g<1>{SITE}/mk/\2", "hreflang ru")
+    doc = sub1(doc, r'(<link rel="alternate" hreflang="uk" href=")[^"]*(")', rf"\g<1>{SITE}/mk/ua/\2", "hreflang uk")
+    doc = sub1(doc, r'(<li class="nav__lang"><a href=")[^"]*(")', rf"\g<1>{SITE}/mk/ua/\2", "language switch")
 
     # prices («(?<!1)» keeps 175 000 untouched)
     doc = sub1(doc, rf'<div class="sticky__p1">{FULL}</div>', f'<div class="sticky__p1">{SPECIAL}<s>{FULL}</s></div>', "sticky price")
