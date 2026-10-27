@@ -43,7 +43,7 @@ MONO_PLAN = {"base": "design-base", "pro": "design-pro"}
 # The seller behind «Покупка Частинами monobank»: the Ukrainian ФОП that owns
 # the monobank store (store id 2882500098_823). Shown in the footer next to
 # the card seller. None = not known yet, nothing is printed.
-FOP_UA = None  # e.g. "ФОП Прізвище Ім’я По батькові · РНОКПП 0000000000"
+FOP_UA = "ФОП Чистяков Роман Миколайович · РНОКПП 2882500098"
 
 # monobank's two lines for any promotion of «Покупка Частинами»
 # (knowledge-base/chast/marketing) and its product block for the site
