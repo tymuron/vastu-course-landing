@@ -56,7 +56,7 @@ def main():
 
     # head: hidden from search, its own og:url, extra CSS
     doc = sub1(doc, r'(<meta name="viewport"[^>]*>)', r'\1\n<meta name="robots" content="noindex, nofollow">', "viewport meta")
-    doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', r'\g<1>https://annaromeo-vastu-course.onrender.com/mk/\2', "og:url")
+    doc = sub1(doc, r'(<meta property="og:url" content=")[^"]*(")', r'\g<1>https://kurs.annaromeovastu.com/mk/\2', "og:url")
     doc = sub1(doc, r"</head>", CSS + "</head>", "</head>")
     doc = sub1(doc, r"(<meta name=\"description\" content=\"[^\"]*?)стоимость от 75 000 ₽", r"\1стоимость от 55 000 ₽ для участников мастер-класса", "meta description price")
     # no language switch: the Ukrainian page (ua/) has the full price, and

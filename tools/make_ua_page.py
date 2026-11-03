@@ -30,8 +30,8 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NB = " "
-SITE = "https://annaromeo-vastu-course.onrender.com"
-PORTAL = "https://vastu-portal-app.onrender.com"
+SITE = "https://kurs.annaromeovastu.com"
+PORTAL = "https://lk.annaromeovastu.com"
 
 # Hryvnia prices = the platform's MONO_PRICES_UAH (design-base / design-pro).
 UAH = {"base": f"42{NB}066,73{NB}₴", "pro": f"98{NB}155,70{NB}₴"}
